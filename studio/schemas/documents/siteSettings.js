@@ -31,6 +31,11 @@ export default {
       }
     },
     {
+      name: 'image',
+      title: 'Logo',
+      type: 'figure'
+    },
+    {
       name: 'author',
       type: 'reference',
       description: 'Publish an author and set a reference to them here.',
