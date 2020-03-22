@@ -1,7 +1,10 @@
+import {MdViewCarousel} from 'react-icons/md'
+
 export default {
   name: 'carousel',
   type: 'document',
   title: 'Carousels',
+  icon: MdViewCarousel,
   fields: [
     {
       name: 'title',

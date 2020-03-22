@@ -36,6 +36,11 @@ export default {
       type: 'figure'
     },
     {
+      name: 'headerVideo',
+      title: 'Header Video URL',
+      type: 'url'
+    },
+    {
       name: 'author',
       type: 'reference',
       description: 'Publish an author and set a reference to them here.',

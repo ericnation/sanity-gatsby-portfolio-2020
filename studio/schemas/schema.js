@@ -18,6 +18,13 @@ import projectMember from './objects/projectMember'
 import projectPortableText from './objects/projectPortableText'
 import simplePortableText from './objects/simplePortableText'
 import slide from './objects/slide'
+import navMenu from './documents/navMenu'
+import nav from './objects/nav'
+import about from './documents/about'
+import services from './documents/services'
+import service from './objects/service'
+import skill from './objects/skill'
+import tool from './objects/tool'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -30,16 +37,23 @@ export default createSchema({
     // { type: 'typename' } in other document schemas
     bioPortableText,
     figure,
+    nav,
     projectMember,
     projectPortableText,
+    service,
     simplePortableText,
+    skill,
     slide,
+    tool,
     // The following are document types which will appear
     // in the studio.
+    about,
     carousel,
     category,
+    navMenu,
     person,
     sampleProject,
+    services,
     siteSettings
   ])
 })
