@@ -7,9 +7,10 @@ import {
 } from '../lib/helpers';
 import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
-import ProjectPreviewGrid from '../components/project-preview-grid';
+import ProjectPreviewGrid from
+  '../components/projectPreviewGrid/project-preview-grid';
 import SEO from '../components/seo';
-import Layout from '../containers/layout';
+import LayoutContainer from '../containers/layout-container';
 
 export const query = graphql`
   query IndexPageQuery {
@@ -64,9 +65,9 @@ const IndexPage = (props) => {
 
   if (errors) {
     return (
-      <Layout>
+      <LayoutContainer>
         <GraphQLErrorList errors={errors} />
-      </Layout>
+      </LayoutContainer>
     );
   }
   /* eslint-disable-next-line prefer-destructuring */
@@ -83,7 +84,7 @@ const IndexPage = (props) => {
   }
 
   return (
-    <Layout>
+    <LayoutContainer>
       <SEO
         title={site.title}
         description={site.description}
@@ -99,7 +100,7 @@ const IndexPage = (props) => {
           />
         )}
       </Container>
-    </Layout>
+    </LayoutContainer>
   );
 };
 

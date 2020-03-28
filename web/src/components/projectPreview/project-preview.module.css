@@ -1,25 +1,25 @@
 .root {
-  display: block;
   color: inherit;
+  display: block;
   text-decoration: none;
 }
 
 .title {
-  composes: responsiveTitle1 from './typography.module.css';
+  composes: responsiveTitle1 from '../typography.module.css';
 }
 
 .leadMediaThumb {
-  position: relative;
-  padding-bottom: 66.666%;
   background: #eee;
+  padding-bottom: 66.666%;
+  position: relative;
 
   @nest & img {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 }
 

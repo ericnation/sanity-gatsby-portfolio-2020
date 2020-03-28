@@ -1,5 +1,5 @@
-@import '../styles/custom-media.css';
-@import '../styles/custom-properties.css';
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
 
 .content {
   background: var(--color-white);
@@ -27,9 +27,9 @@
 
 .footerWrapper {
   box-sizing: border-box;
+  margin: 0 auto;
   max-width: 960px;
   padding: 4.5em 1.5em 1.5em;
-  margin: 0 auto;
 
   @media (--media-min-small) {
     padding: 6em 2em 2em;
@@ -37,12 +37,12 @@
 }
 
 .companyAddress {
-  text-align: center;
   margin: 0 0 1rem;
+  text-align: center;
 }
 
 .siteInfo {
-  text-align: center;
   font-size: var(--font-small-size);
   line-height: var(--font-small-line-height);
+  text-align: center;
 }

@@ -14,8 +14,11 @@ const browserReporter = require('postcss-browser-reporter');
 const reporter = require('postcss-reporter');
 const prependImports = require('postcss-prepend-imports');
 const cssnano = require('cssnano');
+const simpleVariables = require('postcss-simple-vars');
 const lost = require('lost');
 const stylelintConfig = require('./stylelint.config.js');
+const cssVars = require('./src/styles/vars');
+const flatten = require('./src/utils/flatten');
 
 module.exports = () => ({
   plugins: [
@@ -26,6 +29,9 @@ module.exports = () => ({
         md: '960px',
         lg: '1312px',
       },
+    }),
+    simpleVariables({
+      variables: flatten(cssVars),
     }),
     presetEnv({
       stage: 0,

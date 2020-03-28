@@ -9,7 +9,6 @@ module.exports = {
         ignore: ['after-comment'],
       },
     ],
-    indentation: 2,
     'at-rule-name-case': 'lower',
     'at-rule-name-space-after': 'always',
     'at-rule-semicolon-newline-after': 'always',
@@ -20,7 +19,6 @@ module.exports = {
     'color-no-invalid-hex': true,
     'declaration-block-no-shorthand-property-overrides': true,
     'declaration-block-semicolon-newline-after': 'always',
-    'declaration-block-trailing-semicolon': 'always',
     'declaration-colon-space-after': 'always',
     'declaration-no-important': true,
     'font-family-name-quotes': 'always-unless-keyword',
@@ -48,12 +46,6 @@ module.exports = {
     'selector-combinator-space-before': 'always',
     'selector-descendant-combinator-no-non-space': true,
     'selector-list-comma-newline-after': 'always',
-    'selector-max-specificity': [
-      '0,2,1',
-      {
-        ignoreSelectors: [':global', ':local'],
-      },
-    ],
     'selector-no-vendor-prefix': true,
     'selector-pseudo-class-case': 'lower',
     'selector-pseudo-class-parentheses-space-inside': 'never',

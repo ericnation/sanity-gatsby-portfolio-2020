@@ -4,6 +4,5 @@
   "trailingComma": "all",
   "proseWrap": "preserve",
   "arrowParens": "always",
-  "jsxSingleQuote": true,
   "useTabs": false,
 }
