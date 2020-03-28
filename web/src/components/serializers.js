@@ -1,9 +1,9 @@
-import Figure from './figure'
+import Figure from './figure/figure';
 
 const serializers = {
   types: {
-    figure: Figure
-  }
-}
+    figure: Figure,
+  },
+};
 
-export default serializers
+export default serializers;
