@@ -8,7 +8,7 @@ import {
 import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
 import ProjectPreviewGrid from
-  '../components/projectPreviewGrid/project-preview-grid';
+  '../components/projectPreviewGrid';
 import SEO from '../components/seo';
 import LayoutContainer from '../containers/layout-container';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../logo/logo';
+import Logo from '../logo';
 import styles from './page-loader.module.css';
 
 const PageLoader = () => (

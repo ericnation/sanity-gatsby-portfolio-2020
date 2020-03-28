@@ -1,4 +1,4 @@
-import Figure from './figure/figure';
+import Figure from './figure';
 
 const serializers = {
   types: {
