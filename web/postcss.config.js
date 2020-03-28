@@ -1,6 +1,5 @@
 // Plugins
 const calc = require('postcss-calc');
-const breakPoints = require('postcss-breakpoints');
 const presetEnv = require('postcss-preset-env');
 const cssImport = require('postcss-import');
 const nested = require('postcss-nested');
@@ -22,19 +21,8 @@ const flatten = require('./src/utils/flatten');
 
 module.exports = () => ({
   plugins: [
-    breakPoints({
-      breakpoints: {
-        xs: '410px',
-        sm: '630px',
-        md: '960px',
-        lg: '1312px',
-      },
-    }),
     simpleVariables({
       variables: flatten(cssVars),
-    }),
-    presetEnv({
-      stage: 0,
     }),
     stylelint(stylelintConfig),
     prependImports({
@@ -59,5 +47,8 @@ module.exports = () => ({
     reporter(),
     cssnano({ preset: 'default' }),
     lost(), // grid system
+    presetEnv({
+      stage: 0,
+    }),
   ],
 });
