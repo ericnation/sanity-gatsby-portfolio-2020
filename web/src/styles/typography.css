@@ -1,0 +1,51 @@
+p {
+  margin-bottom: rem(10);
+}
+
+a {
+  color: $default-link-color;
+  text-decoration: none;
+  transition: all 0.2s;
+
+  &:hover {
+    color: $default-link-color-hover;
+    text-decoration: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $h-color;
+  font-family: $h-font-family;
+  line-height: 1em;
+	margin: 0 0 20px 0;
+	text-transform: uppercase;
+}
+
+h1 {
+	font-size: $h1-size;
+}
+
+h2 {
+	font-size: $h2-size;
+}
+
+h3 {
+	font-size: $h3-size;
+}
+
+h4 {
+	font-size: $h4-size;
+}
+
+h5 {
+	font-size: $h5-size;
+}
+
+h6 {
+	font-size: $h6-size;
+}

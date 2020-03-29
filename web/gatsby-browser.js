@@ -6,5 +6,6 @@
 
 // You can delete this file if you're not using it
 import './src/styles/reset.css';
+import './src/styles/typography.css';
 import './src/styles/styles.css';
 

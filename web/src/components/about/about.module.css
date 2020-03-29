@@ -1,11 +1,10 @@
 /* ABOUT US */
 .aboutText {
-	background: url(img/skateboard-BW.jpg) no-repeat center top $body-background-color;
 	position: relative;
 }
 
 .firstSection {
-	padding-top: rem(410);
+  padding-top: rem(410);
 }
 
 .row {
@@ -14,4 +13,16 @@
 
 .col {
   lost-column: 1/2;
+}
+
+.profilePic {
+  @include imgCircle;
+}
+
+.headerDesc {
+  @include headerDesc;
+}
+
+.sectionHeader {
+  @include sectionHeader;
 }

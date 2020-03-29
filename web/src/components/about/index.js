@@ -1,48 +1,113 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 import classNames from 'classnames';
-import { cn, buildImageObj } from '../../lib/helpers';
+import { buildImageObj } from '../../lib/helpers';
 import imageUrlFor from '../../lib/image-url';
 import BlockText from '../block-text';
+import GraphQLErrorList from '../graphql-error-list';
 
 import styles from './about.module.css';
 
-const About = (props) => {
+const About = () => {
+  const { sanityAbout } = useStaticQuery(graphql`
+    query AboutSectionQuery {
+      sanityAbout {
+        aboutSectionImage {
+          alt
+          caption
+          hotspot {
+            height
+            width
+            x
+            y
+          }
+          _key
+          _type
+          asset {
+            url
+            assetId
+            _type
+          }
+          crop {
+            bottom
+            left
+            right
+            top
+          }
+        }
+        hobbies
+        profile {
+          _rawBio
+          name
+          image {
+            _key
+            _type
+            caption
+            alt
+            hotspot {
+              height
+              width
+              x
+              y
+            }
+            crop {
+              bottom
+              left
+              right
+              top
+            }
+            asset {
+              assetId
+              _id
+              url
+              id
+            }
+          }
+        }
+        id
+        title
+      }
+    }
+  `);
+
+  const {
+    title,
+    hobbies,
+    profile: { _rawBio, image },
+  } = sanityAbout;
+
   return (
     <section id='aboutus'>
       <section className={classNames('section', styles.aboutText)}>
         <div className={classNames('container', styles.firstSection)}>
-          <div className='section-header'>
+          <div className={styles.sectionHeader}>
             <h1>
-              <span>About Me</span>
+              <span>{title}</span>
             </h1>
-            <div className='header-desc'>
-              <span>
-                Software Developer &middot;
-                World Traveler &middot; Motorcycle Rider &middot; Skateboarder
-              </span>
-            </div>
+            {(hobbies && hobbies.length) && (
+              <div className={styles.headerDesc}>
+                <span>
+                  {hobbies.map((hobby) => `${hobby} `)}
+                </span>
+              </div>
+            )}
           </div>
           <div className={styles.row}>
             <div className={styles.col}>
-              <img
-                src='img/profile_2020.jpg'
-                alt='Eric Nation - Profile'
-                className={styles.imgCircle}
-              />
+              {image && image.asset && (
+                <img
+                  src={imageUrlFor(buildImageObj(image))
+                    .url()}
+                  alt={image.alt}
+                  className={styles.profilePic}
+                />
+              )}
             </div>
             <div className={styles.col}>
-              <p>
-                <strong>HELLO</strong>, my name is Eric Nation, and I’m a Software Developer originally based out of Phoenix, Arizona.
-              For the past 3.5 years I've been working remotely and I have mastered being apart of remote teams. I
-              have 8 years of professional web development experience specializing in UI architecture and Javascript technologies.
-              </p>
-              <p>I have in depth experience with Angular, React, Wordpress, and building component libraries. I also have experience
-                and am well versed in full stack Javascript technologies such as Nodejs, Express, and Firebase. I have a passion for
-                designing and developing web applications and I'm always hungry to learn more, improve, and advance my skill set.
-              </p>
-              <p>Other than designing and developing web applications, I enjoy skateboarding, fitness, surfing, riding motorcycles,
-                traveling, the outdoors, music, and a bunch of other awesome stuff!
-              </p>
+              {_rawBio && (
+                <BlockText blocks={_rawBio} />
+              )}
             </div>
           </div>
         </div>

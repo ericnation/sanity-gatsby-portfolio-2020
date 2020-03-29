@@ -36,12 +36,6 @@ module.exports = {
       ['composes'],
       { unspecified: 'bottomAlphabetical' },
     ],
-    'rule-empty-line-before': [
-      'always',
-      {
-        ignore: ['after-comment', 'first-nested'],
-      },
-    ],
     'selector-combinator-space-after': 'always',
     'selector-combinator-space-before': 'always',
     'selector-descendant-combinator-no-non-space': true,

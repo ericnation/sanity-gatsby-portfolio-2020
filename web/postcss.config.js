@@ -13,7 +13,7 @@ const browserReporter = require('postcss-browser-reporter');
 const reporter = require('postcss-reporter');
 const prependImports = require('postcss-prepend-imports');
 const cssnano = require('cssnano');
-const simpleVariables = require('postcss-simple-vars');
+const variables = require('postcss-simple-vars');
 const lost = require('lost');
 const stylelintConfig = require('./stylelint.config.js');
 const cssVars = require('./src/styles/vars');
@@ -21,10 +21,6 @@ const flatten = require('./src/utils/flatten');
 
 module.exports = () => ({
   plugins: [
-    simpleVariables({
-      variables: flatten(cssVars),
-    }),
-    stylelint(stylelintConfig),
     prependImports({
       path: './src/styles',
       files: ['mixins/index.css'],
@@ -33,6 +29,10 @@ module.exports = () => ({
       path: './src/styles',
     }), // Import files
     mixins(),
+    variables({
+      variables: flatten(cssVars),
+    }),
+    stylelint(stylelintConfig),
     units(), // Compute rem() function
     nested(), // Allow nested syntax.
     calc({

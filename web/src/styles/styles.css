@@ -1,8 +1,29 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
+html {
+  font-family: $primary-font-family;
+  font-size: $primary-font-size;
+  line-height: $primary-font-line-height;
+}
+
+body {
+  background: $body-background-color;
+  color: $default-text-color;
+  font-family: $primary-font-family;
+  font-size: $primary-font-size;
+  -webkit-font-smoothing: antialiased;
+	line-height: $primary-font-line-height;
+  margin: 0;
+}
+
 .el-gap {
 	margin-bottom: $elements-gap;
+}
+
+b,
+strong {
+  font-weight: 600;
 }
 
 .section {
@@ -37,116 +58,6 @@
 .section-bg-attached {
 	background-attachment: fixed;
 	background-size: cover;
-}
-
-/* HEADERS */
-.section-header {
-  margin-bottom: $elements-gap;
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: $secondary-color;
-		font-family: $secondary-font-family;
-		text-align: center;
-		text-transform: uppercase;
-
-		span {
-			position: relative;
-
-      &::before,
-      &::after {
-        border-bottom: 2px solid $secondary-color;
-        content: "";
-				position: absolute;
-				width: $section-header-line-width;
-			}
-
-			&::before {
-				left: calc($section-header-line-width - 25px);
-			}
-
-			&::after {
-				right: calc($section-header-line-width - 25px);
-			}
-		}
-	}
-
-	h1 span {
-    &::before,
-    &::after {
-			top: calc($h1-size / 2 + 2);
-		}
-	}
-
-	h2 span {
-    &::before,
-    &::after {
-			top: calc($h2-size / 2 + 2);
-		}
-	}
-
-	h3 span {
-    &::before,
-    &::after {
-			top: calc($h3-size / 2 + 2);
-		}
-	}
-
-	h4 span {
-    &::before,
-    &::after {
-			top: calc($h4-size / 2 + 2);
-		}
-	}
-
-	h5 span {
-    &::before,
-    &::after {
-			top: calc($h5-size / 2 + 2);
-		}
-	}
-
-	h6 span {
-    &::before,
-    &::after {
-			top: calc($h6-size / 2 + 2);
-		}
-	}
-
-	.header-desc {
-		&::before {
-      border-bottom: none;
-			content: "";
-		}
-	}
-}
-
-.header-desc {
-	span {
-    color: $default-text-color;
-    display: block;
-    font: $section-header-desc-font;
-    margin: 0 auto;
-    text-align: center;
-		width: $section-header-desc-width;
-
-		a {
-			color: $primary-color;
-		}
-	}
-
-	&::before {
-    border-bottom: 2px solid $secondary-color;
-    content: "";
-    left: 47.8%;
-    position: absolute;
-    top: rem(36);
-		width: rem(50);
-	}
 }
 
 .sh-left {

@@ -1,6 +1,6 @@
 module.exports = {
   'primary-font-family': '\'Open Sans\', \'Arial\', \'Helvetica\', sans-serif',
-  'primary-font-size': '14px',
+  'primary-font-size': '16px',
   'primary-font-line-height': '1.6em',
   'secondary-font-family': '\'Montserrat\', sans-serif',
   'h-font-family': '\'Montserrat\', sans-serif',
