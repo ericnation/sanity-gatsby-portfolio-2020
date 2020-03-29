@@ -9,7 +9,7 @@ module.exports = {
   rules: {
     'react/prop-types': 0,
     "indent": [2, 2, {"SwitchCase": 1}],
-    "max-len": [2, 80, 4, {
+    "max-len": [2, 100, 4, {
       "ignoreComments": true,
       "ignoreUrls": true
     }],
