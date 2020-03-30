@@ -19,7 +19,7 @@
     position: absolute;
     top: rem(36);
 		width: rem(50);
-	}
+  }
 }
 
 /* HEADERS */
@@ -42,18 +42,18 @@
 
       &::before,
       &::after {
-        border-bottom: 2px solid $secondary-color;
+        border-bottom: 2px solid $section-header-line-color;
         content: "";
         position: absolute;
         width: $section-header-line-width;
       }
 
       &::before {
-        left: calc($section-header-line-width - 25px);
+        left: calc(- $section-header-line-width - 25px);
       }
 
       &::after {
-        right: calc($section-header-line-width - 25px);
+        right: calc(- $section-header-line-width - 25px);
       }
     }
   }
@@ -61,49 +61,42 @@
   h1 span {
     &::before,
     &::after {
-      top: calc($h1-size / 2 + 2);
+      top: calc($h1-size / 2 + 2px);
     }
   }
 
   h2 span {
     &::before,
     &::after {
-      top: calc($h2-size / 2 + 2);
+      top: calc($h2-size / 2 + 2px);
     }
   }
 
   h3 span {
     &::before,
     &::after {
-      top: calc($h3-size / 2 + 2);
+      top: calc($h3-size / 2 + 2px);
     }
   }
 
   h4 span {
     &::before,
     &::after {
-      top: calc($h4-size / 2 + 2);
+      top: calc($h4-size / 2 + 2px);
     }
   }
 
   h5 span {
     &::before,
     &::after {
-      top: calc($h5-size / 2 + 2);
+      top: calc($h5-size / 2 + 2px);
     }
   }
 
   h6 span {
     &::before,
     &::after {
-      top: calc($h6-size / 2 + 2);
-    }
-  }
-
-  .header-desc {
-    &::before {
-      border-bottom: none;
-      content: "";
+      top: calc($h6-size / 2 + 2px);
     }
   }
 }

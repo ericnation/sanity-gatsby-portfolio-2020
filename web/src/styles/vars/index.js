@@ -7,6 +7,8 @@
 
 /* eslint-disable global-require */
 module.exports = {
+  breakpoints: require('./breakpoints'),
+  bkptVal: require('./breakpoints').bkptVal,
   colors: require('./colors'),
   fonts: require('./fonts'),
   'ui-sections': require('./ui-sections'),

@@ -25,6 +25,8 @@ const About = () => {
           _key
           _type
           asset {
+            id
+            _id
             url
             assetId
             _type
@@ -72,6 +74,7 @@ const About = () => {
   `);
 
   const {
+    aboutSectionImage,
     title,
     hobbies,
     profile: { _rawBio, image },
@@ -79,22 +82,28 @@ const About = () => {
 
   return (
     <section id='aboutus'>
-      <section className={classNames('section', styles.aboutText)}>
-        <div className={classNames('container', styles.firstSection)}>
+      <section
+        className={classNames(styles.section, styles.aboutText)}
+        style={{
+          backgroundImage: `url(${imageUrlFor(buildImageObj(aboutSectionImage))
+            .height(465).width(2000).url()})`,
+        }}
+      >
+        <div className={classNames(styles.container, styles.firstSection)}>
           <div className={styles.sectionHeader}>
             <h1>
               <span>{title}</span>
             </h1>
-            {(hobbies && hobbies.length) && (
+            {hobbies && (
               <div className={styles.headerDesc}>
                 <span>
-                  {hobbies.map((hobby) => `${hobby} `)}
+                  {hobbies.length && hobbies.map((hobby) => `${hobby} `)}
                 </span>
               </div>
             )}
           </div>
           <div className={styles.row}>
-            <div className={styles.col}>
+            <div className={styles.col1}>
               {image && image.asset && (
                 <img
                   src={imageUrlFor(buildImageObj(image))
@@ -104,7 +113,7 @@ const About = () => {
                 />
               )}
             </div>
-            <div className={styles.col}>
+            <div className={styles.col2}>
               {_rawBio && (
                 <BlockText blocks={_rawBio} />
               )}

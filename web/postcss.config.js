@@ -14,7 +14,7 @@ const reporter = require('postcss-reporter');
 const prependImports = require('postcss-prepend-imports');
 const cssnano = require('cssnano');
 const variables = require('postcss-simple-vars');
-const lost = require('lost');
+const tidyColumns = require('postcss-tidy-columns');
 const stylelintConfig = require('./stylelint.config.js');
 const cssVars = require('./src/styles/vars');
 const flatten = require('./src/utils/flatten');
@@ -38,6 +38,13 @@ module.exports = () => ({
     calc({
       mediaQueries: true,
     }),
+    tidyColumns({
+      columns: 12,
+      gap: '0.9375rem', // 15px
+      edge: '1.25rem', // 20px
+      siteMax: '73.125rem', // 1170px
+      breakpoints: {},
+    }),
     colorFunction(),
     focus(),
     autoprefixer({
@@ -46,7 +53,6 @@ module.exports = () => ({
     browserReporter(),
     reporter(),
     cssnano({ preset: 'default' }),
-    lost(), // grid system
     presetEnv({
       stage: 0,
     }),

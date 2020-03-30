@@ -1,5 +1,20 @@
 /* ABOUT US */
+.container {
+  @include container;
+}
+
+.row {
+  @include row;
+}
+
+.section {
+  @include section;
+}
+
 .aboutText {
+  background-color: #fff;
+  background-position: center top;
+  background-repeat: no-repeat;
 	position: relative;
 }
 
@@ -7,12 +22,21 @@
   padding-top: rem(410);
 }
 
-.row {
-  lost-utility: clearfix;
+.col1 {
+  margin-bottom: rem(20);
+  tidy-span: tidy-var(columns);
+
+  @media ($smMin) {
+    tidy-column: none / span 5.5 / 0.5;
+  }
 }
 
-.col {
-  lost-column: 1/2;
+.col2 {
+  tidy-span: tidy-var(columns);
+
+  @media ($smMin) {
+    tidy-column: 0.5 / span 5.5 / none;
+  }
 }
 
 .profilePic {

@@ -1,0 +1,33 @@
+@mixin section() {
+  background: $body-background-color;
+	padding: $elements-gap 0;
+	position: relative;
+}
+
+@mixin section-diff() {
+	background: darken($body-background-color, 5%);
+}
+
+@mixin section-bg-overlay() {
+	&::before {
+    background: rgba(0,0,0,0.7);
+    content: "";
+    height: 100%;
+    position: absolute;
+    top: 0;
+		width: 100%;
+	}
+
+	.container {
+		position: relative;
+	}
+
+  .small-header span {
+    background: transparent;
+  }
+}
+
+@mixin section-bg-attached() {
+	background-attachment: fixed;
+	background-size: cover;
+}
