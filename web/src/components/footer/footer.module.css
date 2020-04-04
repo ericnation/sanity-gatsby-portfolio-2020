@@ -19,4 +19,12 @@ footer {
 
 .btn {
   @include btn;
+  padding-right: rem(24);
+  width: rem(150);
+}
+
+.btnIcon {
+  font-size: rem(20);
+  position: absolute;
+  top: rem(4);
 }

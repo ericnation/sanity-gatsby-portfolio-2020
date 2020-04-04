@@ -1,0 +1,38 @@
+.container {
+  @include container;
+}
+
+.gridRow {
+  @include gridRow(2);
+}
+
+.section {
+  @include section;
+}
+
+.headerDesc {
+  @include headerDesc;
+}
+
+.sectionHeader {
+  @include sectionHeader;
+}
+
+.smallHeader {
+  @include smallHeader;
+}
+
+.accentColor {
+  @include accentColor;
+}
+
+.socialIcons a {
+  color: #cccccc;
+  font-size: rem(26);
+	margin: rem(0 15 6 0);
+  text-decoration: none;
+
+  &:hover {
+    color: #000;
+  }
+}

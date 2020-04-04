@@ -6,6 +6,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Document types
 import category from './documents/category'
+import contact from './documents/contact'
 import carousel from './documents/carousel'
 import person from './documents/person'
 import sampleProject from './documents/sampleProject'
@@ -50,6 +51,7 @@ export default createSchema({
     about,
     carousel,
     category,
+    contact,
     navMenu,
     person,
     sampleProject,

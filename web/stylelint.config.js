@@ -25,10 +25,6 @@ module.exports = {
     'no-extra-semicolons': true,
     'no-missing-end-of-source-newline': true,
     'number-leading-zero': 'always',
-    'order/properties-order': [
-      ['composes'],
-      { unspecified: 'bottomAlphabetical' },
-    ],
     'selector-combinator-space-after': 'always',
     'selector-combinator-space-before': 'always',
     'selector-descendant-combinator-no-non-space': true,

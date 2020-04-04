@@ -52,36 +52,6 @@ strong {
 	}
 }
 
-/* SMALL HEADER */
-.small-header {
-  color: $secondary-color;
-	font: rem(18) $secondary-font-family;
-  margin: 0 0 rem(35) 0;
-  position: relative;
-  text-transform: uppercase;
-
-	&::before {
-    border-bottom: 2px solid $secondary-color;
-    content: "";
-    left: 0;
-    position: absolute;
-    top: rem(9);
-		width: 100%;
-		z-index: 9;
-	}
-
-	span {
-		background: $primary-color;
-		padding-right: rem(10);
-		position: relative;
-		z-index: 10;
-
-		.section-diff & {
-			background: darken($body-background-color, 5%);
-		}
-	}
-}
-
 .sh-center {
 	text-align: center;
 
