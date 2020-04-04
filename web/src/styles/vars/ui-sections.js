@@ -4,4 +4,5 @@ module.exports = {
   'section-header-line-width': '80px',
   'section-header-desc-width': '40%',
   'section-header-line-color': '#b2b2b2',
+  'btn-border-radius': '2px',
 };

@@ -31,8 +31,13 @@ export default {
       }
     },
     {
-      name: 'image',
-      title: 'Logo',
+      name: 'whiteLogo',
+      title: 'White Logo',
+      type: 'figure'
+    },
+    {
+      name: 'blackLogo',
+      title: 'Black Logo',
       type: 'figure'
     },
     {

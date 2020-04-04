@@ -12,6 +12,7 @@ import ProjectPreviewGrid from
 import SEO from '../components/seo';
 import LayoutContainer from '../containers/layout-container';
 import About from '../components/about';
+import Nav from '../components/nav';
 
 export const query = graphql`
   query IndexPageQuery {
@@ -92,14 +93,7 @@ const IndexPage = (props) => {
         keywords={site.keywords}
       />
       <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
-        {projectNodes && (
-          <ProjectPreviewGrid
-            title='Latest projects'
-            nodes={projectNodes}
-            browseMoreHref='/archive/'
-          />
-        )}
+        <Nav />
         <About />
       </Container>
     </LayoutContainer>

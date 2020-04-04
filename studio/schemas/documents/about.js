@@ -27,6 +27,11 @@ export default {
       type: 'figure'
     },
     {
+      name: 'aboutSectionImageColor',
+      title: 'Section Color Image',
+      type: 'figure'
+    },
+    {
       name: 'profile',
       title: 'About Me Profile',
       type: 'reference',

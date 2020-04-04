@@ -1,0 +1,22 @@
+footer {
+  background: #000;
+	color: #fff;
+	padding: $elements-gap 0;
+  position: relative;
+  text-align: center;
+}
+
+.backToTop {
+  position: absolute;
+  top: rem(-16);
+  width: 100%;
+}
+
+.copyright {
+  display: block;
+  margin-top: rem(10);
+}
+
+.btn {
+  @include btn;
+}

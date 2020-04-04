@@ -1,11 +1,9 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import classNames from 'classnames';
 import { buildImageObj } from '../../lib/helpers';
 import imageUrlFor from '../../lib/image-url';
 import BlockText from '../block-text';
-import GraphQLErrorList from '../graphql-error-list';
 
 import styles from './about.module.css';
 
@@ -14,6 +12,31 @@ const About = () => {
     query AboutSectionQuery {
       sanityAbout {
         aboutSectionImage {
+          alt
+          caption
+          hotspot {
+            height
+            width
+            x
+            y
+          }
+          _key
+          _type
+          asset {
+            id
+            _id
+            url
+            assetId
+            _type
+          }
+          crop {
+            bottom
+            left
+            right
+            top
+          }
+        }
+        aboutSectionImageColor {
           alt
           caption
           hotspot {
@@ -75,18 +98,19 @@ const About = () => {
 
   const {
     aboutSectionImage,
+    aboutSectionImageColor,
     title,
     hobbies,
     profile: { _rawBio, image },
   } = sanityAbout;
 
+  const colorImage = imageUrlFor(buildImageObj(aboutSectionImageColor)).height(465).width(2000).url();
   return (
-    <section id='aboutus'>
+    <section id='about'>
       <section
         className={classNames(styles.section, styles.aboutText)}
         style={{
-          backgroundImage: `url(${imageUrlFor(buildImageObj(aboutSectionImage))
-            .height(465).width(2000).url()})`,
+          backgroundImage: `url(${colorImage})`,
         }}
       >
         <div className={classNames(styles.container, styles.firstSection)}>
@@ -102,7 +126,7 @@ const About = () => {
               </div>
             )}
           </div>
-          <div className={styles.row}>
+          <div className={styles.gridRow}>
             <div className={styles.col1}>
               {image && image.asset && (
                 <img

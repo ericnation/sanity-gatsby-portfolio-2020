@@ -18,11 +18,6 @@
   /* Use padding to bring the inner width back to alignment with the columns */
 }
 
-@mixin row() {
-  display: flex;
-  flex-flow: row wrap;
-}
-
 /**
  * Ensures a tidy-columns property applies to all screen sizes.
  */

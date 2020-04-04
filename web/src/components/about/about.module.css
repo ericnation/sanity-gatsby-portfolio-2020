@@ -3,8 +3,8 @@
   @include container;
 }
 
-.row {
-  @include row;
+.gridRow {
+  @include gridRow(2);
 }
 
 .section {
@@ -15,7 +15,15 @@
   background-color: #fff;
   background-position: center top;
   background-repeat: no-repeat;
-	position: relative;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  position: relative;
+  transition: filter 0.2s ease-in-out;
+
+  &:hover {
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+  }
 }
 
 .firstSection {
@@ -24,19 +32,6 @@
 
 .col1 {
   margin-bottom: rem(20);
-  tidy-span: tidy-var(columns);
-
-  @media ($smMin) {
-    tidy-column: none / span 5.5 / 0.5;
-  }
-}
-
-.col2 {
-  tidy-span: tidy-var(columns);
-
-  @media ($smMin) {
-    tidy-column: 0.5 / span 5.5 / none;
-  }
 }
 
 .profilePic {
