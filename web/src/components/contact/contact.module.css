@@ -36,3 +36,28 @@
     color: #000;
   }
 }
+
+.btn {
+  @include btn;
+
+  &.contactBtn {
+    width: 50%;
+  }
+}
+
+.formGroup {
+  @include formGroup;
+}
+
+.formInput,
+.textarea {
+  @include formInput;
+}
+
+.formInput {
+  width: 50%;
+}
+
+.textarea {
+  width: 100%;
+}

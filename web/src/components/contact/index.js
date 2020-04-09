@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import classNames from 'classnames';
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -30,7 +31,7 @@ const Contact = () => {
       }
     }
   `);
-
+  const REQUIRED_FORM_MESSAGE = 'This field is required.';
   const {
     twitter,
     title,
@@ -45,8 +46,17 @@ const Contact = () => {
     email,
     city,
   } = sanityContact;
-  const { register, handleSubmit, watch, errors } = useForm();
-  const onSubmit = data => { console.log(data) };
+  const {
+    register,
+    handleSubmit,
+    formState,
+    watch,
+    errors
+  } = useForm();
+  const onSubmit = (formData) => {
+    console.log(formData)
+  };
+
   return (
     <section>
       <section className={styles.section}>
@@ -66,15 +76,134 @@ const Contact = () => {
                 <span>Send me a message</span>
               </h5>
 
-              <form id="contact-form" onSubmit={handleSubmit(onSubmit)} className="form-horizontal">
-                <div id="message-input">
-                  <input type="text" name="name" id="name" value="" placeholder="Name" size="22" tabindex="1" aria-required="true" className="requiredField name input-name label-better" />
-                  <input type="text" name="email" id="email" value="" placeholder="Email" size="22" tabindex="2" aria-required="true" className="requiredField email input-email label-better" />
+              <form
+                id="contact-form"
+                onSubmit={handleSubmit(onSubmit)}
+              >
+                <div className={styles.formGroup}>
+                  <label htmlFor="nameInput">
+                    <input
+                      type="text"
+                      name="nameInput"
+                      ref={register({
+                        required: true,
+                        pattern: /^[a-z ,.'-]+$/i,
+                      })}
+                      aria-invalid={errors.nameInput ? 'true' : 'false'}
+                      aria-describedby="error-nameInput-required error-nameInput-pattern"
+                      id="nameInput"
+                      placeholder="Name"
+                      tabindex="1"
+                      aria-required="true"
+                      className={classNames(styles.formInput, {
+                        [styles.inputError]: errors.nameInput,
+                      })}
+                    />
+                  </label>
+                  <span
+                    role="alert"
+                    id="error-nameInput-required"
+                    className={styles.errorMessage}
+                    style={{
+                      display: errors.nameInput &&
+                      'required' === errors.nameInput.type ?
+                        'block' : 'none',
+                    }}
+                  >
+                    {REQUIRED_FORM_MESSAGE}
+                  </span>
+                  <span
+                    role="alert"
+                    id="error-nameInput-pattern"
+                    className={styles.errorMessage}
+                    style={{
+                      display: errors.nameInput && 'pattern' === errors.nameInput.type ?
+                        'block' : 'none',
+                    }}
+                  >
+                    Field must only contain letters
+                  </span>
                 </div>
-                <div id="message-textarea">
-                  <textarea name="message" id="message" cols="39" rows="6" tabindex="4" className="requiredField label-better" placeholder="Message..."></textarea>
+                <div className={styles.formGroup}>
+                  <label htmlFor="emailInput">
+                    <input
+                      type="text"
+                      name="emailInput"
+                      id="emailInput"
+                      ref={register({
+                        required: true,
+                        pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+                      })}
+                      placeholder="Email"
+                      tabindex="2"
+                      aria-invalid={errors.emailInput ? 'true' : 'false'}
+                      aria-describedby="error-emailInput-required error-emailInput-pattern"
+                      aria-required="true"
+                      className={classNames(styles.formInput, {
+                        [styles.inputError]: errors.emailInput,
+                      })}
+                    />
+                  </label>
+                  <span
+                    role="alert"
+                    id="error-emailInput-required"
+                    className={styles.errorMessage}
+                    style={{
+                      display: errors.emailInput &&
+                      'required' === errors.emailInput.type ?
+                        'block' : 'none',
+                    }}
+                  >
+                    {REQUIRED_FORM_MESSAGE}
+                  </span>
+                  <span
+                    role="alert"
+                    id="error-emailInput-pattern"
+                    className={styles.errorMessage}
+                    style={{
+                      display: errors.emailInput &&
+                        'pattern' === errors.emailInput.type ?
+                        'block' : 'none',
+                    }}
+                  >
+                    Invalid email format
+                  </span>
                 </div>
-                <input name="Send" type="submit" id="Send" tabindex="5" value="Send message" className="btn-submit btn" />
+                <div className={styles.formGroup}>
+                  <label htmlFor="phoneInput">
+                    <input
+                      type="text"
+                      name="phoneInput"
+                      id="phoneInput"
+                      ref={register}
+                      placeholder="Phone"
+                      tabindex="2"
+                      aria-required="true"
+                      className={styles.formInput}
+                    />
+                  </label>
+                </div>
+                <div className={styles.formGroup}>
+                  <label htmlFor="messageInput">
+                    <textarea
+                      name="messageInput"
+                      id="messageInput"
+                      ref={register}
+                      cols="39"
+                      rows="6"
+                      tabindex="4"
+                      className={styles.textarea}
+                      placeholder="Message...">
+                    </textarea>
+                  </label>
+                </div>
+                <input
+                  type="submit"
+                  id="submitBtn"
+                  tabindex="5"
+                  value="Send message"
+                  className={classNames(styles.btn, styles.contactBtn)}
+                />
               </form>
             </div>
 

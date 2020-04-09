@@ -9,10 +9,10 @@ html {
 
 body {
   background: $body-background-color;
+  box-sizing: border-box;
   color: $default-text-color;
   font-family: $primary-font-family;
   font-size: $primary-font-size;
-  -webkit-font-smoothing: antialiased;
 	line-height: $primary-font-line-height;
   margin: 0;
 }

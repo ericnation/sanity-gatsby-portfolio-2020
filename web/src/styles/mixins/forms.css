@@ -1,8 +1,24 @@
 @mixin formInput() {
   background-color: #fff;
-  border: 1px solid #000;
-  color: #222;
-  font-size: rem(20);
-  padding: rem(10);
+  background-image: none;
+  border: 2px solid $section-header-line-color;
+  box-shadow: none;
+  box-sizing: border-box;
+  display: block;
+  font-family: $secondary-font-family;
+  font-size: rem(14);
+  line-height: inherit;
+  max-width: 100%;
+	padding: rem(5);
   width: 100%;
+
+  &:focus {
+    border: 2px solid $accent-color;
+    box-shadow: none;
+    outline: 0;
+  }
+}
+
+@mixin formGroup() {
+  margin-bottom: rem(20);
 }

@@ -2,18 +2,32 @@
   background-color: $accent-color;
   border: none;
   border-radius: $btn-border-radius;
+  box-shadow: 0 rem(4) #0c6d77;
   color: #fff;
   cursor: pointer;
   font-family: $secondary-font-family;
   font-size: rem(14);
   font-weight: 500;
   padding: rem(6 12);
+  position: relative;
   text-align: center;
   text-transform: uppercase;
   user-select: none;
 
+  &:active {
+    box-shadow: 0 0 #0c6d77;
+    top: rem(4);
+  }
+
   &:hover {
     color: #fff;
     cursor: pointer;
+  }
+
+  &:hover,
+  &:focus {
+    outline: none;
+    box-shadow: 0 rem(2) #0c6d77;
+    top: rem(2);
   }
 }
