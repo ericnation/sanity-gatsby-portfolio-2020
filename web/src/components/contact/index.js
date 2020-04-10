@@ -9,8 +9,9 @@ import {
   FaInstagram,
 } from 'react-icons/fa';
 import { graphql, useStaticQuery } from 'gatsby';
-
+// Styles.
 import styles from './contact.module.css';
+
 
 const Contact = () => {
   const { sanityContact } = useStaticQuery(graphql`
@@ -49,29 +50,44 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
-    formState,
-    watch,
-    errors
+    reset,
+    errors,
   } = useForm({
     // By setting validateCriteriaMode to 'all'
     // all validation errors for single field will display at once
     validateCriteriaMode: 'all',
   });
-  const encode = (data) => {
-    return Object.keys(data)
-        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-        .join('&');
-  }
+
+  const [formState, setFormState] = useState({
+    submitting: false,
+    submitted: false,
+  })
 
   const onSubmit = (formData) => {
     console.log(formData);
-    fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'contact', ...formData })
-      })
-      .then(() => alert("Success!"))
-      .catch(error => alert(error));
+    setFormState({
+      submitting: true,
+      submitted: false,
+    });
+    fetch('/.netlify/functions/sendMail', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+    })
+    .then((response) => {
+      console.log('frontend response', response);
+      setFormState({
+        submitting: false,
+        submitted: true,
+      });
+      reset();
+    })
+    .catch((error) => {
+      console.log('frontend error', error);
+      setFormState({
+        submitting: false,
+        submitted: true,
+      });
+    });
   };
 
   return (
@@ -94,12 +110,9 @@ const Contact = () => {
               </h5>
 
               <form
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
                 id="contact-form"
                 onSubmit={handleSubmit(onSubmit)}
               >
-                <input type="hidden" name="form-name" value="contact" />
                 <div className={styles.formGroup}>
                   <label htmlFor="nameInput">
                     <input
@@ -253,7 +266,7 @@ const Contact = () => {
                   type="submit"
                   id="submitBtn"
                   tabIndex="5"
-                  value="Send message"
+                  value={formState.submitting ? 'Sending ...' : 'Send Messsage'}
                   className={classNames(styles.btn, styles.contactBtn)}
                 />
               </form>
