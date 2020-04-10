@@ -52,9 +52,26 @@ const Contact = () => {
     formState,
     watch,
     errors
-  } = useForm();
+  } = useForm({
+    // By setting validateCriteriaMode to 'all'
+    // all validation errors for single field will display at once
+    validateCriteriaMode: 'all',
+  });
+  const encode = (data) => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&');
+  }
+
   const onSubmit = (formData) => {
-    console.log(formData)
+    console.log(formData);
+    fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'contact', ...formData })
+      })
+      .then(() => alert("Success!"))
+      .catch(error => alert(error));
   };
 
   return (
@@ -71,15 +88,18 @@ const Contact = () => {
           </div>
 
           <div className={styles.gridRow}>
-            <div className="col-sm-7 fadeLeft">
+            <div className={styles.col6}>
               <h5 className={styles.smallHeader}>
                 <span>Send me a message</span>
               </h5>
 
               <form
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
                 id="contact-form"
                 onSubmit={handleSubmit(onSubmit)}
               >
+                <input type="hidden" name="form-name" value="contact" />
                 <div className={styles.formGroup}>
                   <label htmlFor="nameInput">
                     <input
@@ -92,8 +112,8 @@ const Contact = () => {
                       aria-invalid={errors.nameInput ? 'true' : 'false'}
                       aria-describedby="error-nameInput-required error-nameInput-pattern"
                       id="nameInput"
-                      placeholder="Name"
-                      tabindex="1"
+                      placeholder="Name *"
+                      tabIndex="1"
                       aria-required="true"
                       className={classNames(styles.formInput, {
                         [styles.inputError]: errors.nameInput,
@@ -134,8 +154,8 @@ const Contact = () => {
                         required: true,
                         pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
                       })}
-                      placeholder="Email"
-                      tabindex="2"
+                      placeholder="Email *"
+                      tabIndex="2"
                       aria-invalid={errors.emailInput ? 'true' : 'false'}
                       aria-describedby="error-emailInput-required error-emailInput-pattern"
                       aria-required="true"
@@ -175,48 +195,80 @@ const Contact = () => {
                       type="text"
                       name="phoneInput"
                       id="phoneInput"
-                      ref={register}
+                      ref={register({
+                        pattern: /^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/,
+                      })}
                       placeholder="Phone"
-                      tabindex="2"
+                      aria-invalid={errors.phoneInput ? 'true' : 'false'}
+                      aria-describedby="error-phoneInput-pattern"
+                      tabIndex="2"
                       aria-required="true"
                       className={styles.formInput}
                     />
                   </label>
+                  <span
+                    role="alert"
+                    id="error-phoneInput-pattern"
+                    className={styles.errorMessage}
+                    style={{
+                      display: errors.phoneInput &&
+                        'pattern' === errors.phoneInput.type ?
+                        'block' : 'none',
+                    }}
+                  >
+                    Invalid phone number format
+                  </span>
                 </div>
                 <div className={styles.formGroup}>
                   <label htmlFor="messageInput">
                     <textarea
                       name="messageInput"
                       id="messageInput"
-                      ref={register}
+                      ref={register({
+                        required: true,
+                      })}
                       cols="39"
                       rows="6"
-                      tabindex="4"
-                      className={styles.textarea}
-                      placeholder="Message...">
+                      tabIndex="4"
+                      className={classNames(styles.textarea, {
+                        [styles.inputError]: errors.messageInput,
+                      })}
+                      placeholder="Message * ...">
                     </textarea>
                   </label>
+                  <span
+                    role="alert"
+                    id="error-messageInput-required"
+                    className={styles.errorMessage}
+                    style={{
+                      display: errors.messageInput &&
+                      'required' === errors.messageInput.type ?
+                        'block' : 'none',
+                    }}
+                  >
+                    {REQUIRED_FORM_MESSAGE}
+                  </span>
                 </div>
                 <input
                   type="submit"
                   id="submitBtn"
-                  tabindex="5"
+                  tabIndex="5"
                   value="Send message"
                   className={classNames(styles.btn, styles.contactBtn)}
                 />
               </form>
             </div>
 
-            <div className="col-sm-5 fadeRight resp-no-gap">
+            <div className={styles.col6}>
               <h5 className={styles.smallHeader}>
                 <span>Location</span>
               </h5>
 
-              <div className="row bottom-gap">
-                <div className="col-sm-12">
-                  <h6 className={styles.accentColor}>{state}</h6>
-                  {city}
-                </div>
+              <div className={styles.bottomGap}>
+                <p>Home base is Phoenix, <span className={styles.accentColor}>{state}</span> 🌵USA</p>
+                <p>However, I'm usually living abroad nomading around some of my favorite countries which include
+                  Costa Rica, Mexico, Portugal, Netherlands, and Spain.
+                </p>
               </div>
 
               <h5 className={styles.smallHeader}>
@@ -224,11 +276,11 @@ const Contact = () => {
               </h5>
 
               <div className={styles.socialIcons}>
-                <a href={github} target="_blank"><FaGithub /></a>
-                <a href={linkedin} target="_blank"><FaLinkedinIn /></a>
-                <a href={instagram} target="_blank"><FaInstagram /></a>
-                <a href={facebook} target="_blank"><FaFacebookF /></a>
-                <a href={twitter} target="_blank"><FaTwitter /></a>
+                {github && <a href={github} className={styles.github} target="_blank"><FaGithub /></a>}
+                {linkedin && <a href={linkedin} className={styles.linkedin} target="_blank"><FaLinkedinIn /></a>}
+                {instagram && <a href={instagram} className={styles.instagram} target="_blank"><FaInstagram /></a>}
+                {facebook && <a href={facebook} className={styles.facebook}target="_blank"><FaFacebookF /></a>}
+                {twitter && <a href={twitter} className={styles.twitter} target="_blank"><FaTwitter /></a>}
               </div>
             </div>
           </div>

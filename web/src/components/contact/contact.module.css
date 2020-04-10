@@ -35,6 +35,30 @@
   &:hover {
     color: #000;
   }
+
+  &.twitter {
+    &:hover {
+      color: #33ccff;
+    }
+  }
+
+  &.facebook {
+    &:hover {
+      color: #3B5998;
+    }
+  }
+
+  &.linkedin {
+    &:hover {
+      color: #007bb6;
+    }
+  }
+
+  &.instagram {
+    &:hover {
+      color: #C13584;
+    }
+  }
 }
 
 .btn {
@@ -60,4 +84,16 @@
 
 .textarea {
   width: 100%;
+}
+
+.bottomGap {
+  @include bottomGap;
+}
+
+.errorMessage {
+  @include errorMessage;
+}
+
+.inputError {
+  @include inputError;
 }

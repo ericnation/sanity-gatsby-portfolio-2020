@@ -27,3 +27,7 @@
 @mixin accentColor() {
   color: $accent-color;
 }
+
+@mixin bottomGap {
+	margin-bottom: $elements-gap;
+}
