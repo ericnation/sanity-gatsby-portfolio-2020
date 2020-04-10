@@ -6,6 +6,14 @@
   @include gridRow(2);
 }
 
+.col6 {
+  margin-bottom: rem(50);
+
+  @media ($mdMin) {
+    margin-bottom: 0;
+  }
+}
+
 .section {
   @include section;
 }
@@ -65,7 +73,11 @@
   @include btn;
 
   &.contactBtn {
-    width: 50%;
+    width: 100%;
+
+    @media ($smMin) {
+      width: 50%;
+    }
   }
 }
 
@@ -79,7 +91,11 @@
 }
 
 .formInput {
-  width: 50%;
+  width: 100%;
+
+  @media ($smMin) {
+    width: 50%;
+  }
 }
 
 .textarea {

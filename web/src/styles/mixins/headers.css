@@ -5,7 +5,11 @@
     font: $section-header-desc-font;
     margin: 0 auto;
     text-align: center;
-		width: $section-header-desc-width;
+    width: calc($section-header-desc-width * 2);
+
+    @media ($mdMin) {
+      width: $section-header-desc-width;
+    }
 
 		a {
 			color: $primary-color;

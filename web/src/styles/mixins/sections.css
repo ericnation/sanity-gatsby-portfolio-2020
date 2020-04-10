@@ -1,7 +1,11 @@
 @mixin section() {
   background: $body-background-color;
-	padding: $elements-gap 0;
-	position: relative;
+	padding: calc($elements-gap / 2) 0;
+  position: relative;
+
+  @media ($mdMin) {
+    padding: $elements-gap 0;
+  }
 }
 
 @mixin section-diff() {

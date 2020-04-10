@@ -44,4 +44,9 @@
 
 .sectionHeader {
   @include sectionHeader;
+  margin-top: rem(50);
+
+  @media ($mdMin) {
+    margin-top: 0;
+  }
 }

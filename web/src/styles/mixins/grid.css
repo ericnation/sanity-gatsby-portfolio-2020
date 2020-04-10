@@ -5,6 +5,10 @@
 
 @mixin gridRow($cols) {
   display: grid;
-  grid-gap: rem(40);
-  grid-template-columns: repeat($cols, 1fr);
+  grid-template-columns: 1fr;
+
+  @media ($mdMin) {
+    grid-gap: rem(40);
+    grid-template-columns: repeat($cols, 1fr);
+  }
 }
