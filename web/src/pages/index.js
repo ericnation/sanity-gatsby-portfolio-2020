@@ -14,6 +14,7 @@ import LayoutContainer from '../containers/layout-container';
 import About from '../components/about';
 import Nav from '../components/nav';
 import Contact from '../components/contact';
+import Services from '../components/services';
 
 export const query = graphql`
   query IndexPageQuery {
@@ -96,6 +97,7 @@ const IndexPage = (props) => {
       <Container>
         <Nav />
         <About />
+        <Services />
         <Contact />
       </Container>
     </LayoutContainer>

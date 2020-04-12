@@ -8,11 +8,11 @@
   }
 }
 
-@mixin section-diff() {
-	background: darken($body-background-color, 5%);
+@mixin sectionDiff {
+	background: $section-bg-diff;
 }
 
-@mixin section-bg-overlay() {
+@mixin sectionGgOverlay() {
 	&::before {
     background: rgba(0,0,0,0.7);
     content: "";
@@ -31,7 +31,7 @@
   }
 }
 
-@mixin section-bg-attached() {
+@mixin sectionBgAttached() {
 	background-attachment: fixed;
 	background-size: cover;
 }

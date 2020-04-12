@@ -8,4 +8,5 @@ module.exports = {
   'default-link-color-hover': '#666666',
   'h-color': '#191919',
   'error-red': '#da4f49',
+  'section-bg-diff': '#f2f2f2',
 };

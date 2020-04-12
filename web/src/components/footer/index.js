@@ -5,10 +5,14 @@ import Logo from '../logo';
 
 const Footer = () => {
   const date = new Date();
+  const backToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.backToTop}>
-        <button type="button" className={styles.btn}>
+        <button type="button" className={styles.btn} onClick={() => backToTop()}>
           Back to top
           <MdExpandLess className={styles.btnIcon} />
         </button>

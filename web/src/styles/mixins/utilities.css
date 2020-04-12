@@ -31,3 +31,11 @@
 @mixin bottomGap {
 	margin-bottom: $elements-gap;
 }
+
+@mixin service-triangle($size, $color, $bg-color) {
+	height: $size;
+	width: $size;
+	border-top: $size solid $bg-color;
+	border-left: $size solid $color;
+	transition: all 0.5s;
+}

@@ -1,0 +1,140 @@
+.container {
+  @include container;
+}
+
+.gridRow2 {
+  @include gridRow(2);
+}
+
+.gridRow3 {
+  @include gridRow(3);
+  @include bottomGap;
+}
+
+.col4 {
+  background: #fff;
+  margin-bottom: rem(40);
+
+  @media ($mdMin) {
+    margin-bottom: 0;
+  }
+}
+
+.section {
+  @include section;
+  @include sectionDiff;
+}
+
+.headerDesc {
+  @include headerDesc;
+}
+
+.sectionHeader {
+  @include sectionHeader;
+  margin-top: rem(50);
+
+  @media ($mdMin) {
+    margin-top: 0;
+  }
+}
+
+.smallHeader {
+  @include smallHeader;
+
+  span {
+    background: $section-bg-diff;
+  }
+}
+
+.service {
+	text-align: center;
+	background: #fff;
+	padding: rem(15);
+	position: relative;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		@include service-triangle(30px, color(#ffffff shade(30%)), $section-bg-diff);
+	}
+
+	&:hover::before {
+		@include service-triangle(50px, $secondary-color, $section-bg-diff);
+
+		.sectionDiff & {
+			@include service-triangle(50px, $secondary-color, #f2f2f2);
+		}
+	}
+
+	.serviceIcon {
+		font-size: rem(60);
+		color: $accent-color;
+		margin-top: rem(15);
+	}
+
+	.serviceHeader {
+		font: var(--service-header-font);
+		color: $secondary-color;
+		text-transform: uppercase;
+		padding: rem(25 0 45 0);
+	}
+
+	.serviceDesc {
+		position: relative;
+		padding: rem(25 20);
+		margin: rem(-15);
+		color: $default-text-color;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			border-bottom: 2px dotted color($body-background-color shade(15%));
+			width: 100%;
+			left: 0;
+		}
+	}
+}
+
+.checkicon {
+  font-size: rem(20);
+  position: relative;
+  top: 4px;
+}
+
+.progress {
+  margin-bottom: rem(15);
+  position: relative;
+}
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Get rid of default border in Firefox. */
+  border: none;
+  width: 100%;
+  height: rem(30);
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #fff;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: $accent-color;
+}
+
+.progressText {
+  color: #fff;
+  font-family: $secondary-font-family;
+  font-size: rem(13);
+  left: rem(10);
+  position: absolute;
+  text-transform: uppercase;
+  top: 3px;
+  z-index: 10;
+}

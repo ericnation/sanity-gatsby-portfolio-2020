@@ -26,6 +26,15 @@ import services from './documents/services'
 import service from './objects/service'
 import skill from './objects/skill'
 import tool from './objects/tool'
+import job from './documents/job'
+import resume from './documents/resume'
+import softSkill from './objects/softSkill'
+import workExperience from './objects/workExperience'
+import education from './objects/education'
+import technicalSkills from './objects/technicalSkills'
+import professionalSkills from './objects/professionalSkills'
+import technicalTools from './objects/technicalTools'
+import softSkills from './objects/softSkills'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -37,23 +46,32 @@ export default createSchema({
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     bioPortableText,
+    education,
     figure,
     nav,
+    professionalSkills,
     projectMember,
     projectPortableText,
     service,
     simplePortableText,
     skill,
     slide,
+    softSkill,
+    softSkills,
+    technicalSkills,
+    technicalTools,
     tool,
+    workExperience,
     // The following are document types which will appear
     // in the studio.
     about,
     carousel,
     category,
     contact,
+    job,
     navMenu,
     person,
+    resume,
     sampleProject,
     services,
     siteSettings

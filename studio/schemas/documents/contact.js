@@ -1,5 +1,8 @@
+import {FaWpforms} from 'react-icons/fa'
+
 export default {
   name: 'contact',
+  icon: FaWpforms,
   type: 'document',
   title: 'Contact Form',
   fields: [

@@ -119,9 +119,5 @@
 		padding-right: rem(10);
 		position: relative;
 		z-index: 10;
-
-		.section-diff & {
-			background: darken(#ffffff, 5%);
-		}
 	}
 }
