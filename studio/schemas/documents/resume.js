@@ -33,6 +33,11 @@ export default {
       type: 'figure'
     },
     {
+      name: 'personalityType',
+      title: 'Personality Type',
+      type: 'string'
+    },
+    {
       name: 'profile',
       type: 'text',
       title: 'Profile'

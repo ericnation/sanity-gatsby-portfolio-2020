@@ -13,9 +13,9 @@ export default {
   ],
   fields: [
     {
-      name: 'job',
+      name: 'jobs',
       type: 'array',
-      title: 'Job',
+      title: 'Jobs',
       of: [{type: 'reference', to: {type: 'job'}}]
     }
   ]

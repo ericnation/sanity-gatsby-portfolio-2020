@@ -32,9 +32,6 @@ import softSkill from './objects/softSkill'
 import workExperience from './objects/workExperience'
 import education from './objects/education'
 import technicalSkills from './objects/technicalSkills'
-import professionalSkills from './objects/professionalSkills'
-import technicalTools from './objects/technicalTools'
-import softSkills from './objects/softSkills'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -49,7 +46,6 @@ export default createSchema({
     education,
     figure,
     nav,
-    professionalSkills,
     projectMember,
     projectPortableText,
     service,
@@ -57,9 +53,7 @@ export default createSchema({
     skill,
     slide,
     softSkill,
-    softSkills,
     technicalSkills,
-    technicalTools,
     tool,
     workExperience,
     // The following are document types which will appear

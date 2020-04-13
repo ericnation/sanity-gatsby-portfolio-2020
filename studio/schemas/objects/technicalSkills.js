@@ -13,19 +13,22 @@ export default {
   ],
   fields: [
     {
-      name: 'professionalSkillset',
-      title: 'Professsional Skillset',
-      type: 'professionalSkillset'
+      name: 'professionalSkills',
+      title: 'Professsional Skills',
+      type: 'array',
+      of: [{type: 'string'}]
     },
     {
       name: 'tools',
       title: 'Tools',
-      type: 'tools'
+      type: 'array',
+      of: [{type: 'string'}]
     },
     {
       name: 'softSkills',
       title: 'Soft Skills',
-      type: 'softSkills'
+      type: 'array',
+      of: [{type: 'string'}]
     }
   ]
 }

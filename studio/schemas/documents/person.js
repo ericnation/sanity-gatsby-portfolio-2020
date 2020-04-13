@@ -22,6 +22,21 @@ export default {
       }
     },
     {
+      name: 'email',
+      type: 'string',
+      title: 'Email'
+    },
+    {
+      name: 'homebase',
+      type: 'string',
+      title: 'Birth place'
+    },
+    {
+      name: 'phone',
+      type: 'string',
+      title: 'Phone Number'
+    },
+    {
       name: 'image',
       title: 'Image',
       type: 'figure'

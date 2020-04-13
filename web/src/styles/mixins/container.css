@@ -4,31 +4,5 @@
 @mixin container() {
   margin-left: auto;
   margin-right: auto;
-  tidy-span: tidy-var(columns);
-}
-
-@mixin container-with-bleed() {
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: tidy-var(edge);
-  padding-right: tidy-var(edge);
-  /* Add the edges back, multiplied by 2x to account for both sides */
-  width: calc(tidy-span(10) + tidy-var(edge) * 2) !tidy;
-  /* Use padding to bring the inner width back to alignment with the columns */
-}
-
-/**
- * Ensures a tidy-columns property applies to all screen sizes.
- */
-@mixin keep-tidy {
-  /* For some reason @content will not work outside of a block. */
-  @media ($smMax) {
-    @content;
-  }
-
-  /* Matches column breakpoint in postcss config. */
-  @media ($mdMin) {
-    @content;
-  }
+  width: rem(1300);
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import classNames from 'classnames';
 import { buildImageObj } from '../../lib/helpers';
