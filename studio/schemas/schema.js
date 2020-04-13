@@ -32,6 +32,7 @@ import softSkill from './objects/softSkill'
 import workExperience from './objects/workExperience'
 import education from './objects/education'
 import technicalSkills from './objects/technicalSkills'
+import country from './documents/country'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -62,6 +63,7 @@ export default createSchema({
     carousel,
     category,
     contact,
+    country,
     job,
     navMenu,
     person,
