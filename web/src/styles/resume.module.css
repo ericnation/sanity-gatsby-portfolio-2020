@@ -118,12 +118,35 @@
 
 .resumeRow {
   display: grid;
-  grid-gap: 50px;
-  grid-template-columns: 1fr 4fr;
+  grid-gap: rem(50);
+  grid-template-columns: 1fr;
+
+  @media ($mdMin) {
+    grid-template-columns: 1fr 4fr;
+  }
 }
 
 .jobRow {
   margin-bottom: rem(50);
+
+  ul {
+    margin: rem(0 0 10 35);
+
+    li {
+      font-size: rem(15);
+      list-style-type: disc;
+    }
+  }
+}
+
+.skillsRow {
+  display: grid;
+  grid-gap: rem(20);
+  grid-template-columns: 1fr;
+
+  @media ($mdMin) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .pageTitle {

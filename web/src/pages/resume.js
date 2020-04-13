@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import classNames from 'classnames';
-import { MdLink } from 'react-icons/md';
+import { MdLink, MdCheck } from 'react-icons/md';
 import { FaLongArrowAltLeft } from 'react-icons/fa';
 import { buildImageObj } from '../lib/helpers';
 import imageUrlFor from '../lib/image-url';
@@ -209,19 +209,19 @@ const Resume = () => {
                     <div className={styles.col4}>
                       <h4>Professional Skillset</h4>
                         <ul>
-                          {professionalSkills.map((skill) => <li>{skill}</li>)}
+                          {professionalSkills.map((skill) => <li><MdCheck /> {skill}</li>)}
                         </ul>
                     </div>
                     <div className={styles.col4}>
                       <h4>Soft Skills</h4>
                         <ul>
-                          {softSkills.map((skill) => <li>{skill}</li>)}
+                          {softSkills.map((skill) => <li><MdCheck /> {skill}</li>)}
                         </ul>
                     </div>
                     <div className={styles.col4}>
                       <h4>Tools</h4>
                       <ul>
-                        {tools.map((tool) => <li>{tool}</li>)}
+                        {tools.map((tool) => <li><MdCheck /> {tool}</li>)}
                       </ul>
                     </div>
                   </div>

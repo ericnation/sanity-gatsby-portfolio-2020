@@ -4,5 +4,11 @@
 @mixin container() {
   margin-left: auto;
   margin-right: auto;
-  width: rem(1300);
+  max-width: rem(1300);
+  padding: 0 rem(10);
+  width: 100%;
+
+  @media ($lgMin) {
+    padding: 0;
+  }
 }
