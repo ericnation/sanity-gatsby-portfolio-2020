@@ -5,19 +5,14 @@
   position: relative;
   text-align: center;
   z-index: 10;
-}
 
-.bgContainer {
-  background-size: cover;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  z-index: 1;
+  & > div {
+    height: 100%;
+  }
 }
 
 .logoHome {
   text-align: center;
-  padding: rem(20) 0 rem(20) 0;
 }
 
 .overlay {
@@ -25,13 +20,19 @@
 }
 
 .homeContent {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  justify-content: space-between;
+  padding: rem(50) 0;
   position: relative;
   z-index: 3;
 }
 
 .homeText {
   color: color(#ffffff shade(10%));
+  margin-bottom: rem(150);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .textHeader {

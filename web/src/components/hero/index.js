@@ -32,10 +32,13 @@ const Hero = () => {
     headerVideo,
   } = sanitySiteSettings;
 
+  const scrollDown = () => {
+    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+  }
+
   return (
     <YoutubeBackground
       videoId={headerVideo}
-      aspectRatio={'16:15'}
       className={styles.fullScreen}
     >
       <div className={styles.homeContent}>
@@ -44,16 +47,16 @@ const Hero = () => {
         </div>
 
         <div className={styles.homeText}>
-          <ul className="slides">
             <CarouselProvider
-              naturalSlideWidth={100}
-              naturalSlideHeight={125}
+              isPlaying
+              infinite
+              isIntrinsicHeight
               totalSlides={slides.length}
             >
               <Slider>
                 {slides.map((slide, i) => {
                   return (
-                    <Slide index={i}>
+                    <Slide index={i} key={`slide_${i}`}>
                       <span className={styles.textHeader}>{slide.smallItalicText}</span>
                       <span className={styles.bigText}>{slide.bigText}</span>
                     </Slide>
@@ -61,14 +64,17 @@ const Hero = () => {
                 })}
               </Slider>
             </CarouselProvider>
-          </ul>
-
           <div className={styles.smallText}>
             {specialties.map((specialty, index) => (index ? ' - ' : '') + specialty)}
           </div>
         </div>
         <div className={styles.homeMore}>
-          <a href="#about" className={styles.btn}>More</a>
+          <button
+            type="button"
+            onClick={() => scrollDown()}
+            className={styles.btn}>
+              More
+          </button>
         </div>
       </div>
     </YoutubeBackground>
