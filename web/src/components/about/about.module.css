@@ -50,3 +50,22 @@
     margin-top: 0;
   }
 }
+
+.totalCountries {
+  font-family: $secondary-font-family;
+  font-size: rem(41);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-top: rem(100);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.count {
+  color: $accent-color;
+  display: block;
+  font-family: $secondary-font-family;
+  font-size: rem(160);
+  font-weight: 700;
+  line-height: 1.4;
+}

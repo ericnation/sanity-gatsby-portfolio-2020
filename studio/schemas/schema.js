@@ -33,6 +33,7 @@ import workExperience from './objects/workExperience'
 import education from './objects/education'
 import technicalSkills from './objects/technicalSkills'
 import country from './documents/country'
+import city from './objects/city'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -44,6 +45,7 @@ export default createSchema({
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     bioPortableText,
+    city,
     education,
     figure,
     nav,

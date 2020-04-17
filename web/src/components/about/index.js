@@ -8,8 +8,11 @@ import BlockText from '../block-text';
 import styles from './about.module.css';
 
 const About = () => {
-  const { sanityAbout } = useStaticQuery(graphql`
+  const { sanityAbout, allSanityCountries } = useStaticQuery(graphql`
     query AboutSectionQuery {
+      allSanityCountries {
+        totalCount
+      }
       sanityAbout {
         aboutSectionImage {
           alt
@@ -104,6 +107,10 @@ const About = () => {
     profile: { _rawBio, image },
   } = sanityAbout;
 
+  const {
+    totalCount,
+  } = allSanityCountries;
+
   const colorImage = imageUrlFor(buildImageObj(aboutSectionImageColor)).height(465).width(2000).url();
   return (
     <section id='about'>
@@ -141,6 +148,10 @@ const About = () => {
               {_rawBio && (
                 <BlockText blocks={_rawBio} />
               )}
+              <div className={styles.totalCountries}>
+                <div>Countries traveled</div>
+                <span className={styles.count}>{totalCount}</span>
+              </div>
             </div>
           </div>
         </div>

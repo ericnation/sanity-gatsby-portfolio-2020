@@ -14,7 +14,7 @@ import styles from './contact.module.css';
 
 
 const Contact = () => {
-  const { sanityContact } = useStaticQuery(graphql`
+  const { sanityContact, allSanityCountries } = useStaticQuery(graphql`
     query ContactQuery {
       sanityContact {
         twitter
@@ -29,6 +29,12 @@ const Contact = () => {
         facebook
         email
         city
+      }
+      allSanityCountries(filter: {currentLocation: {eq: true}}) {
+        nodes {
+          currentLocation
+          countryName
+        }
       }
     }
   `);
@@ -47,6 +53,10 @@ const Contact = () => {
     email,
     city,
   } = sanityContact;
+
+  const {
+    nodes,
+  } = allSanityCountries;
   const {
     register,
     handleSubmit,
@@ -91,7 +101,7 @@ const Contact = () => {
   };
 
   return (
-    <section>
+    <section id='contact'>
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
@@ -282,6 +292,11 @@ const Contact = () => {
                 <p>However, I'm usually living abroad nomading around some of my favorite countries which include
                   Costa Rica, Mexico, Portugal, Netherlands, and Spain.
                 </p>
+                {nodes[0].currentLocation && (
+                  <p>Current Location: &nbsp;
+                    <span className={styles.accentColor}>{nodes[0].countryName}</span>
+                  </p>
+                )}
               </div>
 
               <h5 className={styles.smallHeader}>

@@ -32,6 +32,12 @@ export default {
       type: 'number'
     },
     {
+      title: 'Cities',
+      name: 'cities',
+      type: 'array',
+      of: [{type: 'city'}]
+    },
+    {
       title: 'Current Location?',
       name: 'currentLocation',
       type: 'boolean'

@@ -56,7 +56,7 @@ const Services = () => {
           <div className={classNames(styles.gridRow3, styles.bottomGap)}>
             {services.map((service) => {
               return (
-                <div className={styles.col4}>
+                <div className={styles.col4} key={service.title}>
                   <div className={styles.service}>
                     <div className={styles.serviceIcon}>
                       {'DiCode' === service.deviconName && <DiCode />}
@@ -69,7 +69,7 @@ const Services = () => {
                       {service.title}
                     </div>
                     <div className={styles.serviceDesc}>
-                        {service.serviceSpecialties.map((speciality) => `${speciality}, `)}
+                        {service.serviceSpecialties.map((specialty, index) => (index ? ', ' : '') + specialty)}
                     </div>
                   </div>
                 </div>
@@ -81,9 +81,9 @@ const Services = () => {
               <h5 className={styles.smallHeader}>
                 <span>{skillsHeader}</span>
               </h5>
-              {skills.map((skill) => {
+              {skills.map((skill, i) => {
                 return (
-                  <div className={styles.progress}>
+                  <div className={styles.progress} key={`skill_${i}`}>
                     <progress
                       className={styles.progressBar}
                       min="0"
@@ -105,7 +105,7 @@ const Services = () => {
               <ul className="list-unstyled">
                 {tools.map((tool) => {
                   return (
-                    <li><MdCheck className={styles.checkicon} /> {tool.tools}</li>
+                    <li key={tools.tools}><MdCheck className={styles.checkicon} /> {tool.tools}</li>
                   );
                 })}
               </ul>
