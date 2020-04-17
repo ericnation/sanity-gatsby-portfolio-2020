@@ -1,6 +1,6 @@
 module.exports = {
   plugins: ['stylelint-order'],
-  ignoreFiles: ['**/*.js'],
+  ignoreFiles: ['**/*.js', 'node_modules/pure-react-carousel/dist/react-carousel.es.css'],
   rules: {
     'at-rule-name-case': 'lower',
     'at-rule-name-space-after': 'always',

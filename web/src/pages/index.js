@@ -15,6 +15,7 @@ import About from '../components/about';
 import Nav from '../components/nav';
 import Contact from '../components/contact';
 import Services from '../components/services';
+import Hero from '../components/hero';
 
 export const query = graphql`
   query IndexPageQuery {
@@ -95,6 +96,7 @@ const IndexPage = (props) => {
         keywords={site.keywords}
       />
       <Container>
+        <Hero />
         <Nav />
         <About />
         <Services />

@@ -173,7 +173,7 @@ const Resume = () => {
                 <div className={styles.resumeContent}>
                   {jobs.map((job) => {
                     return (
-                      <div className={styles.jobRow}>
+                      <div className={styles.jobRow} key={job.companyName}>
                         <h4>
                           <a href={job.companyWebsite} target="_blank">{job.companyName}</a>
                           <span className={styles.subTitle}>
@@ -209,19 +209,19 @@ const Resume = () => {
                     <div className={styles.col4}>
                       <h4>Professional Skillset</h4>
                         <ul>
-                          {professionalSkills.map((skill) => <li><MdCheck /> {skill}</li>)}
+                          {professionalSkills.map((skill) => <li key={skill}><MdCheck /> {skill}</li>)}
                         </ul>
                     </div>
                     <div className={styles.col4}>
                       <h4>Soft Skills</h4>
                         <ul>
-                          {softSkills.map((skill) => <li><MdCheck /> {skill}</li>)}
+                          {softSkills.map((skill) => <li key={skill}><MdCheck /> {skill}</li>)}
                         </ul>
                     </div>
                     <div className={styles.col4}>
                       <h4>Tools</h4>
                       <ul>
-                        {tools.map((tool) => <li><MdCheck /> {tool}</li>)}
+                        {tools.map((tool) => <li key={tool}><MdCheck /> {tool}</li>)}
                       </ul>
                     </div>
                   </div>

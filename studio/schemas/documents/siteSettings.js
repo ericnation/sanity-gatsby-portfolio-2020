@@ -43,7 +43,7 @@ export default {
     {
       name: 'headerVideo',
       title: 'Header Video URL',
-      type: 'url'
+      type: 'string'
     },
     {
       name: 'author',

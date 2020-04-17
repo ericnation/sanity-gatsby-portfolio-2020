@@ -8,7 +8,7 @@ a {
   transition: all 0.2s;
 
   &:hover {
-    color: $default-link-color-hover;
+    color: color($default-link-color shade(20%));
     text-decoration: none;
   }
 }
