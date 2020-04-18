@@ -26,7 +26,9 @@ const Nav = () => {
     value.preventDefault();
     const sectionId = document.getElementById(section);
     const sectionTop = sectionId.offsetTop;
-    window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+    }
   }
 
   const {

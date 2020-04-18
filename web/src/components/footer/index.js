@@ -6,7 +6,9 @@ import Logo from '../logo';
 const Footer = () => {
   const date = new Date();
   const backToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+     }
   };
 
   return (

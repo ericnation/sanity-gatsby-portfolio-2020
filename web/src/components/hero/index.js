@@ -33,7 +33,9 @@ const Hero = () => {
   } = sanitySiteSettings;
 
   const scrollDown = () => {
-    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+    }
   }
 
   return (
