@@ -34,6 +34,7 @@ import education from './objects/education'
 import technicalSkills from './objects/technicalSkills'
 import country from './documents/country'
 import city from './objects/city'
+import projects from './documents/projects'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -69,6 +70,7 @@ export default createSchema({
     job,
     navMenu,
     person,
+    projects,
     resume,
     sampleProject,
     services,
