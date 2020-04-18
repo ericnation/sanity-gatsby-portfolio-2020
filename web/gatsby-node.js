@@ -50,18 +50,3 @@ async function createProjectPages(graphql, actions, reporter) {
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createProjectPages(graphql, actions, reporter);
 };
-
-exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  if (stage === 'build-html') {
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /react-youtube-background/,
-            use: loaders.null(),
-          },
-        ],
-      },
-    });
-  }
-};

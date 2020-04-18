@@ -7,8 +7,7 @@ import {
 } from '../lib/helpers';
 import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
-import ProjectPreviewGrid from
-  '../components/projectPreviewGrid';
+import ProjectPreviewGrid from '../components/projectPreviewGrid';
 import SEO from '../components/seo';
 import LayoutContainer from '../containers/layout-container';
 import About from '../components/about';
@@ -77,24 +76,21 @@ const IndexPage = (props) => {
   }
   /* eslint-disable-next-line prefer-destructuring */
   const site = (data || {}).site;
-  const projectNodes = (data || {}).projects ?
-    mapEdgesToNodes(data.projects)
-      .filter(filterOutDocsWithoutSlugs)
-      .filter(filterOutDocsPublishedInTheFuture) : [];
+  const projectNodes = (data || {}).projects
+    ? mapEdgesToNodes(data.projects)
+        .filter(filterOutDocsWithoutSlugs)
+        .filter(filterOutDocsPublishedInTheFuture)
+    : [];
 
   if (!site) {
     throw new Error(
-      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
+      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.',
     );
   }
 
   return (
     <LayoutContainer>
-      <SEO
-        title={site.title}
-        description={site.description}
-        keywords={site.keywords}
-      />
+      <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <Hero />
         <Nav />

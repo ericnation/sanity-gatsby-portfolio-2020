@@ -23,14 +23,18 @@ const Nav = () => {
   const [isActive, setIsActive] = useState(false);
   let globalWindow = null;
   useEffect(() => {
-    globalWindow = window;
+    if (typeof window !== `undefined`) {
+      globalWindow = window;
+    }
   });
 
   const goToSection = (value, section) => {
     value.preventDefault();
     const sectionId = document.getElementById(section);
-    const sectionTop = sectionId.offsetTop;
-    globalWindow.scrollTo({ top: sectionTop, behavior: 'smooth' });
+    if (sectionId) {
+      const sectionTop = sectionId.offsetTop;
+      globalWindow.scrollTo({ top: sectionTop, behavior: 'smooth' });
+    }
   };
 
   const { navItems } = sanityNavMenu;
