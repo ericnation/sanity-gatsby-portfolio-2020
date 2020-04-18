@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MdExpandLess } from 'react-icons/md';
 import styles from './footer.module.css';
 import Logo from '../logo';
 
 const Footer = () => {
+  let globalWindow = null;
+  useEffect(() => {
+    globalWindow = window;
+  });
   const date = new Date();
   const backToTop = () => {
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-     }
+    globalWindow.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
