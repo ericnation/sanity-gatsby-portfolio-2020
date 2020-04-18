@@ -9,9 +9,9 @@ async function createProjectPages(graphql, actions, reporter) {
   const { createPage } = actions;
   const result = await graphql(`
     {
-      allSanitySampleProject(filter: {
-        slug: {current: {ne: null}}, publishedAt: {ne: null}
-      }) {
+      allSanitySampleProject(
+        filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
+      ) {
         edges {
           node {
             id
@@ -49,4 +49,19 @@ async function createProjectPages(graphql, actions, reporter) {
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createProjectPages(graphql, actions, reporter);
+};
+
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === 'build-html') {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /react-youtube-background/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    });
+  }
 };
