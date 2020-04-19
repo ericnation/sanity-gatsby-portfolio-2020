@@ -14,7 +14,6 @@ const Hero = () => {
             url
             assetId
             _id
-            id
             mimeType
           }
         }
