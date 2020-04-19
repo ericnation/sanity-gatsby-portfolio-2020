@@ -51,6 +51,11 @@ export default {
       description: 'Publish an author and set a reference to them here.',
       title: 'Author',
       to: [{type: 'person'}]
+    },
+    {
+      name: 'heroVideo',
+      title: 'Hero Video',
+      type: 'file'
     }
   ]
 }

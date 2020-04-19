@@ -2,12 +2,28 @@
   background: #191919;
   height: 100vh;
   margin: 0 auto;
+  overflow: hidden;
   position: relative;
   text-align: center;
   z-index: 10;
+}
 
-  & > div {
+.videoWrap {
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  @media (min-aspect-ratio: 16/9) {
+    height: auto;
+    width: 100%;
+  }
+
+  @media (max-aspect-ratio: 16/9) {
     height: 100%;
+    width: auto;
   }
 }
 
