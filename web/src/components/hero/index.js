@@ -29,18 +29,11 @@ const Hero = () => {
     }
   `);
 
+  const { heroVideo } = sanitySiteSettings;
   const { specialties, slides } = sanityCarousel;
-
-  const {
-    heroVideo: {
-      asset: { url, id, mimeType },
-    },
-  } = sanitySiteSettings;
 
   let globalWindow = null;
   useEffect(() => {
-    const video = document.getElementById('heroVideo');
-    video.play();
     if (typeof window !== `undefined`) {
       globalWindow = window;
     }
@@ -52,30 +45,36 @@ const Hero = () => {
 
   return (
     <div className={styles.fullScreen} id="home">
-      <video autoplay muted loop id="heroVideo" className={styles.videoWrap}>
-        <source src={url} type={mimeType} />
-      </video>
+      {heroVideo && (
+        <video autoPlay muted loop id="heroVideoId" className={styles.videoWrap}>
+          <source src={heroVideo.asset.url} type={heroVideo.asset.mimeType} />
+        </video>
+      )}
       <div className={styles.homeContent}>
         <div className={styles.logoHome}>
           <Logo color="black" />
         </div>
 
         <div className={styles.homeText}>
-          <CarouselProvider isPlaying infinite isIntrinsicHeight totalSlides={slides.length}>
-            <Slider>
-              {slides.map((slide, i) => {
-                return (
-                  <Slide index={i} key={`slide_${i}`}>
-                    <span className={styles.textHeader}>{slide.smallItalicText}</span>
-                    <span className={styles.bigText}>{slide.bigText}</span>
-                  </Slide>
-                );
-              })}
-            </Slider>
-          </CarouselProvider>
-          <div className={styles.smallText}>
-            {specialties.map((specialty, index) => (index ? ' - ' : '') + specialty)}
-          </div>
+          {slides && slides.length && (
+            <CarouselProvider isPlaying infinite isIntrinsicHeight totalSlides={slides.length}>
+              <Slider>
+                {slides.map((slide, i) => {
+                  return (
+                    <Slide index={i} key={`slide_${i}`}>
+                      <span className={styles.textHeader}>{slide.smallItalicText}</span>
+                      <span className={styles.bigText}>{slide.bigText}</span>
+                    </Slide>
+                  );
+                })}
+              </Slider>
+            </CarouselProvider>
+          )}
+          {specialties && specialties.length && (
+            <div className={styles.smallText}>
+              {specialties.map((specialty, index) => (index ? ' - ' : '') + specialty)}
+            </div>
+          )}
         </div>
         <div className={styles.homeMore}>
           <button type="button" onClick={() => scrollDown()} className={styles.btn}>
