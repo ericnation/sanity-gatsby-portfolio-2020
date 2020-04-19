@@ -35,7 +35,9 @@ const Hero = () => {
   let globalWindow = null;
   useEffect(() => {
     const video = document.getElementById('heroVideoId');
-    video.play();
+    if (video) {
+      video.play();
+    }
     if (typeof window !== `undefined`) {
       globalWindow = window;
     }
