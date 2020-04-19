@@ -55,7 +55,7 @@ const Hero = () => {
       )}
       <div className={styles.homeContent}>
         <div className={styles.logoHome}>
-          <Logo color="black" />
+          <Logo color="white" />
         </div>
 
         <div className={styles.homeText}>
