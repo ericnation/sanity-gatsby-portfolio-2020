@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
-import {
-  FaFacebookF,
-  FaLinkedinIn,
-  FaGithub,
-  FaTwitter,
-  FaInstagram,
-} from 'react-icons/fa';
+import { FaFacebookF, FaLinkedinIn, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { graphql, useStaticQuery } from 'gatsby';
 // Styles.
 import styles from './contact.module.css';
-
 
 const Contact = () => {
   const { sanityContact, allSanityCountries } = useStaticQuery(graphql`
@@ -30,7 +23,7 @@ const Contact = () => {
         email
         city
       }
-      allSanityCountries(filter: {currentLocation: {eq: true}}) {
+      allSanityCountries(filter: { currentLocation: { eq: true } }) {
         nodes {
           currentLocation
           countryName
@@ -54,15 +47,8 @@ const Contact = () => {
     city,
   } = sanityContact;
 
-  const {
-    nodes,
-  } = allSanityCountries;
-  const {
-    register,
-    handleSubmit,
-    reset,
-    errors,
-  } = useForm({
+  const { nodes } = allSanityCountries;
+  const { register, handleSubmit, reset, errors } = useForm({
     // By setting validateCriteriaMode to 'all'
     // all validation errors for single field will display at once
     validateCriteriaMode: 'all',
@@ -71,7 +57,7 @@ const Contact = () => {
   const [formState, setFormState] = useState({
     submitting: false,
     submitted: false,
-  })
+  });
 
   const onSubmit = (formData) => {
     console.log(formData);
@@ -83,31 +69,31 @@ const Contact = () => {
       method: 'POST',
       body: JSON.stringify(formData),
     })
-    .then((response) => {
-      console.log('frontend response', response);
-      setFormState({
-        submitting: false,
-        submitted: true,
+      .then((response) => {
+        console.log('frontend response', response);
+        setFormState({
+          submitting: false,
+          submitted: true,
+        });
+        reset();
+      })
+      .catch((error) => {
+        console.log('frontend error', error);
+        setFormState({
+          submitting: false,
+          submitted: true,
+        });
       });
-      reset();
-    })
-    .catch((error) => {
-      console.log('frontend error', error);
-      setFormState({
-        submitting: false,
-        submitted: true,
-      });
-    });
   };
 
   return (
-    <section id='contact'>
+    <section id="contact">
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <h1>
+            <h2>
               <span>{title}</span>
-            </h1>
+            </h2>
             <div className={styles.headerDesc}>
               <span>{subHeader}</span>
             </div>
@@ -119,10 +105,7 @@ const Contact = () => {
                 <span>Send me a message</span>
               </h5>
 
-              <form
-                id="contact-form"
-                onSubmit={handleSubmit(onSubmit)}
-              >
+              <form id="contact-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.formGroup}>
                   <label htmlFor="nameInput">
                     <input
@@ -148,9 +131,8 @@ const Contact = () => {
                     id="error-nameInput-required"
                     className={styles.errorMessage}
                     style={{
-                      display: errors.nameInput &&
-                      'required' === errors.nameInput.type ?
-                        'block' : 'none',
+                      display:
+                        errors.nameInput && 'required' === errors.nameInput.type ? 'block' : 'none',
                     }}
                   >
                     {REQUIRED_FORM_MESSAGE}
@@ -160,8 +142,8 @@ const Contact = () => {
                     id="error-nameInput-pattern"
                     className={styles.errorMessage}
                     style={{
-                      display: errors.nameInput && 'pattern' === errors.nameInput.type ?
-                        'block' : 'none',
+                      display:
+                        errors.nameInput && 'pattern' === errors.nameInput.type ? 'block' : 'none',
                     }}
                   >
                     Field must only contain letters
@@ -192,9 +174,10 @@ const Contact = () => {
                     id="error-emailInput-required"
                     className={styles.errorMessage}
                     style={{
-                      display: errors.emailInput &&
-                      'required' === errors.emailInput.type ?
-                        'block' : 'none',
+                      display:
+                        errors.emailInput && 'required' === errors.emailInput.type
+                          ? 'block'
+                          : 'none',
                     }}
                   >
                     {REQUIRED_FORM_MESSAGE}
@@ -204,9 +187,10 @@ const Contact = () => {
                     id="error-emailInput-pattern"
                     className={styles.errorMessage}
                     style={{
-                      display: errors.emailInput &&
-                        'pattern' === errors.emailInput.type ?
-                        'block' : 'none',
+                      display:
+                        errors.emailInput && 'pattern' === errors.emailInput.type
+                          ? 'block'
+                          : 'none',
                     }}
                   >
                     Invalid email format
@@ -234,9 +218,10 @@ const Contact = () => {
                     id="error-phoneInput-pattern"
                     className={styles.errorMessage}
                     style={{
-                      display: errors.phoneInput &&
-                        'pattern' === errors.phoneInput.type ?
-                        'block' : 'none',
+                      display:
+                        errors.phoneInput && 'pattern' === errors.phoneInput.type
+                          ? 'block'
+                          : 'none',
                     }}
                   >
                     Invalid phone number format
@@ -256,17 +241,18 @@ const Contact = () => {
                       className={classNames(styles.textarea, {
                         [styles.inputError]: errors.messageInput,
                       })}
-                      placeholder="Message * ...">
-                    </textarea>
+                      placeholder="Message * ..."
+                    ></textarea>
                   </label>
                   <span
                     role="alert"
                     id="error-messageInput-required"
                     className={styles.errorMessage}
                     style={{
-                      display: errors.messageInput &&
-                      'required' === errors.messageInput.type ?
-                        'block' : 'none',
+                      display:
+                        errors.messageInput && 'required' === errors.messageInput.type
+                          ? 'block'
+                          : 'none',
                     }}
                   >
                     {REQUIRED_FORM_MESSAGE}
@@ -288,12 +274,16 @@ const Contact = () => {
               </h5>
 
               <div className={styles.bottomGap}>
-                <p>Home base is Phoenix, <span className={styles.accentColor}>{state}</span> 🌵USA</p>
-                <p>However, I'm usually living abroad nomading around some of my favorite countries which include
-                  Costa Rica, Mexico, Portugal, Netherlands, and Spain.
+                <p>
+                  Home base is Phoenix, <span className={styles.accentColor}>{state}</span> 🌵USA
+                </p>
+                <p>
+                  However, I'm usually living abroad nomading around some of my favorite countries
+                  which include Costa Rica, Mexico, Portugal, Netherlands, and Spain.
                 </p>
                 {nodes[0].currentLocation && (
-                  <p>Current Location: &nbsp;
+                  <p>
+                    Current Location: &nbsp;
                     <span className={styles.accentColor}>{nodes[0].countryName}</span>
                   </p>
                 )}
@@ -304,11 +294,31 @@ const Contact = () => {
               </h5>
 
               <div className={styles.socialIcons}>
-                {github && <a href={github} className={styles.github} target="_blank"><FaGithub /></a>}
-                {linkedin && <a href={linkedin} className={styles.linkedin} target="_blank"><FaLinkedinIn /></a>}
-                {instagram && <a href={instagram} className={styles.instagram} target="_blank"><FaInstagram /></a>}
-                {facebook && <a href={facebook} className={styles.facebook}target="_blank"><FaFacebookF /></a>}
-                {twitter && <a href={twitter} className={styles.twitter} target="_blank"><FaTwitter /></a>}
+                {github && (
+                  <a href={github} className={styles.github} target="_blank">
+                    <FaGithub />
+                  </a>
+                )}
+                {linkedin && (
+                  <a href={linkedin} className={styles.linkedin} target="_blank">
+                    <FaLinkedinIn />
+                  </a>
+                )}
+                {instagram && (
+                  <a href={instagram} className={styles.instagram} target="_blank">
+                    <FaInstagram />
+                  </a>
+                )}
+                {facebook && (
+                  <a href={facebook} className={styles.facebook} target="_blank">
+                    <FaFacebookF />
+                  </a>
+                )}
+                {twitter && (
+                  <a href={twitter} className={styles.twitter} target="_blank">
+                    <FaTwitter />
+                  </a>
+                )}
               </div>
             </div>
           </div>

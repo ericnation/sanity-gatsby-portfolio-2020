@@ -8,74 +8,75 @@ import LayoutContainer from '../containers/layout-container';
 
 export const query = graphql`
   query ProjectTemplateQuery($id: String!) {
-    sampleProject: sanitySampleProject(id: { eq: $id }) {
+    sampleProject: sanityProject(id: { eq: $id }) {
       id
-      publishedAt
+      youtubeId
+      videoPoster {
+        alt
+        asset {
+          _id
+          url
+          title
+          assetId
+          fluid(maxWidth: 720) {
+            base64
+            aspectRatio
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+            sizes
+          }
+        }
+      }
+      _rawBackground
+      _rawProcess
       categories {
-        _id
         title
+        id
+      }
+      clientName
+      employerName
+      launchDate(formatString: "MMMM YYYY")
+      projectName
+      projectTags
+      projectThumbnail {
+        alt
+        asset {
+          assetId
+          _id
+          fixed(width: 350) {
+            base64
+            aspectRatio
+            width
+            height
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+          }
+          url
+        }
+      }
+      projectUrl
+      title
+      video {
+        asset {
+          url
+          title
+          mimeType
+          assetId
+        }
+      }
+      slug {
+        current
       }
       relatedProjects {
-        title
         _id
         slug {
           current
         }
-      }
-      mainImage {
-        crop {
-          _key
-          _type
-          top
-          bottom
-          left
-          right
-        }
-        hotspot {
-          _key
-          _type
-          x
-          y
-          height
-          width
-        }
-        asset {
-          _id
-        }
-        alt
-      }
-      title
-      slug {
-        current
-      }
-      _rawBody
-      members {
-        _key
-        person {
-          image {
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-          }
-          name
-        }
-        roles
+        title
       }
     }
   }
@@ -86,7 +87,7 @@ const ProjectTemplate = (props) => {
   const project = data && data.sampleProject;
   return (
     <LayoutContainer>
-      {errors && <SEO title='GraphQL Error' />}
+      {errors && <SEO title="GraphQL Error" />}
       {project && <SEO title={project.title || 'Untitled'} />}
 
       {errors && (

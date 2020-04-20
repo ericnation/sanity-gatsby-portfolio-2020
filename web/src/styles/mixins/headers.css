@@ -1,5 +1,5 @@
 @mixin headerDesc() {
-	span {
+  span {
     color: $default-text-color;
     display: block;
     font: $section-header-desc-font;
@@ -11,10 +11,10 @@
       width: $section-header-desc-width;
     }
 
-		a {
-			color: $primary-color;
-		}
-	}
+    a {
+      color: $primary-color;
+    }
+  }
 }
 
 /* HEADERS */
@@ -38,7 +38,7 @@
       &::before,
       &::after {
         border-bottom: 2px solid $section-header-line-color;
-        content: "";
+        content: '';
         position: absolute;
         width: $section-header-line-width;
       }
@@ -61,9 +61,11 @@
   }
 
   h2 span {
+    font-size: rem(42);
+
     &::before,
     &::after {
-      top: calc($h2-size / 2 + 2px);
+      top: calc($h1-size / 2 + 2px);
     }
   }
 
@@ -98,26 +100,26 @@
 
 /* SMALL HEADER */
 @mixin smallHeader() {
-	font: rem(18) $secondary-font-family;
-	text-transform: uppercase;
-	color: $secondary-color;
-	position: relative;
-	margin: 0 0 rem(35) 0;
+  font: rem(18) $secondary-font-family;
+  text-transform: uppercase;
+  color: $secondary-color;
+  position: relative;
+  margin: 0 0 rem(35) 0;
 
-	&::before {
-		content: "";
-		position: absolute;
-		border-bottom: 2px solid $section-header-line-color;
-		left: 0;
-		width: 100%;
-		z-index: 9;
-		top: rem(9);
-	}
+  &::before {
+    content: '';
+    position: absolute;
+    border-bottom: 2px solid $section-header-line-color;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+    top: rem(9);
+  }
 
-	span {
-		background: #fff;
-		padding-right: rem(10);
-		position: relative;
-		z-index: 10;
-	}
+  span {
+    background: #fff;
+    padding-right: rem(10);
+    position: relative;
+    z-index: 10;
+  }
 }

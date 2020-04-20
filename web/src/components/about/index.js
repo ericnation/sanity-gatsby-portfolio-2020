@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
 import classNames from 'classnames';
 import { buildImageObj } from '../../lib/helpers';
 import imageUrlFor from '../../lib/image-url';
@@ -16,52 +17,19 @@ const About = () => {
       sanityAbout {
         aboutSectionImage {
           alt
-          caption
-          hotspot {
-            height
-            width
-            x
-            y
-          }
-          _key
-          _type
           asset {
-            id
             _id
             url
             assetId
-            _type
-          }
-          crop {
-            bottom
-            left
-            right
-            top
           }
         }
         aboutSectionImageColor {
           alt
-          caption
-          hotspot {
-            height
-            width
-            x
-            y
-          }
-          _key
-          _type
+
           asset {
-            id
             _id
             url
             assetId
-            _type
-          }
-          crop {
-            bottom
-            left
-            right
-            top
           }
         }
         hobbies
@@ -69,27 +37,20 @@ const About = () => {
           _rawBio
           name
           image {
-            _key
-            _type
-            caption
             alt
-            hotspot {
-              height
-              width
-              x
-              y
-            }
-            crop {
-              bottom
-              left
-              right
-              top
-            }
             asset {
               assetId
               _id
               url
-              id
+              fluid(maxWidth: 630) {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
             }
           }
         }
@@ -107,13 +68,14 @@ const About = () => {
     profile: { _rawBio, image },
   } = sanityAbout;
 
-  const {
-    totalCount,
-  } = allSanityCountries;
+  const { totalCount } = allSanityCountries;
 
-  const colorImage = imageUrlFor(buildImageObj(aboutSectionImageColor)).height(465).width(2000).url();
+  const colorImage = imageUrlFor(buildImageObj(aboutSectionImageColor))
+    .height(465)
+    .width(2000)
+    .url();
   return (
-    <section id='about'>
+    <section id="about">
       <section
         className={classNames(styles.section, styles.aboutText)}
         style={{
@@ -122,32 +84,23 @@ const About = () => {
       >
         <div className={classNames(styles.container, styles.firstSection)}>
           <div className={styles.sectionHeader}>
-            <h1>
+            <h2>
               <span>{title}</span>
-            </h1>
+            </h2>
             {hobbies && (
               <div className={styles.headerDesc}>
-                <span>
-                  {hobbies.length && hobbies.map((hobby) => `${hobby} `)}
-                </span>
+                <span>{hobbies.length && hobbies.map((hobby) => `${hobby} `)}</span>
               </div>
             )}
           </div>
           <div className={styles.gridRow}>
             <div className={styles.col1}>
               {image && image.asset && (
-                <img
-                  src={imageUrlFor(buildImageObj(image))
-                    .url()}
-                  alt={image.alt}
-                  className={styles.profilePic}
-                />
+                <Img fluid={image.asset.fluid} alt={image.alt} className={styles.profilePic} />
               )}
             </div>
             <div className={styles.col2}>
-              {_rawBio && (
-                <BlockText blocks={_rawBio} />
-              )}
+              {_rawBio && <BlockText blocks={_rawBio} />}
               <div className={styles.totalCountries}>
                 <div>Countries traveled</div>
                 <span className={styles.count}>{totalCount}</span>

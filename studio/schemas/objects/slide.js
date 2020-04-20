@@ -12,6 +12,11 @@ export default {
       type: 'string',
       name: 'bigText',
       title: 'Big Text'
+    },
+    {
+      name: 'image',
+      title: 'Image',
+      type: 'figure'
     }
   ]
 }

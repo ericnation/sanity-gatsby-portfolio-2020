@@ -41,6 +41,12 @@ export default {
       type: 'date'
     },
     {
+      name: 'carousel',
+      title: 'Image Carousel',
+      type: 'reference',
+      to: {type: 'carousel'}
+    },
+    {
       name: 'video',
       title: 'Video Demo',
       type: 'file'
@@ -82,6 +88,11 @@ export default {
     {
       name: 'projectImage',
       title: 'Project image',
+      type: 'figure'
+    },
+    {
+      name: 'projectThumbnail',
+      title: 'Project Thumbnail',
       type: 'figure'
     },
     {

@@ -31,3 +31,19 @@
     top: rem(2);
   }
 }
+
+@mixin textBtn {
+  color: $secondary-color;
+  cursor: pointer;
+  background: none;
+  background-color: none;
+  border: 0;
+  font-family: $secondary-font-family;
+  text-transform: uppercase;
+
+  &:focus,
+  &:active {
+    box-shadow: none;
+    outline: none;
+  }
+}

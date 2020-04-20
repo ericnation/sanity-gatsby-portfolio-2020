@@ -1,8 +1,8 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import classNames from 'classnames';
-import { DiCode, DiWordpress, DiReact, DiJavascript1 } from "react-icons/di";
-import { MdComputer, MdCheck } from "react-icons/md";
+import { DiCode, DiWordpress, DiReact, DiJavascript1 } from 'react-icons/di';
+import { MdComputer, MdCheck } from 'react-icons/md';
 
 import styles from './services.module.css';
 
@@ -31,24 +31,16 @@ const Services = () => {
     }
   `);
 
-  const {
-    toolsHeader,
-    title,
-    subHeader,
-    skillsHeader,
-    skills,
-    services,
-    tools,
-  } = sanityServices;
+  const { toolsHeader, title, subHeader, skillsHeader, skills, services, tools } = sanityServices;
 
   return (
     <section id="services">
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <h1>
+            <h2>
               <span>{title}</span>
-            </h1>
+            </h2>
             <div className={styles.headerDesc}>
               <span>{subHeader}</span>
             </div>
@@ -65,11 +57,11 @@ const Services = () => {
                       {'DiReact' === service.deviconName && <DiReact />}
                       {'DiJavascript1' === service.deviconName && <DiJavascript1 />}
                     </div>
-                    <div className={styles.serviceHeader}>
-                      {service.title}
-                    </div>
+                    <div className={styles.serviceHeader}>{service.title}</div>
                     <div className={styles.serviceDesc}>
-                        {service.serviceSpecialties.map((specialty, index) => (index ? ', ' : '') + specialty)}
+                      {service.serviceSpecialties.map(
+                        (specialty, index) => (index ? ', ' : '') + specialty,
+                      )}
                     </div>
                   </div>
                 </div>
@@ -105,7 +97,9 @@ const Services = () => {
               <ul className="list-unstyled">
                 {tools.map((tool) => {
                   return (
-                    <li key={tools.tools}><MdCheck className={styles.checkicon} /> {tool.tools}</li>
+                    <li key={tools.tools}>
+                      <MdCheck className={styles.checkicon} /> {tool.tools}
+                    </li>
                   );
                 })}
               </ul>
