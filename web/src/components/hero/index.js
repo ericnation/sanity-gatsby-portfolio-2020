@@ -18,7 +18,7 @@ const Hero = () => {
           }
         }
       }
-      sanityCarousel {
+      sanityCarousel(title: { eq: "Header Carousel" }) {
         specialties
         slides {
           bigText
