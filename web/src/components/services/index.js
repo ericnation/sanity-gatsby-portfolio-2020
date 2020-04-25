@@ -38,70 +38,82 @@ const Services = () => {
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <h2>
-              <span>{title}</span>
-            </h2>
-            <div className={styles.headerDesc}>
-              <span>{subHeader}</span>
-            </div>
+            {title && (
+              <h2>
+                <span>{title}</span>
+              </h2>
+            )}
+            {subHeader && (
+              <div className={styles.headerDesc}>
+                <span>{subHeader}</span>
+              </div>
+            )}
           </div>
           <div className={classNames(styles.gridRow3, styles.bottomGap)}>
-            {services.map((service) => {
-              return (
-                <div className={styles.col4} key={service.title}>
-                  <div className={styles.service}>
-                    <div className={styles.serviceIcon}>
-                      {'DiCode' === service.deviconName && <DiCode />}
-                      {'DiWordpress' === service.deviconName && <DiWordpress />}
-                      {'MdComputer' === service.deviconName && <MdComputer />}
-                      {'DiReact' === service.deviconName && <DiReact />}
-                      {'DiJavascript1' === service.deviconName && <DiJavascript1 />}
-                    </div>
-                    <div className={styles.serviceHeader}>{service.title}</div>
-                    <div className={styles.serviceDesc}>
-                      {service.serviceSpecialties.map(
-                        (specialty, index) => (index ? ', ' : '') + specialty,
-                      )}
+            {services &&
+              services.length &&
+              services.map((service) => {
+                return (
+                  <div className={styles.col4} key={service.title}>
+                    <div className={styles.service}>
+                      <div className={styles.serviceIcon}>
+                        {'DiCode' === service.deviconName && <DiCode />}
+                        {'DiWordpress' === service.deviconName && <DiWordpress />}
+                        {'MdComputer' === service.deviconName && <MdComputer />}
+                        {'DiReact' === service.deviconName && <DiReact />}
+                        {'DiJavascript1' === service.deviconName && <DiJavascript1 />}
+                      </div>
+                      <div className={styles.serviceHeader}>{service.title}</div>
+                      <div className={styles.serviceDesc}>
+                        {service.serviceSpecialties.map((specialty, index) => (
+                          <span key={specialty}>{(index ? ', ' : '') + specialty}</span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
           <div className={styles.gridRow2}>
             <div className={styles.col6}>
               <h5 className={styles.smallHeader}>
                 <span>{skillsHeader}</span>
               </h5>
-              {skills.map((skill, i) => {
-                return (
-                  <div className={styles.progress} key={`skill_${i}`}>
-                    <progress
-                      className={styles.progressBar}
-                      min="0"
-                      max="100"
-                      value={skill.strengthLevel}
-                    />
-                    <span className={styles.progressText}>
-                      {skill.skills.map((skill) => `${skill} - `)}
-                      {skill.strengthLevel}%
-                    </span>
-                  </div>
-                );
-              })}
+              {skills &&
+                skills.length &&
+                skills.map((skill, i) => {
+                  return (
+                    <div className={styles.progress} key={`skill_${i}`}>
+                      <progress
+                        className={styles.progressBar}
+                        min="0"
+                        max="100"
+                        value={skill.strengthLevel}
+                      />
+                      <span className={styles.progressText}>
+                        {skill.skills &&
+                          skill.skills.length &&
+                          skill.skills.map((skill) => `${skill} - `)}
+                        {skill.strengthLevel}%
+                      </span>
+                    </div>
+                  );
+                })}
             </div>
             <div className={styles.col6}>
               <h5 className={styles.smallHeader}>
                 <span>{toolsHeader}</span>
               </h5>
               <ul className="list-unstyled">
-                {tools.map((tool) => {
-                  return (
-                    <li key={tools.tools}>
-                      <MdCheck className={styles.checkicon} /> {tool.tools}
-                    </li>
-                  );
-                })}
+                {tools &&
+                  tools.length &&
+                  tools.map((tool) => {
+                    return (
+                      <li key={tools.tools}>
+                        <MdCheck className={styles.checkicon} /> {tool.tools}
+                      </li>
+                    );
+                  })}
               </ul>
             </div>
           </div>

@@ -43,7 +43,6 @@ const ProjectSection = () => {
             _rawProcess
             categories {
               title
-              id
             }
             clientName
             employerName
@@ -91,16 +90,33 @@ const ProjectSection = () => {
       }
     }
   `);
-
-  const categories = allSanityCategory.edges.length ? mapEdgesToNodes(allSanityCategory) : [];
-
+  let categories = allSanityCategory.edges.length ? mapEdgesToNodes(allSanityCategory) : [];
+  categories.unshift({ title: 'All' }, { title: 'Recent' });
+  categories.forEach((category) => {
+    if (category.title === 'Recent') {
+      return (category.isActive = true);
+    }
+    return (category.isActive = false);
+  });
   const projectNodes = allSanityProject.edges.length
     ? mapEdgesToNodes(allSanityProject).filter(filterOutDocsWithoutSlugs)
     : [];
 
   const filterProjectsByCategory = (category) => {
     console.log(category);
+    categories.forEach((cat) => {
+      if (cat.title === category.title) {
+        return (cat.isActive = true);
+      }
+      cat.isActive = false;
+    });
+    console.log(categories);
+    const filteredNodes = projectNodes.filter((project) =>
+      project.categories.includes(category, 0),
+    );
+    console.log(filteredNodes);
   };
+
   return (
     <section id="work" className={styles.section}>
       <div className={styles.sectionHeader}>
@@ -114,22 +130,15 @@ const ProjectSection = () => {
       <div className={styles.portfolioFilter}>
         <ul className={styles.filters}>
           <li>Filter projects:</li>
-          <li>
-            <button
-              type="button"
-              className={classNames(styles.textBtn, styles.active)}
-              onClick={() => filterProjectsByCategory(category)}
-            >
-              All
-            </button>
-          </li>
           {categories &&
-            categories.map((category) => {
+            categories.map((category, i) => {
               return (
-                <li>
+                <li key={`${category}_${i}`}>
                   <button
                     type="button"
-                    className={styles.textBtn}
+                    className={classNames(styles.textBtn, {
+                      [styles.active]: category.isActive,
+                    })}
                     onClick={() => filterProjectsByCategory(category)}
                   >
                     {category.title}
@@ -142,9 +151,9 @@ const ProjectSection = () => {
 
       <div className={styles.portfolioGrid}>
         {projectNodes &&
-          projectNodes.map((project) => {
+          projectNodes.map((project, i) => {
             return (
-              <div className={styles.portfolioItem}>
+              <div className={styles.portfolioItem} key={`${project.slug.current}_${i}`}>
                 <Link to={`/project/${project.slug.current}`}>
                   <div className={styles.overlay}>
                     <h4>{project.title}</h4>
