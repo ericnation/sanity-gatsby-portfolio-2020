@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
+import Zoom from 'react-reveal/Zoom';
 import Img from 'gatsby-image';
 import classNames from 'classnames';
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../../lib/helpers';
@@ -93,6 +94,7 @@ const ProjectSection = () => {
   let categories = allSanityCategory.edges.length ? mapEdgesToNodes(allSanityCategory) : [];
   categories.unshift({ title: 'All' }, { title: 'Recent' });
   categories.forEach((category) => {
+    // Set the state and make Recent active by default.
     if (category.title === 'Recent') {
       return (category.isActive = true);
     }
@@ -101,20 +103,42 @@ const ProjectSection = () => {
   const projectNodes = allSanityProject.edges.length
     ? mapEdgesToNodes(allSanityProject).filter(filterOutDocsWithoutSlugs)
     : [];
+  const [isClient, setClient] = useState(false);
+  const [categoriesCopy, setCatagories] = useState([]);
+  const [projectsCopy, setProjectsCopy] = useState([]);
+  const [filteredProjects, setFilteredProjects] = useState([]);
+  const key = isClient ? 'client' : 'server';
+  // Make deep copy of projectNodes.
+  const projectNodesCopy = JSON.parse(JSON.stringify(projectNodes));
+  // Projects are already sorted from newest to oldest.
+  // Grab the first 5 for most recent.
+  let recentProjects = projectNodesCopy.slice(0, 5);
+  useEffect(() => {
+    setClient(true);
+    setCatagories(categories);
+    setProjectsCopy(projectNodesCopy);
+    setFilteredProjects(recentProjects);
+  }, []);
+  if (!isClient) return null;
 
   const filterProjectsByCategory = (category) => {
-    console.log(category);
-    categories.forEach((cat) => {
-      if (cat.title === category.title) {
+    categoriesCopy.forEach((cat) => {
+      cat.isActive = false;
+      if (cat.title == category.title) {
         return (cat.isActive = true);
       }
-      cat.isActive = false;
     });
-    console.log(categories);
-    const filteredNodes = projectNodes.filter((project) =>
-      project.categories.includes(category, 0),
-    );
-    console.log(filteredNodes);
+    const copy = categoriesCopy;
+    setCatagories([...copy]);
+    console.log(categoriesCopy);
+    if (category.title === 'Recent') {
+      return setFilteredProjects(recentProjects);
+    }
+    if (category.title === 'All') {
+      return setFilteredProjects(projectsCopy);
+    }
+    //const filtered = projectsCopy.filter((project) => project.categories.includes(category, 0));
+    //return setFilteredProjects(filtered);
   };
 
   return (
@@ -130,8 +154,9 @@ const ProjectSection = () => {
       <div className={styles.portfolioFilter}>
         <ul className={styles.filters}>
           <li>Filter projects:</li>
-          {categories &&
-            categories.map((category, i) => {
+          {categoriesCopy &&
+            categoriesCopy.length &&
+            categoriesCopy.map((category, i) => {
               return (
                 <li key={`${category}_${i}`}>
                   <button
@@ -149,29 +174,31 @@ const ProjectSection = () => {
         </ul>
       </div>
 
-      <div className={styles.portfolioGrid}>
-        {projectNodes &&
-          projectNodes.map((project, i) => {
+      <div className={styles.portfolioGrid} key={key}>
+        {filteredProjects &&
+          filteredProjects.map((project, i) => {
             return (
-              <div className={styles.portfolioItem} key={`${project.slug.current}_${i}`}>
-                <Link to={`/project/${project.slug.current}`}>
-                  <div className={styles.overlay}>
-                    <h4>{project.title}</h4>
-                    <span className={styles.categoryText}>
-                      {project.categories.map(
-                        (category, index) => (index ? ', ' : '') + category.title,
-                      )}
-                    </span>
-                  </div>
-                  {project.projectThumbnail && project.projectThumbnail.asset && (
-                    <Img
-                      fluid={project.projectThumbnail.asset.fluid}
-                      alt={project.projectThumbnail.alt}
-                      className={styles.previewImg}
-                    />
-                  )}
-                </Link>
-              </div>
+              <Zoom key={project.title}>
+                <div className={styles.portfolioItem}>
+                  <Link to={`/project/${project.slug.current}`}>
+                    <div className={styles.overlay}>
+                      <h4>{project.title}</h4>
+                      <span className={styles.categoryText}>
+                        {project.categories.map(
+                          (category, index) => (index ? ', ' : '') + category.title,
+                        )}
+                      </span>
+                    </div>
+                    {project.projectThumbnail && project.projectThumbnail.asset && (
+                      <Img
+                        fluid={project.projectThumbnail.asset.fluid}
+                        alt={project.projectThumbnail.alt}
+                        className={styles.previewImg}
+                      />
+                    )}
+                  </Link>
+                </div>
+              </Zoom>
             );
           })}
       </div>

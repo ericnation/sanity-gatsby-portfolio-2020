@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
+import Slide from 'react-reveal/Slide';
 import classNames from 'classnames';
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 import { buildImageObj } from '../../lib/helpers';
 import imageUrlFor from '../../lib/image-url';
 import BlockText from '../block-text';
@@ -69,11 +72,13 @@ const About = () => {
   } = sanityAbout;
 
   const { totalCount } = allSanityCountries;
+  const [viewPortEntered, setViewPortEntered] = useState(false);
 
   const colorImage = imageUrlFor(buildImageObj(aboutSectionImageColor))
     .height(465)
     .width(2000)
     .url();
+
   return (
     <section id="about">
       <section
@@ -96,15 +101,39 @@ const About = () => {
           <div className={styles.gridRow}>
             <div className={styles.col1}>
               {image && image.asset && (
-                <Img fluid={image.asset.fluid} alt={image.alt} className={styles.profilePic} />
+                <Slide left>
+                  <Img fluid={image.asset.fluid} alt={image.alt} className={styles.profilePic} />
+                </Slide>
               )}
             </div>
             <div className={styles.col2}>
-              {_rawBio && <BlockText blocks={_rawBio} />}
-              <div className={styles.totalCountries}>
-                <div>Countries traveled</div>
-                <span className={styles.count}>{totalCount}</span>
-              </div>
+              <Slide right>
+                {_rawBio && <BlockText blocks={_rawBio} />}
+                <div className={styles.totalCountries}>
+                  <div>Countries traveled</div>
+                  <VisibilitySensor
+                    delayedCall
+                    active={!viewPortEntered}
+                    onChange={(isVisible) => {
+                      if (isVisible) {
+                        setViewPortEntered(true);
+                      }
+                    }}
+                  >
+                    <CountUp
+                      decimals={1}
+                      start={viewPortEntered ? null : 0}
+                      end={totalCount}
+                      duration={3}
+                      formattingFn={(num) => Math.round(num)}
+                    >
+                      {({ countUpRef }) => {
+                        return <span className={styles.count} ref={countUpRef} />;
+                      }}
+                    </CountUp>
+                  </VisibilitySensor>
+                </div>
+              </Slide>
             </div>
           </div>
         </div>

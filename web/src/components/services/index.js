@@ -1,6 +1,8 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import classNames from 'classnames';
+import Fade from 'react-reveal/Fade';
+import Slide from 'react-reveal/Slide';
 import { DiCode, DiWordpress, DiReact, DiJavascript1 } from 'react-icons/di';
 import { MdComputer, MdCheck } from 'react-icons/md';
 
@@ -54,23 +56,25 @@ const Services = () => {
               services.length &&
               services.map((service) => {
                 return (
-                  <div className={styles.col4} key={service.title}>
-                    <div className={styles.service}>
-                      <div className={styles.serviceIcon}>
-                        {'DiCode' === service.deviconName && <DiCode />}
-                        {'DiWordpress' === service.deviconName && <DiWordpress />}
-                        {'MdComputer' === service.deviconName && <MdComputer />}
-                        {'DiReact' === service.deviconName && <DiReact />}
-                        {'DiJavascript1' === service.deviconName && <DiJavascript1 />}
-                      </div>
-                      <div className={styles.serviceHeader}>{service.title}</div>
-                      <div className={styles.serviceDesc}>
-                        {service.serviceSpecialties.map((specialty, index) => (
-                          <span key={specialty}>{(index ? ', ' : '') + specialty}</span>
-                        ))}
+                  <Fade bottom>
+                    <div className={styles.col4} key={service.title}>
+                      <div className={styles.service}>
+                        <div className={styles.serviceIcon}>
+                          {'DiCode' === service.deviconName && <DiCode />}
+                          {'DiWordpress' === service.deviconName && <DiWordpress />}
+                          {'MdComputer' === service.deviconName && <MdComputer />}
+                          {'DiReact' === service.deviconName && <DiReact />}
+                          {'DiJavascript1' === service.deviconName && <DiJavascript1 />}
+                        </div>
+                        <div className={styles.serviceHeader}>{service.title}</div>
+                        <div className={styles.serviceDesc}>
+                          {service.serviceSpecialties.map((specialty, index) => (
+                            <span key={specialty}>{(index ? ', ' : '') + specialty}</span>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Fade>
                 );
               })}
           </div>
@@ -93,8 +97,13 @@ const Services = () => {
                       <span className={styles.progressText}>
                         {skill.skills &&
                           skill.skills.length &&
-                          skill.skills.map((skill) => `${skill} - `)}
-                        {skill.strengthLevel}%
+                          skill.skills.map((skill) => {
+                            return (
+                              <span key={skill}>
+                                {skill} -{skill.strengthLevel}%
+                              </span>
+                            );
+                          })}
                       </span>
                     </div>
                   );
