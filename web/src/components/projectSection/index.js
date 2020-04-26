@@ -110,12 +110,13 @@ const ProjectSection = () => {
   const key = isClient ? 'client' : 'server';
   // Make deep copy of projectNodes.
   const projectNodesCopy = JSON.parse(JSON.stringify(projectNodes));
+  const catCopy = JSON.parse(JSON.stringify(categories));
   // Projects are already sorted from newest to oldest.
   // Grab the first 5 for most recent.
   let recentProjects = projectNodesCopy.slice(0, 5);
   useEffect(() => {
     setClient(true);
-    setCatagories(categories);
+    setCatagories(catCopy);
     setProjectsCopy(projectNodesCopy);
     setFilteredProjects(recentProjects);
   }, []);
@@ -128,17 +129,17 @@ const ProjectSection = () => {
         return (cat.isActive = true);
       }
     });
-    const copy = categoriesCopy;
-    setCatagories([...copy]);
-    console.log(categoriesCopy);
+    setCatagories([...categoriesCopy]);
     if (category.title === 'Recent') {
       return setFilteredProjects(recentProjects);
     }
     if (category.title === 'All') {
       return setFilteredProjects(projectsCopy);
     }
-    //const filtered = projectsCopy.filter((project) => project.categories.includes(category, 0));
-    //return setFilteredProjects(filtered);
+    const filtered = projectsCopy.filter((project) =>
+      project.categories.some((cat) => cat.title === category.title),
+    );
+    return setFilteredProjects(filtered);
   };
 
   return (
