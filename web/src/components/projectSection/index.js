@@ -21,32 +21,9 @@ const ProjectSection = () => {
         totalCount
         edges {
           node {
-            youtubeId
-            videoPoster {
-              alt
-              asset {
-                _id
-                url
-                title
-                assetId
-                fluid(maxWidth: 720) {
-                  base64
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
-                }
-              }
-            }
-            _rawBackground
-            _rawProcess
             categories {
               title
             }
-            clientName
-            employerName
             launchDate(formatString: "MMMM YYYY")
             projectName
             projectTags
@@ -69,22 +46,8 @@ const ProjectSection = () => {
             }
             projectUrl
             title
-            video {
-              asset {
-                url
-                title
-                mimeType
-                assetId
-              }
-            }
             slug {
               current
-            }
-            relatedProjects {
-              slug {
-                current
-              }
-              title
             }
           }
         }

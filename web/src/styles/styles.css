@@ -19,12 +19,12 @@ body {
   color: $default-text-color;
   font-family: $primary-font-family;
   font-size: $primary-font-size;
-	line-height: $primary-font-line-height;
+  line-height: $primary-font-line-height;
   margin: 0;
 }
 
 .el-gap {
-	margin-bottom: $elements-gap;
+  margin-bottom: $elements-gap;
 }
 
 b,
@@ -39,43 +39,48 @@ strong {
   h4,
   h5,
   h6 {
-		text-align: left;
+    text-align: left;
 
-		span {
-		  &::before {
+    span {
+      &::before {
         border: none;
-        content: "";
-			}
-		}
-	}
+        content: '';
+      }
+    }
+  }
 
-	.header-desc {
-
-		span {
+  .header-desc {
+    span {
       margin: 0;
-			text-align: left;
-		}
-	}
+      text-align: left;
+    }
+  }
 }
 
 .sh-center {
-	text-align: center;
+  text-align: center;
 
-	&::before {
+  &::before {
     border-bottom: none;
-		content: "";
-	}
+    content: '';
+  }
 
-	span {
+  span {
     background: transparent;
-		padding: 0;
-	}
+    padding: 0;
+  }
 }
 
 .bottom-gap {
-	margin-bottom: $elements-gap;
+  margin-bottom: $elements-gap;
 }
 
 .screenreader-only {
   @include screenreader-only;
 }
+/* stylelint-disable declaration-no-important */
+button.carousel__dot--selected {
+  background: $secondary-color !important;
+  color: $secondary-color !important;
+}
+/* stylelint-enable declaration-no-important */

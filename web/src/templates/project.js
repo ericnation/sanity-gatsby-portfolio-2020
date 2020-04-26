@@ -31,6 +31,28 @@ export const query = graphql`
       }
       _rawBackground
       _rawProcess
+      carousel {
+        title
+        slides {
+          image {
+            alt
+            asset {
+              _id
+              assetId
+              url
+              fluid {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+            }
+          }
+        }
+      }
       categories {
         title
         id
