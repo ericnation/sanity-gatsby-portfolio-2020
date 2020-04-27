@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import classNames from 'classnames';
-import ReactPlayer from 'react-player';
+// import ReactPlayer from 'react-player';
 import {
   CarouselProvider,
   Slider,
@@ -10,7 +10,6 @@ import {
   ButtonNext,
   DotGroup,
 } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
 import { GoPlay } from 'react-icons/go';
 import { MdPauseCircleOutline } from 'react-icons/md';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
@@ -97,14 +96,14 @@ const Project = (props) => {
               {videoState.paused && !youtubeId && (
                 <GoPlay className={styles.playBtn} onClick={playVideo} />
               )}
-              {youtubeId && (
+              {/* {youtubeId && (
                 <ReactPlayer
                   url={`https://www.youtube.com/watch?v=${youtubeId}`}
                   width="100%"
                   height="100%"
                   style={{ position: 'relative', top: '30px' }}
                 />
-              )}
+              )} */}
               {video && video.asset.url && (
                 <video
                   id="demoVideo"

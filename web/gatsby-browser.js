@@ -8,4 +8,4 @@
 import './src/styles/reset.css';
 import './src/styles/typography.css';
 import './src/styles/styles.css';
-
+import './node_modules/pure-react-carousel/dist/react-carousel.es.css';
