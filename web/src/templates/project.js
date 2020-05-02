@@ -105,10 +105,12 @@ export const query = graphql`
 `;
 
 const ProjectTemplate = (props) => {
-  const { data, errors } = props;
+  const { data, errors, pageContext } = props;
+  const { previous } = pageContext;
+  const { next } = pageContext;
   const project = data && data.sampleProject;
   return (
-    <LayoutContainer>
+    <LayoutContainer isProjectPage={true}>
       {errors && <SEO title="GraphQL Error" />}
       {project && <SEO title={project.title || 'Untitled'} />}
 
@@ -117,7 +119,7 @@ const ProjectTemplate = (props) => {
           <GraphQLErrorList errors={errors} />
         </Container>
       )}
-      {project && <Project {...project} />}
+      {project && <Project {...project} pagination={[previous, next]} />}
     </LayoutContainer>
   );
 };

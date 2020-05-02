@@ -1,0 +1,13 @@
+.wrap {
+  align-items: center;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  max-height: rem(110);
+  padding: rem(10);
+  width: 100%;
+}
+
+.logo {
+  max-height: rem(50);
+}

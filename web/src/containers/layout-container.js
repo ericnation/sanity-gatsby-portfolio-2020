@@ -1,5 +1,6 @@
 import { graphql, StaticQuery } from 'gatsby';
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Layout from '../components/layout';
 
 const query = graphql`
@@ -24,6 +25,14 @@ const LayoutContainer = (props) => {
       }}
     />
   );
+};
+
+LayoutContainer.defaultProps = {
+  isProjectPage: false,
+};
+
+LayoutContainer.propTypes = {
+  isProjectPage: PropTypes.boolean,
 };
 
 export default LayoutContainer;

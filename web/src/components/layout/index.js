@@ -1,14 +1,11 @@
 import React from 'react';
 import Footer from '../footer';
+import ProjectHeader from '../projectHeader';
 
-import '../../styles/layout.css';
-import styles from './layout.module.css';
-
-const Layout = ({
-  children,
-}) => (
+const Layout = ({ children, isProjectPage }) => (
   <>
-    <div className={styles.content}>{children}</div>
+    {isProjectPage && <ProjectHeader />}
+    <div>{children}</div>
     <Footer />
   </>
 );

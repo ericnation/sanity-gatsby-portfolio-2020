@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import classNames from 'classnames';
 import ReactPlayer from 'react-player';
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from 'react-icons/fa';
 import {
   CarouselProvider,
   Slider,
@@ -15,6 +16,7 @@ import { MdPauseCircleOutline } from 'react-icons/md';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import BlockContent from '../block-content';
 import Container from '../container';
+import { useBreakpoint } from '../../lib/helpers';
 
 import styles from './project.module.css';
 
@@ -35,9 +37,14 @@ const Project = (props) => {
     video,
     title,
     relatedProjects,
+    pagination,
   } = props;
   const { slides } = carousel || [];
   const [videoState, setVideoState] = useState({});
+  const [isTablet, setIsTablet] = useState(false);
+  // Breakpoints
+  const isMdMin = useBreakpoint('mdMin');
+
   useEffect(() => {
     if (document !== undefined) {
       setVideoState({
@@ -45,6 +52,11 @@ const Project = (props) => {
         paused: true,
         videoDemo: document.getElementById('demoVideo'),
       });
+    }
+    if (!isMdMin) {
+      setIsTablet(true);
+    } else {
+      setIsTablet(false);
     }
   }, []);
 
@@ -197,7 +209,7 @@ const Project = (props) => {
                 Launch Project
               </a>
             )}
-            {relatedProjects && relatedProjects.length > 0 && (
+            {relatedProjects && relatedProjects.length > 0 && isMdMin && (
               <div className={styles.relatedProjects}>
                 <h5 className={styles.smallHeader}>
                   <span>Related Projects</span>
@@ -233,7 +245,52 @@ const Project = (props) => {
                 <BlockContent blocks={_rawProcess || []} />
               </div>
             )}
+            {pagination && pagination.length && (
+              <div className={styles.btnWrap}>
+                {pagination.map((page, index) => {
+                  if (page) {
+                    return (
+                      <Link className={styles.linkBtn} to={`/project/${page?.slug.current}`}>
+                        {index === 0 && page && (
+                          <FaLongArrowAltLeft
+                            style={{ marginRight: '10px' }}
+                            className={styles.pageIcon}
+                          />
+                        )}
+                        <span className={styles.btnText}>{page?.title}</span>
+                        {index === 1 && page && (
+                          <FaLongArrowAltRight
+                            style={{ marginLeft: '10px' }}
+                            className={styles.pageIcon}
+                          />
+                        )}
+                      </Link>
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
+              </div>
+            )}
           </div>
+          {relatedProjects && relatedProjects.length > 0 && !isMdMin && (
+            <div className={styles.relatedProjects}>
+              <h5 className={styles.smallHeader}>
+                <span>Related Projects</span>
+              </h5>
+              <ul>
+                {relatedProjects.map((project) => (
+                  <li key={`related_${project._id}`}>
+                    {project.slug ? (
+                      <Link to={`/project/${project.slug.current}`}>{project.title}</Link>
+                    ) : (
+                      <span>{project.title}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </Container>
     </div>

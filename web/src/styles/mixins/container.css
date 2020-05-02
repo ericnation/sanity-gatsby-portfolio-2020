@@ -8,7 +8,7 @@
   padding: 0 rem(10);
   width: 100%;
 
-  @media ($lgMin) {
+  @media ($xlMin) {
     padding: 0;
   }
 }

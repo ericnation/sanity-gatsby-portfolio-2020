@@ -97,13 +97,10 @@ const Services = () => {
                       <span className={styles.progressText}>
                         {skill.skills &&
                           skill.skills.length &&
-                          skill.skills.map((skill) => {
-                            return (
-                              <span key={skill}>
-                                {skill} -{skill.strengthLevel}%
-                              </span>
-                            );
+                          skill.skills.map((skillb, index) => {
+                            return <span key={skillb}>{(index ? ', ' : '') + skillb}</span>;
                           })}
+                        &nbsp;- {skill.strengthLevel}%
                       </span>
                     </div>
                   );

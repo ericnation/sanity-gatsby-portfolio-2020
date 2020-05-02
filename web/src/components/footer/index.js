@@ -21,7 +21,17 @@ const Footer = () => {
           <MdExpandLess className={styles.btnIcon} />
         </button>
       </div>
-      <Logo color="white" />
+      <Logo color="white" width={63} />
+      <span className={styles.madeWith}>
+        Built with{' '}
+        <a href="https://sanity.io" target="_blank">
+          Sanity.io
+        </a>{' '}
+        and{' '}
+        <a href="https://gatsbyjs.org" target="_blank">
+          Gatsby
+        </a>
+      </span>
       <span className={styles.copyright}>
         &copy; Copyright {date.getFullYear()} - Eric Nation. All rights reserved.
       </span>

@@ -1,6 +1,6 @@
 .wrap {
   @include container;
-  margin-top: $elements-gap;
+  margin-top: calc($elements-gap / 2);
 }
 
 .projectTitle {
@@ -13,7 +13,7 @@
   grid-column-gap: 50px;
   grid-template-columns: 1fr;
 
-  @media ($smMin) {
+  @media ($mdMin) {
     grid-template-columns: 1fr 3fr;
   }
 }
@@ -44,6 +44,14 @@
   .btn {
     margin-top: rem(35);
     width: 100%;
+  }
+}
+
+.projectMeta {
+  margin-bottom: calc($elements-gap / 2);
+
+  @media ($mdMin) {
+    margin-bottom: 0;
   }
 }
 
@@ -308,5 +316,25 @@
 }
 
 .relatedProjects {
-  margin-top: rem(50);
+  margin: rem(20 0 100 0);
+
+  @media ($mdMin) {
+    margin-top: rem(50);
+  }
+}
+
+.btnWrap {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $elements-gap;
+}
+
+.linkBtn {
+  @include btn;
+  align-items: center;
+  display: flex;
+}
+
+.pageIcon {
+  font-size: rem(20);
 }

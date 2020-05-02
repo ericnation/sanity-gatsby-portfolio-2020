@@ -9,7 +9,6 @@ import category from './documents/category'
 import contact from './documents/contact'
 import carousel from './documents/carousel'
 import person from './documents/person'
-import sampleProject from './documents/sampleProject'
 import siteSettings from './documents/siteSettings'
 
 // Object types
@@ -35,6 +34,8 @@ import technicalSkills from './objects/technicalSkills'
 import country from './documents/country'
 import city from './objects/city'
 import projects from './documents/projects'
+import post from './documents/post'
+import bodyPortableText from './objects/bodyPortableText'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -46,6 +47,7 @@ export default createSchema({
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     bioPortableText,
+    bodyPortableText,
     city,
     education,
     figure,
@@ -70,9 +72,9 @@ export default createSchema({
     job,
     navMenu,
     person,
+    post,
     projects,
     resume,
-    sampleProject,
     services,
     siteSettings
   ])

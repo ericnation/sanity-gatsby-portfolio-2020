@@ -17,6 +17,20 @@ async function createProjectPages(graphql, actions, reporter) {
               current
             }
           }
+          next {
+            title
+            id
+            slug {
+              current
+            }
+          }
+          previous {
+            title
+            id
+            slug {
+              current
+            }
+          }
         }
       }
     }
@@ -28,6 +42,8 @@ async function createProjectPages(graphql, actions, reporter) {
 
   projectEdges.forEach((edge) => {
     const id = edge.node.id;
+    const previous = edge.previous;
+    const next = edge.next;
     const slug = edge.node.slug.current;
     const path = `/project/${slug}/`;
 
@@ -36,7 +52,7 @@ async function createProjectPages(graphql, actions, reporter) {
     createPage({
       path,
       component: require.resolve('./src/templates/project.js'),
-      context: { id },
+      context: { id, previous, next },
     });
   });
 }
