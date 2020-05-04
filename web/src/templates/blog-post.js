@@ -2,9 +2,9 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
-import BlogPost from '../components/blog-post';
+import BlogPost from '../components/blogPost';
 import SEO from '../components/seo';
-import Layout from '../containers/layout';
+import LayoutContainer from '../containers/layout-container';
 import { toPlainText } from '../lib/helpers';
 
 export const query = graphql`
@@ -20,6 +20,29 @@ export const query = graphql`
         alt
         asset {
           url
+          assetId
+          _id
+          fluid(maxHeight: 500) {
+            base64
+            aspectRatio
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+            sizes
+          }
+        }
+        hotspot {
+          height
+          width
+          x
+          y
+        }
+        crop {
+          top
+          right
+          left
+          bottom
         }
       }
       title
@@ -39,7 +62,7 @@ const BlogPostTemplate = (props) => {
   const { data, errors } = props;
   const post = data && data.post;
   return (
-    <Layout>
+    <LayoutContainer isProjectPage={true}>
       {errors && <SEO title="GraphQL Error" />}
       {post && (
         <SEO
@@ -56,7 +79,7 @@ const BlogPostTemplate = (props) => {
       )}
 
       {post && <BlogPost {...post} />}
-    </Layout>
+    </LayoutContainer>
   );
 };
 

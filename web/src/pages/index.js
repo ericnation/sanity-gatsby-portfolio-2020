@@ -10,6 +10,7 @@ import Contact from '../components/contact';
 import Services from '../components/services';
 import Hero from '../components/hero';
 import ProjectSection from '../components/projectSection';
+import BlogSection from '../components/blogSection';
 
 export const query = graphql`
   query IndexPageQuery {
@@ -49,6 +50,7 @@ const IndexPage = (props) => {
         <About />
         <Services />
         <ProjectSection />
+        <BlogSection />
         <Contact />
       </Container>
     </LayoutContainer>

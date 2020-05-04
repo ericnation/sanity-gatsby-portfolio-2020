@@ -1,0 +1,48 @@
+.section {
+  @include section;
+  @include sectionDiff;
+}
+
+.container {
+  @include container;
+}
+
+.headerDesc {
+  @include headerDesc;
+}
+
+.sectionHeader {
+  @include sectionHeader;
+  margin-top: rem(50);
+
+  @media ($mdMin) {
+    margin-top: 0;
+  }
+}
+
+.blogGrid {
+  display: grid;
+  grid-gap: rem(25);
+  grid-template-columns: 1fr;
+
+  @media ($smMin) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media ($mdMin) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.postImage {
+  display: block;
+  margin-bottom: rem(10);
+}
+
+.postTitle {
+  display: block;
+  font-family: $secondary-font-family;
+  font-size: rem(22);
+  font-weight: 500;
+  margin-bottom: rem(10);
+}

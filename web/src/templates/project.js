@@ -8,7 +8,7 @@ import LayoutContainer from '../containers/layout-container';
 
 export const query = graphql`
   query ProjectTemplateQuery($id: String!) {
-    sampleProject: sanityProject(id: { eq: $id }) {
+    sanityProject: sanityProject(id: { eq: $id }) {
       id
       youtubeId
       videoPoster {
@@ -108,7 +108,7 @@ const ProjectTemplate = (props) => {
   const { data, errors, pageContext } = props;
   const { previous } = pageContext;
   const { next } = pageContext;
-  const project = data && data.sampleProject;
+  const project = data && data.sanityProject;
   return (
     <LayoutContainer isProjectPage={true}>
       {errors && <SEO title="GraphQL Error" />}

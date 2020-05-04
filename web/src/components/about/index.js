@@ -28,7 +28,6 @@ const About = () => {
         }
         aboutSectionImageColor {
           alt
-
           asset {
             _id
             url

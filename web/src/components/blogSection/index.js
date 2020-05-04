@@ -1,0 +1,112 @@
+import React from 'react';
+import { Link, useStaticQuery, graphql } from 'gatsby';
+import Zoom from 'react-reveal/Zoom';
+import Img from 'gatsby-image';
+import {
+  mapEdgesToNodes,
+  filterOutDocsWithoutSlugs,
+  filterOutDocsPublishedInTheFuture,
+} from '../../lib/helpers';
+import BlockText from '../block-text';
+import styles from './blogSection.module.css';
+
+const BlogSection = (props) => {
+  const { allSanityPost } = useStaticQuery(graphql`
+    query BlogPostsQuery {
+      allSanityPost(filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }) {
+        edges {
+          node {
+            id
+            publishedAt
+            slug {
+              current
+            }
+            mainImage {
+              alt
+              asset {
+                url
+                assetId
+                _id
+                fixed(width: 400) {
+                  base64
+                  aspectRatio
+                  width
+                  height
+                  src
+                  srcSet
+                  srcWebp
+                  srcSetWebp
+                }
+              }
+              hotspot {
+                height
+                width
+                x
+                y
+              }
+              crop {
+                top
+                right
+                left
+                bottom
+              }
+            }
+            categories {
+              title
+              id
+            }
+            _rawExcerpt(resolveReferences: { maxDepth: 10 })
+            title
+          }
+        }
+      }
+    }
+  `);
+
+  const postNodes = allSanityPost.edges.length
+    ? mapEdgesToNodes(allSanityPost)
+        .filter(filterOutDocsWithoutSlugs)
+        .filter(filterOutDocsPublishedInTheFuture)
+    : [];
+  console.log('postNodes ', postNodes);
+
+  const recentPosts = postNodes.slice(0, 3);
+  return (
+    <section id="blog" className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.sectionHeader}>
+          <h2>
+            <span>Blog</span>
+          </h2>
+          <div className={styles.headerDesc}>
+            <span>
+              Some stories about web dev, travels, and other random things I feel like writing
+              about.
+            </span>
+          </div>
+        </div>
+        <div className={styles.blogGrid}>
+          {recentPosts.map((post) => {
+            return (
+              <div className={styles.postItem} key={post.id}>
+                <Link to={`/blog/${post.slug.current}`} className={styles.postImage}>
+                  {post.mainImage && (
+                    <Img fixed={post.mainImage.asset.fixed} alt={post.mainImage.alt || ''} />
+                  )}
+                </Link>
+                <Link className={styles.postTitle} to={`/blog/${post.slug.current}`}>
+                  {post.title}
+                </Link>
+                <div className={styles.postExcerpt}>
+                  {post._rawExcerpt && <BlockText blocks={post._rawExcerpt} />}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default BlogSection;
