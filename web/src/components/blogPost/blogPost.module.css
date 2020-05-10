@@ -192,3 +192,18 @@
 .whatsapp {
   color: #25d366;
 }
+
+:global {
+  blockquote {
+    background-image: url('../../assets/images/quote-left.svg');
+    background-size: rem(30);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    color: #afafaf;
+    font-size: rem(24);
+    font-style: italic;
+    line-height: 1.4;
+    margin: rem(30) 0;
+    padding: 0 rem(40);
+  }
+}

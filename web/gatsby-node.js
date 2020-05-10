@@ -57,11 +57,7 @@ async function createProjectPages(graphql, actions, reporter) {
   });
 }
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  await createProjectPages(graphql, actions, reporter);
-};
-
-async function createBlogPostPages(graphql, actions) {
+async function createBlogPostPages(graphql, actions, reporter) {
   const { createPage } = actions;
   const result = await graphql(`
     {
@@ -89,6 +85,8 @@ async function createBlogPostPages(graphql, actions) {
       const { id, slug = {}, publishedAt } = edge.node;
       const path = `/blog/${slug.current}/`;
 
+      reporter.info(`Creating blog pages: ${path}`);
+
       createPage({
         path,
         component: require.resolve('./src/templates/blog-post.js'),
@@ -97,6 +95,7 @@ async function createBlogPostPages(graphql, actions) {
     });
 }
 
-exports.createPages = async ({ graphql, actions }) => {
-  await createBlogPostPages(graphql, actions);
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  await createProjectPages(graphql, actions, reporter);
+  await createBlogPostPages(graphql, actions, reporter);
 };
