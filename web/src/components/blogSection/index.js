@@ -28,15 +28,14 @@ const BlogSection = (props) => {
                 url
                 assetId
                 _id
-                fixed(width: 400) {
+                fluid(maxWidth: 400) {
                   base64
                   aspectRatio
-                  width
-                  height
                   src
                   srcSet
                   srcWebp
                   srcSetWebp
+                  sizes
                 }
               }
               hotspot {
@@ -97,7 +96,7 @@ const BlogSection = (props) => {
                 <div className={styles.postItem} key={post.id}>
                   <Link to={`/blog/${post.slug.current}`} className={styles.postImage}>
                     {post.mainImage && (
-                      <Img fixed={post.mainImage.asset.fixed} alt={post.mainImage.alt || ''} />
+                      <Img fluid={post.mainImage.asset.fluid} alt={post.mainImage.alt || ''} />
                     )}
                   </Link>
                   <Link className={styles.postTitle} to={`/blog/${post.slug.current}`}>

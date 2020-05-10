@@ -5,6 +5,7 @@ const bkptVal = {
   xl: 81.25, // 1300 = large desktop
   lg: 68.75, // 1100 = desktop
   md: 60, // 960 = tablet
+  smMd: 50, // 800 = custom medium breakpiont
   sm: 39.375, // 630= bigger phone
   xs: 25, // 400 phone
 };

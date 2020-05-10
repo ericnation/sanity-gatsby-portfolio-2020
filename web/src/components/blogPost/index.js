@@ -12,7 +12,7 @@ const BlogPost = (props) => {
   const { _rawBody, _rawExcerpt, author, categories, title, mainImage, publishedAt } = props;
   const [currentUrl, setCurrentUrl] = useState('');
   useEffect(() => {
-    if (window && window != 'undefined') {
+    if (window && typeof window !== `undefined`) {
       setCurrentUrl(encodeURIComponent(window.location.href));
     }
   });

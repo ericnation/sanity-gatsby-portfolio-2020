@@ -138,7 +138,7 @@ const Project = (props) => {
               isPlaying
               infinite
               naturalSlideWidth={1300}
-              naturalSlideHeight={700}
+              naturalSlideHeight={isTablet ? 900 : 700}
               totalSlides={slides.length}
             >
               <div className={styles.sliderWrap}>
@@ -250,7 +250,11 @@ const Project = (props) => {
                 {pagination.map((page, index) => {
                   if (page) {
                     return (
-                      <Link className={styles.linkBtn} to={`/project/${page?.slug.current}`}>
+                      <Link
+                        className={styles.linkBtn}
+                        to={`/project/${page?.slug.current}`}
+                        style={{ marginRight: 0 === index ? '25px' : 0 }}
+                      >
                         {index === 0 && page && (
                           <FaLongArrowAltLeft
                             style={{ marginRight: '10px' }}

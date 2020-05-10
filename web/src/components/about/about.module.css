@@ -9,11 +9,16 @@
 
 .section {
   @include section;
+  height: rem(350);
+
+  @media ($mdMin) {
+    height: rem(465);
+  }
 }
 
 .aboutText {
   background-color: #fff;
-  background-position: center top;
+  background-position: 67%;
   background-repeat: no-repeat;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
@@ -27,7 +32,7 @@
 }
 
 .firstSection {
-  padding-top: rem(410);
+  padding-top: rem(0);
 }
 
 .col1 {
@@ -45,10 +50,6 @@
 .sectionHeader {
   @include sectionHeader;
   margin-top: rem(50);
-
-  @media ($mdMin) {
-    margin-top: 0;
-  }
 }
 
 .totalCountries {
@@ -56,9 +57,13 @@
   font-size: rem(41);
   font-weight: 600;
   letter-spacing: 1px;
-  margin-top: rem(100);
+  margin-top: rem(50);
   text-align: center;
   text-transform: uppercase;
+
+  @media ($mdMin) {
+    margin-top: rem(100);
+  }
 }
 
 .count {
@@ -67,5 +72,9 @@
   font-family: $secondary-font-family;
   font-size: rem(160);
   font-weight: 700;
+  line-height: 1.4;
+}
+
+.countriesTraveled {
   line-height: 1.4;
 }

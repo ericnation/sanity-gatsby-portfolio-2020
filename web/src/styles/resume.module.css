@@ -8,9 +8,14 @@
 }
 
 .pageHeader {
+  background-position: 55%;
   background-size: cover;
   height: rem(500);
   position: relative;
+
+  @media ($mdMin) {
+    background-position: center;
+  }
 }
 
 .pageContent {
@@ -25,7 +30,7 @@
     color: #fff;
     margin: 0;
     text-align: left;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     width: 100%;
   }
 }
@@ -41,7 +46,7 @@
   font: rem(14) $secondary-font-family;
   text-decoration: none;
   text-transform: uppercase;
-  text-shadow: 1px 1px 2px rgba(255,255,255,0.3);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
 }
 
 .linkIcon {
@@ -59,7 +64,7 @@
 }
 
 .sectionHeaderResume {
-	margin-bottom: rem(20);
+  margin-bottom: rem(20);
 
   h2 {
     border: none;
@@ -69,13 +74,13 @@
 }
 
 .subTitle {
-	font-size: rem(14);
-	margin-left: 3%;
+  font-size: rem(14);
+  margin-left: 3%;
 }
 
 .resumeWrap {
   align-items: center;
-  background: #15C1D4;
+  background: #15c1d4;
   color: #fff;
   display: flex;
   max-width: rem(127);
@@ -84,44 +89,49 @@
   a {
     color: #fff;
     font: $section-header-desc-font;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   }
 }
 
 .resumeLink {
-	padding-right: rem(5);
+  padding-right: rem(5);
 }
 
 .resumeRow {
   margin-bottom: rem(30);
-	margin-top: rem(30);
-	padding-bottom: rem(20);
-	padding-top: rem(20);
+  margin-top: rem(30);
+  padding-bottom: rem(20);
+  padding-top: rem(20);
 }
 
 .resumeContent {
-	border-bottom: 1px solid #b2b2b2;
-	padding-bottom: 4%;
+  border-bottom: 1px solid #b2b2b2;
+  padding-bottom: 4%;
 }
 
 .headerDescResume {
-	span {
+  span {
     color: $default-text-color;
-		display: block;
-		font: $section-header-desc-font;
+    display: block;
+    font: $section-header-desc-font;
     line-height: rem(24);
-		margin: 0 auto;
-		text-align: center;
-    width: $section-header-desc-width;
-	}
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+
+    @media ($mdMin) {
+      width: $section-header-desc-width;
+    }
+  }
 }
 
 .resumeRow {
   display: grid;
-  grid-gap: rem(50);
+  grid-gap: 0;
   grid-template-columns: 1fr;
 
   @media ($mdMin) {
+    grid-gap: rem(50);
     grid-template-columns: 1fr 4fr;
   }
 }
@@ -150,9 +160,8 @@
 }
 
 .pageTitle {
-
   h1 {
     color: #fff;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   }
 }

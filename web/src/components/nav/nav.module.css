@@ -11,14 +11,19 @@
 }
 
 .container {
+  align-items: center;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 1fr;
   @include container;
+
+  @media ($smMdMin) {
+    grid-template-columns: 1fr 3fr;
+  }
 }
 
 .navLogo {
   font-family: $secondary-font-family;
-  font-size: rem(20);
+  font-size: rem(22);
   text-transform: uppercase;
 
   a {
@@ -59,5 +64,17 @@
 
   &:hover {
     border-bottom: 2px solid lighten($accent-color, 5%);
+  }
+}
+
+.mobileMenu {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+
+  svg {
+    color: #000;
+    cursor: pointer;
+    font-size: rem(30);
   }
 }
