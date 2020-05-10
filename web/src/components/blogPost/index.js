@@ -42,7 +42,7 @@ const BlogPost = (props) => {
   };
 
   const shareToWhatsApp = () => {
-    const url = `https://api.whatsapp.com/send?phone=+14804952722&text=${currentUrl}`;
+    const url = `https://api.whatsapp.com/send?text=${currentUrl}`;
     triggerSocialWindow(url);
   };
 
