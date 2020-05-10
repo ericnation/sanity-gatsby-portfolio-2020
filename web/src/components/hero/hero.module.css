@@ -28,7 +28,16 @@
 }
 
 .logoHome {
+  margin: 0 auto;
   text-align: center;
+
+  img {
+    max-width: 70px;
+
+    @media ($mdMin) {
+      max-width: 90px;
+    }
+  }
 }
 
 .overlay {
@@ -69,12 +78,17 @@
 .bigText {
   display: block;
   font-family: $secondary-font-family;
-  font-size: rem(120);
-  line-height: rem(100);
+  font-size: rem(70);
+  line-height: rem(75);
   text-transform: uppercase;
   padding: 0 0 rem(20);
   width: 100%;
   margin: 0 auto;
+
+  @media ($mdMin) {
+    font-size: rem(120);
+    line-height: rem(100);
+  }
 }
 
 .btn {
