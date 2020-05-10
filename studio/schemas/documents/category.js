@@ -12,6 +12,11 @@ export default {
       name: 'description',
       type: 'text',
       title: 'Description'
+    },
+    {
+      name: 'useFilter',
+      type: 'boolean',
+      title: 'Use for Work section filter'
     }
   ]
 }

@@ -10,7 +10,7 @@ const ProjectSection = () => {
   // Get data for all projects.
   const { allSanityProject, allSanityCategory } = useStaticQuery(graphql`
     query ProjectQuery {
-      allSanityCategory(sort: { fields: title, order: ASC }) {
+      allSanityCategory(sort: { fields: title, order: ASC }, filter: { useFilter: { in: true } }) {
         edges {
           node {
             title
@@ -23,6 +23,7 @@ const ProjectSection = () => {
           node {
             categories {
               title
+              useFilter
             }
             launchDate(formatString: "MMMM YYYY")
             projectName

@@ -9,14 +9,23 @@
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  height: rem(500);
+  height: rem(300);
   margin-bottom: rem(50);
   overflow: hidden;
   width: 100%;
+
+  @media ($mdMin) {
+    height: rem(500);
+  }
 }
 
 .heroContent {
   @include container;
+  text-align: center;
+
+  @media ($mdMin) {
+    text-align: left;
+  }
 }
 
 .title {
@@ -24,9 +33,19 @@
   color: #fff;
   display: inline-block;
   margin-bottom: rem(10);
-  opacity: 0.8;
+  opacity: 0.9;
   padding: rem(5 15);
+  text-align: center;
   width: auto;
+
+  @media ($mdMin) {
+    text-align: left;
+  }
+}
+
+.smallHeader {
+  @include smallHeader;
+  margin-bottom: rem(15);
 }
 
 .publishedAt {
@@ -40,15 +59,136 @@
 }
 
 .excerpt {
+  color: $secondary-color;
+  font-family: $secondary-font-family;
   font-size: rem(25);
   font-weight: 500;
-  line-height: 1.5;
-  width: 70%;
+  line-height: 1.4;
+  margin-bottom: rem(50);
+  width: 100%;
+
+  @media ($mdMin) {
+    width: 80%;
+  }
+}
+
+.postContent {
+  p {
+    font-size: rem(18);
+    line-height: 1.5;
+    margin-bottom: rem(35);
+  }
 }
 
 .grid {
   @include container;
   display: grid;
-  grid-gap: rem(100);
-  grid-template-columns: 3fr 1fr;
+  grid-gap: rem(50);
+  grid-template-columns: 1fr;
+
+  @media ($mdMin) {
+    grid-gap: rem(150);
+    grid-template-columns: 2.5fr 1fr;
+  }
+}
+
+.categories {
+  li {
+    margin-bottom: rem(5);
+  }
+}
+
+.metaWrap {
+  border-top: 1px solid $section-header-line-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: rem(50);
+  padding-top: rem(50);
+
+  @media ($mdMin) {
+    flex-direction: row;
+  }
+}
+
+.autorWrap {
+  align-items: center;
+  display: flex;
+  margin-bottom: rem(25);
+
+  @media ($mdMin) {
+    margin-bottom: 0;
+  }
+
+  img {
+    border-radius: 50%;
+  }
+}
+
+.authorNameWrap {
+  display: block;
+  margin-left: rem(15);
+}
+
+.written {
+  display: block;
+  font-size: rem(14);
+  letter-spacing: 1px;
+  margin-bottom: rem(0);
+  text-transform: uppercase;
+}
+
+.name {
+  color: #000;
+  font-family: $secondary-font-family;
+  font-size: rem(20);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.publishedDate {
+  display: block;
+  font-size: rem(14);
+  text-transform: uppercase;
+}
+
+.shareTitle {
+  display: block;
+  font-size: rem(14);
+  letter-spacing: 1px;
+  margin-bottom: rem(10);
+  text-transform: uppercase;
+}
+
+.socialList {
+  display: flex;
+
+  li {
+    cursor: pointer;
+    margin-right: rem(15);
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    svg {
+      font-size: rem(25);
+    }
+  }
+}
+
+.twitter {
+  color: #33ccff;
+}
+
+.facebook {
+  color: #3b5998;
+}
+
+.linkedin {
+  color: #007bb6;
+}
+
+.whatsapp {
+  color: #25d366;
 }

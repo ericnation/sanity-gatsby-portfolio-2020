@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
-import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
+import classNames from 'classnames';
 import Img from 'gatsby-image';
 import {
   mapEdgesToNodes,
@@ -68,7 +69,6 @@ const BlogSection = (props) => {
         .filter(filterOutDocsWithoutSlugs)
         .filter(filterOutDocsPublishedInTheFuture)
     : [];
-  console.log('postNodes ', postNodes);
 
   const recentPosts = postNodes.slice(0, 3);
   return (
@@ -85,22 +85,29 @@ const BlogSection = (props) => {
             </span>
           </div>
         </div>
-        <div className={styles.blogGrid}>
+        <div
+          className={classNames(styles.blogGrid, {
+            [styles.col1]: recentPosts.length === 1,
+            [styles.col2]: recentPosts.length === 2,
+          })}
+        >
           {recentPosts.map((post) => {
             return (
-              <div className={styles.postItem} key={post.id}>
-                <Link to={`/blog/${post.slug.current}`} className={styles.postImage}>
-                  {post.mainImage && (
-                    <Img fixed={post.mainImage.asset.fixed} alt={post.mainImage.alt || ''} />
-                  )}
-                </Link>
-                <Link className={styles.postTitle} to={`/blog/${post.slug.current}`}>
-                  {post.title}
-                </Link>
-                <div className={styles.postExcerpt}>
-                  {post._rawExcerpt && <BlockText blocks={post._rawExcerpt} />}
+              <Fade bottom>
+                <div className={styles.postItem} key={post.id}>
+                  <Link to={`/blog/${post.slug.current}`} className={styles.postImage}>
+                    {post.mainImage && (
+                      <Img fixed={post.mainImage.asset.fixed} alt={post.mainImage.alt || ''} />
+                    )}
+                  </Link>
+                  <Link className={styles.postTitle} to={`/blog/${post.slug.current}`}>
+                    {post.title}
+                  </Link>
+                  <div className={styles.postExcerpt}>
+                    {post._rawExcerpt && <BlockText blocks={post._rawExcerpt} />}
+                  </div>
                 </div>
-              </div>
+              </Fade>
             );
           })}
         </div>

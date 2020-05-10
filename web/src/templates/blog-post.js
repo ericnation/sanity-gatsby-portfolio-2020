@@ -53,6 +53,23 @@ export const query = graphql`
       _rawBody
       author {
         name
+        image {
+          alt
+          asset {
+            _id
+            assetId
+            fixed(width: 75) {
+              base64
+              aspectRatio
+              width
+              height
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+            }
+          }
+        }
       }
     }
   }

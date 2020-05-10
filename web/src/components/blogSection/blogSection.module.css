@@ -24,6 +24,32 @@
   display: grid;
   grid-gap: rem(25);
   grid-template-columns: 1fr;
+  justify-items: center;
+  margin: 0 auto;
+
+  &.col1 {
+    grid-template-columns: 1fr;
+
+    @media ($smMin) {
+      grid-template-columns: 1fr;
+    }
+
+    @media ($mdMin) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &.col2 {
+    grid-template-columns: 1fr;
+
+    @media ($smMin) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media ($mdMin) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 
   @media ($smMin) {
     grid-template-columns: 1fr 1fr;
@@ -45,4 +71,9 @@
   font-size: rem(22);
   font-weight: 500;
   margin-bottom: rem(10);
+  text-transform: uppercase;
+}
+
+.postItem {
+  max-width: rem(400);
 }
