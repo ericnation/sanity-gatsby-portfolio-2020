@@ -89,41 +89,36 @@ const Resume = () => {
     profile,
     title,
     updateData,
-    workExperience: {
-      jobs,
-    },
+    workExperience: { jobs },
     subHeaderImage,
-    technicalSkills: {
-      tools,
-      softSkills,
-      professionalSkills,
-    }
+    technicalSkills: { tools, softSkills, professionalSkills },
   } = sanityResume;
 
   const {
-    author: {
-      name,
-      email,
-      homebase,
-      phone,
-    },
+    author: { name, email, homebase, phone },
   } = sanitySiteSettings;
   const headerImagePrepped = imageUrlFor(buildImageObj(headerImage)).height(582).width(2000).url();
-  const subHeaderImagePrepped = imageUrlFor(buildImageObj(subHeaderImage)).height(492).width(2000).url();
+  const subHeaderImagePrepped = imageUrlFor(buildImageObj(subHeaderImage))
+    .height(492)
+    .width(2000)
+    .url();
   return (
     <LayoutContainer>
       <div className={styles.pageWrap}>
         <header
           className={styles.pageHeader}
-          style={{ backgroundImage: `url(${headerImagePrepped})` }}>
+          style={{ backgroundImage: `url(${headerImagePrepped})` }}
+        >
           <div className={styles.container}>
             <div className={styles.pageNav}>
-                <Link className={styles.btnBackHome} to="/">
-                  <FaLongArrowAltLeft /> Home
-                </Link>
+              <Link className={styles.btnBackHome} to="/">
+                <FaLongArrowAltLeft /> Home
+              </Link>
             </div>
             <div className={styles.pageLogo}>
-              <Link to="/"><Logo color="black" /></Link>
+              <Link to="/">
+                <Logo color="black" width={65} />
+              </Link>
             </div>
             <div className={classNames(styles.pageTitle, styles.sectionHeader)}>
               <h1>
@@ -131,12 +126,9 @@ const Resume = () => {
               </h1>
               <div className={styles.headerDesc}>
                 <span>Last updated {updateData}</span>
-                <br/>
+                <br />
                 <div className={styles.resumeWrap}>
-                  <a
-                    href={pdfResume.asset.url}
-                    target="_blank"
-                    className={styles.resumeLink}>
+                  <a href={pdfResume.asset.url} target="_blank" className={styles.resumeLink}>
                     PDF Resume
                   </a>
                   <MdLink className={styles.linkIcon} />
@@ -147,14 +139,16 @@ const Resume = () => {
         </header>
         <section
           className={styles.pageContent}
-          style={{ backgroundImage: `url(${subHeaderImagePrepped})`}}
+          style={{ backgroundImage: `url(${subHeaderImagePrepped})` }}
         >
           <section className={styles.section}>
             <div className={styles.container}>
               <div className={styles.sectionHeaderResume}>
                 <h2>{name}</h2>
                 <div className={styles.headerDescResume}>
-                  <span>{email} &middot; {phone}</span>
+                  <span>
+                    {email} &middot; {phone}
+                  </span>
                   <span>{homebase}</span>
                   <span>Personality Type: {personalityType}</span>
                 </div>
@@ -162,9 +156,7 @@ const Resume = () => {
               <div className={styles.resumeRow}>
                 <h3>Profile</h3>
                 <div className={styles.resumeContent}>
-                  <p>
-                    {profile}
-                  </p>
+                  <p>{profile}</p>
                 </div>
               </div>
 
@@ -175,15 +167,15 @@ const Resume = () => {
                     return (
                       <div className={styles.jobRow} key={job.companyName}>
                         <h4>
-                          <a href={job.companyWebsite} target="_blank">{job.companyName}</a>
+                          <a href={job.companyWebsite} target="_blank">
+                            {job.companyName}
+                          </a>
                           <span className={styles.subTitle}>
                             {job.jobTitle}
                             &nbsp;&nbsp; |&nbsp; {job.startDate} - {job.endDate || 'Current'}
                           </span>
                         </h4>
-                        {job._rawJobBullets && (
-                          <BlockText blocks={job._rawJobBullets} />
-                        )}
+                        {job._rawJobBullets && <BlockText blocks={job._rawJobBullets} />}
                       </div>
                     );
                   })}
@@ -193,7 +185,8 @@ const Resume = () => {
               <div className={styles.resumeRow}>
                 <h3>Education</h3>
                 <div className={styles.resumeContent}>
-                  <h4>{education.schoolName}
+                  <h4>
+                    {education.schoolName}
                     <span className={styles.subTitle}>
                       {education.degreeType} &nbsp;|&nbsp;
                       {education.graduationDate}
@@ -208,20 +201,32 @@ const Resume = () => {
                   <div className={styles.skillsRow}>
                     <div className={styles.col4}>
                       <h4>Professional Skillset</h4>
-                        <ul>
-                          {professionalSkills.map((skill) => <li key={skill}><MdCheck /> {skill}</li>)}
-                        </ul>
+                      <ul>
+                        {professionalSkills.map((skill) => (
+                          <li key={skill}>
+                            <MdCheck /> {skill}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                     <div className={styles.col4}>
                       <h4>Soft Skills</h4>
-                        <ul>
-                          {softSkills.map((skill) => <li key={skill}><MdCheck /> {skill}</li>)}
-                        </ul>
+                      <ul>
+                        {softSkills.map((skill) => (
+                          <li key={skill}>
+                            <MdCheck /> {skill}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                     <div className={styles.col4}>
                       <h4>Tools</h4>
                       <ul>
-                        {tools.map((tool) => <li key={tool}><MdCheck /> {tool}</li>)}
+                        {tools.map((tool) => (
+                          <li key={tool}>
+                            <MdCheck /> {tool}
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -233,6 +238,6 @@ const Resume = () => {
       </div>
     </LayoutContainer>
   );
-}
+};
 
 export default Resume;

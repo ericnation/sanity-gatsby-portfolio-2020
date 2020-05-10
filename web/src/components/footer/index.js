@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'gatsby';
 import { MdExpandLess } from 'react-icons/md';
 import styles from './footer.module.css';
 import Logo from '../logo';
@@ -21,7 +22,9 @@ const Footer = () => {
           <MdExpandLess className={styles.btnIcon} />
         </button>
       </div>
-      <Logo color="white" width={63} />
+      <Link to="/">
+        <Logo color="white" width={63} />
+      </Link>
       <span className={styles.madeWith}>
         Built with{' '}
         <a href="https://sanity.io" target="_blank">

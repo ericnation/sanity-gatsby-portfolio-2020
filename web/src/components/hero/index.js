@@ -54,7 +54,7 @@ const Hero = () => {
       )}
       <div className={styles.homeContent}>
         <div className={styles.logoHome}>
-          <Logo color="white" width={60} />
+          <Logo color="white" width={90} />
         </div>
 
         <div className={styles.homeText}>
