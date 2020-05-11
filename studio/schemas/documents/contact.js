@@ -60,6 +60,11 @@ export default {
       name: 'instagram',
       type: 'string',
       title: 'Instagram Profile URL'
+    },
+    {
+      name: 'youtube',
+      type: 'string',
+      title: 'Youtube Channel URL'
     }
   ]
 }

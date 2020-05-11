@@ -16,6 +16,9 @@ const Resume = () => {
   const { sanitySiteSettings, sanityResume } = useStaticQuery(graphql`
     query ResumeQuery {
       sanitySiteSettings {
+        title
+        description
+        keywords
         author {
           name
           email
@@ -95,6 +98,8 @@ const Resume = () => {
   } = sanityResume;
 
   const {
+    description,
+    keywords,
     author: { name, email, homebase, phone },
   } = sanitySiteSettings;
   const headerImagePrepped = imageUrlFor(buildImageObj(headerImage)).height(582).width(2000).url();
@@ -104,6 +109,11 @@ const Resume = () => {
     .url();
   return (
     <LayoutContainer>
+      <SEO
+        title={`Resume for Eric Nation - Software Developer`}
+        description={description}
+        keywords={keywords}
+      />
       <div className={styles.pageWrap}>
         <header
           className={styles.pageHeader}

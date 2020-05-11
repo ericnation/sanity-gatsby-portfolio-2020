@@ -112,7 +112,7 @@ const ProjectTemplate = (props) => {
   return (
     <LayoutContainer isProjectPage={true}>
       {errors && <SEO title="GraphQL Error" />}
-      {project && <SEO title={project.title || 'Untitled'} />}
+      {project && <SEO title={project.title || 'Untitled'} image={project.projectThumbnail} />}
 
       {errors && (
         <Container>

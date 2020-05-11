@@ -37,7 +37,7 @@
 .socialIcons a {
   color: #cccccc;
   font-size: rem(26);
-	margin: rem(0 15 6 0);
+  margin: rem(0 15 6 0);
   text-decoration: none;
 
   &:hover {
@@ -52,7 +52,7 @@
 
   &.facebook {
     &:hover {
-      color: #3B5998;
+      color: #3b5998;
     }
   }
 
@@ -64,7 +64,13 @@
 
   &.instagram {
     &:hover {
-      color: #C13584;
+      color: #c13584;
+    }
+  }
+
+  &.youtube {
+    &:hover {
+      color: #ff0000;
     }
   }
 }

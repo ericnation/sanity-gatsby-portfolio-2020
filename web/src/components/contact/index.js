@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
-import { FaFacebookF, FaLinkedinIn, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
+import {
+  FaFacebookF,
+  FaLinkedinIn,
+  FaGithub,
+  FaTwitter,
+  FaInstagram,
+  FaYoutube,
+} from 'react-icons/fa';
 import { graphql, useStaticQuery } from 'gatsby';
 // Styles.
 import styles from './contact.module.css';
@@ -20,6 +27,7 @@ const Contact = () => {
         id
         github
         facebook
+        youtube
         email
         city
       }
@@ -40,6 +48,7 @@ const Contact = () => {
     phone,
     linkedin,
     instagram,
+    youtube,
     id,
     github,
     facebook,
@@ -307,6 +316,11 @@ const Contact = () => {
                 {instagram && (
                   <a href={instagram} className={styles.instagram} target="_blank">
                     <FaInstagram />
+                  </a>
+                )}
+                {youtube && (
+                  <a href={youtube} className={styles.youtube} target="_blank">
+                    <FaYoutube />
                   </a>
                 )}
                 {facebook && (

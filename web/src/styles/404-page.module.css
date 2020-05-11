@@ -1,0 +1,8 @@
+.wrap {
+  @include container;
+}
+
+.innerWrap {
+  margin: rem(100 0);
+  text-align: center;
+}
