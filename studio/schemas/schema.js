@@ -36,6 +36,7 @@ import city from './objects/city'
 import projects from './documents/projects'
 import post from './documents/post'
 import bodyPortableText from './objects/bodyPortableText'
+import youtube from './objects/youtube'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -62,6 +63,7 @@ export default createSchema({
     technicalSkills,
     tool,
     workExperience,
+    youtube,
     // The following are document types which will appear
     // in the studio.
     about,

@@ -22,20 +22,21 @@ const BlogSection = (props) => {
             slug {
               current
             }
-            mainImage {
+            thumbnailImage {
               alt
               asset {
                 url
                 assetId
                 _id
-                fluid(maxWidth: 400) {
+                fixed(width: 400) {
                   base64
                   aspectRatio
+                  width
+                  height
                   src
                   srcSet
                   srcWebp
                   srcSetWebp
-                  sizes
                 }
               }
               hotspot {
@@ -95,8 +96,11 @@ const BlogSection = (props) => {
               <Fade bottom>
                 <div className={styles.postItem} key={post.id}>
                   <Link to={`/blog/${post.slug.current}`} className={styles.postImage}>
-                    {post.mainImage && (
-                      <Img fluid={post.mainImage.asset.fluid} alt={post.mainImage.alt || ''} />
+                    {post.thumbnailImage && (
+                      <Img
+                        fixed={post.thumbnailImage.asset.fixed}
+                        alt={post.thumbnailImage.alt || ''}
+                      />
                     )}
                   </Link>
                   <Link className={styles.postTitle} to={`/blog/${post.slug.current}`}>

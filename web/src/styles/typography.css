@@ -21,7 +21,7 @@ h5,
 h6 {
   color: $h-color;
   font-family: $h-font-family;
-  line-height: 1em;
+  line-height: 1.4;
   margin: 0 0 20px 0;
   text-transform: uppercase;
 }

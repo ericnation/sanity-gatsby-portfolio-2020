@@ -8,6 +8,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  border-bottom: 1px solid #eaeaea;
   display: flex;
   height: rem(300);
   margin-bottom: rem(50);
@@ -33,7 +34,7 @@
   color: #fff;
   display: inline-block;
   margin-bottom: rem(10);
-  opacity: 0.9;
+  opacity: 0.95;
   padding: rem(5 15);
   text-align: center;
   width: auto;
@@ -77,6 +78,21 @@
     font-size: rem(18);
     line-height: 1.5;
     margin-bottom: rem(35);
+  }
+
+  ol {
+    list-style: decimal;
+    list-style-position: inside;
+
+    li {
+      padding: rem(10 0);
+    }
+
+    ol {
+      list-style: disc;
+      list-style-position: inside;
+      margin-left: rem(30);
+    }
   }
 }
 

@@ -35,6 +35,11 @@ export default {
       title: 'Main image'
     },
     {
+      name: 'thumbnailImage',
+      type: 'figure',
+      title: 'Thumbnail image'
+    },
+    {
       name: 'excerpt',
       type: 'simplePortableText',
       title: 'Excerpt',

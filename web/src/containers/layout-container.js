@@ -32,7 +32,7 @@ LayoutContainer.defaultProps = {
 };
 
 LayoutContainer.propTypes = {
-  isProjectPage: PropTypes.boolean,
+  isProjectPage: PropTypes.bool,
 };
 
 export default LayoutContainer;
