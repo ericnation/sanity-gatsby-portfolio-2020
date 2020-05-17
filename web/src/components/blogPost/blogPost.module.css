@@ -33,6 +33,7 @@
   background: $accent-color;
   color: #fff;
   display: inline-block;
+  font-weight: 500;
   margin-bottom: rem(10);
   opacity: 0.95;
   padding: rem(5 15);
@@ -56,6 +57,7 @@
   display: inline-block;
   font-family: $secondary-font-family;
   font-size: rem(18);
+  font-weight: 500;
   opacity: 0.8;
   padding: rem(3 15);
 }
