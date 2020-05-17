@@ -16,6 +16,36 @@ export const query = graphql`
         _id
         title
       }
+      thumbnailImage {
+        alt
+        asset {
+          url
+          assetId
+          _id
+          fixed(width: 400) {
+            base64
+            aspectRatio
+            width
+            height
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+          }
+        }
+        hotspot {
+          height
+          width
+          x
+          y
+        }
+        crop {
+          top
+          right
+          left
+          bottom
+        }
+      }
       mainImage {
         alt
         asset {
@@ -85,7 +115,7 @@ const BlogPostTemplate = (props) => {
         <SEO
           title={post.title || 'Untitled'}
           description={toPlainText(post._rawExcerpt)}
-          image={post.mainImage}
+          image={post.thumbnailImage}
         />
       )}
 
