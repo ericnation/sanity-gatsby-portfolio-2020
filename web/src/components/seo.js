@@ -32,6 +32,31 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
           <Helmet
             htmlAttributes={{ lang }}
             title={title}
+            link={[
+              {
+                rel: 'icon',
+                href: '../assets/images/favicon.ico',
+              },
+              {
+                rel: 'apple-touch-icon-precomposed',
+                href: '../assets/images/apple-touch-icon-precomposed.png',
+              },
+              {
+                rel: 'apple-touch-icon-precomposed',
+                href: 'apple-touch-icon-72x72-precomposed.png',
+                sizes: '72x72',
+              },
+              {
+                rel: 'apple-touch-icon-precomposed',
+                href: 'apple-touch-icon-114x114-precomposed.png',
+                sizes: '114x114',
+              },
+              {
+                rel: 'apple-touch-icon-precomposed',
+                href: 'apple-touch-icon-144x144-precomposed.png',
+                sizes: '144x144',
+              },
+            ]}
             titleTemplate={title === siteTitle ? '%s' : `%s | ${siteTitle}`}
             meta={[
               {
@@ -49,6 +74,10 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
               {
                 property: 'og:description',
                 content: metaDescription,
+              },
+              {
+                property: 'og:image',
+                content: metaImage,
               },
               {
                 property: 'og:type',
@@ -69,6 +98,10 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
               {
                 name: 'twitter:description',
                 content: metaDescription,
+              },
+              {
+                name: 'twitter:image',
+                content: metaImage,
               },
             ]
               .concat(

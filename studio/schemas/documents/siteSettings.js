@@ -31,6 +31,11 @@ export default {
       }
     },
     {
+      name: 'favicon',
+      title: 'Favicon',
+      type: 'figure'
+    },
+    {
       name: 'whiteLogo',
       title: 'White Logo',
       type: 'figure'

@@ -110,6 +110,7 @@ const Resume = () => {
   return (
     <LayoutContainer>
       <SEO
+        image={headerImage}
         title={`Resume for Eric Nation - Software Developer`}
         description={description}
         keywords={keywords}
