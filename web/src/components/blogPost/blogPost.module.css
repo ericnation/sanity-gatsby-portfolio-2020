@@ -37,10 +37,11 @@
   opacity: 0.95;
   padding: rem(5 15);
   text-align: center;
-  width: auto;
+  width: 100%;
 
   @media ($mdMin) {
     text-align: left;
+    width: 65%;
   }
 }
 

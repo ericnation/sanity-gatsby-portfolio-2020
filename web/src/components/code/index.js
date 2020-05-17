@@ -1,5 +1,6 @@
 import React from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { xonokai } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from './code.module.css';
 
 const Code = ({ node }) => {
@@ -9,7 +10,9 @@ const Code = ({ node }) => {
   const { language, code } = node;
   return (
     <div className={styles.code}>
-      <SyntaxHighlighter language={language || 'text'}>{code}</SyntaxHighlighter>
+      <SyntaxHighlighter showLineNumbers style={xonokai} language={language || 'javascript'}>
+        {code}
+      </SyntaxHighlighter>
     </div>
   );
 };
