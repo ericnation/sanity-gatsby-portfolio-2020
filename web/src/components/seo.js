@@ -14,11 +14,21 @@ const detailsQuery = graphql`
       author {
         name
       }
+      favicon {
+        asset {
+          assetId
+          url
+          source {
+            url
+          }
+          mimeType
+        }
+      }
     }
   }
 `;
 
-const SEO = ({ description, lang, meta, keywords, title, image }) => {
+const SEO = ({ description, lang, meta, keywords, title, image, favicon }) => {
   return (
     <StaticQuery
       query={detailsQuery}
@@ -35,7 +45,7 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
             link={[
               {
                 rel: 'icon',
-                href: '../assets/images/favicon.ico',
+                href: favicon,
               },
               {
                 rel: 'apple-touch-icon-precomposed',
