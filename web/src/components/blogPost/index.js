@@ -64,61 +64,65 @@ const BlogPost = (props) => {
           </div>
         </div>
       )}
-      <div className={styles.grid}>
-        <div className={styles.mainContent}>
-          <div className={styles.excerpt}>
-            {_rawExcerpt && <PortableText blocks={_rawExcerpt} />}
-          </div>
-          <div className={styles.postContent}>{_rawBody && <PortableText blocks={_rawBody} />}</div>
-          <div className={styles.metaWrap}>
-            {author && author.name && (
-              <div className={styles.autorWrap}>
-                {author.image.asset && (
-                  <Img fixed={author.image.asset.fixed} alt={author.image.asset.alt} />
-                )}
+      <div className={styles.container}>
+        <div className={styles.grid}>
+          <div className={styles.mainContent}>
+            <div className={styles.excerpt}>
+              {_rawExcerpt && <PortableText blocks={_rawExcerpt} />}
+            </div>
+            <div className={styles.postContent}>
+              {_rawBody && <PortableText blocks={_rawBody} />}
+            </div>
+            <div className={styles.metaWrap}>
+              {author && author.name && (
+                <div className={styles.autorWrap}>
+                  {author.image.asset && (
+                    <Img fixed={author.image.asset.fixed} alt={author.image.asset.alt} />
+                  )}
 
-                <span className={styles.authorNameWrap}>
-                  <span className={styles.written}>written by</span>
-                  <span className={styles.name}>{author.name}</span>
-                  <span className={styles.publishedDate}>
-                    {format(new Date(publishedAt), 'MMMM Do, YYYY')}
+                  <span className={styles.authorNameWrap}>
+                    <span className={styles.written}>written by</span>
+                    <span className={styles.name}>{author.name}</span>
+                    <span className={styles.publishedDate}>
+                      {format(new Date(publishedAt), 'MMMM Do, YYYY')}
+                    </span>
                   </span>
-                </span>
+                </div>
+              )}
+              <div className={styles.sharingWrap}>
+                <span className={styles.shareTitle}>Share</span>
+                <ul className={styles.socialList}>
+                  <li onClick={shareToFaceBook}>
+                    <FaFacebook className={styles.facebook} />
+                  </li>
+                  <li onClick={shareToTwitter}>
+                    <FaTwitter className={styles.twitter} />
+                  </li>
+                  <li onClick={shareToWhatsApp}>
+                    <FaWhatsapp className={styles.whatsapp} />
+                  </li>
+                  <li onClick={shareToLinkedIn}>
+                    <FaLinkedin className={styles.linkedin} />
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <aside className={styles.metaContent}>
+            {categories && (
+              <div className={styles.categories}>
+                <h2 className={styles.smallHeader}>
+                  <span>Categories</span>
+                </h2>
+                <ul>
+                  {categories.map((category) => (
+                    <li key={category._id}>{category.title}</li>
+                  ))}
+                </ul>
               </div>
             )}
-            <div className={styles.sharingWrap}>
-              <span className={styles.shareTitle}>Share</span>
-              <ul className={styles.socialList}>
-                <li onClick={shareToFaceBook}>
-                  <FaFacebook className={styles.facebook} />
-                </li>
-                <li onClick={shareToTwitter}>
-                  <FaTwitter className={styles.twitter} />
-                </li>
-                <li onClick={shareToWhatsApp}>
-                  <FaWhatsapp className={styles.whatsapp} />
-                </li>
-                <li onClick={shareToLinkedIn}>
-                  <FaLinkedin className={styles.linkedin} />
-                </li>
-              </ul>
-            </div>
-          </div>
+          </aside>
         </div>
-        <aside className={styles.metaContent}>
-          {categories && (
-            <div className={styles.categories}>
-              <h2 className={styles.smallHeader}>
-                <span>Categories</span>
-              </h2>
-              <ul>
-                {categories.map((category) => (
-                  <li key={category._id}>{category.title}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </aside>
       </div>
     </div>
   );

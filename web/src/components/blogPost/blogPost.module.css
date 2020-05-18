@@ -99,11 +99,14 @@
   }
 }
 
-.grid {
+.container {
   @include container;
+}
+
+.grid {
   display: grid;
   grid-gap: rem(50);
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
 
   @media ($mdMin) {
     grid-gap: rem(150);

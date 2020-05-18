@@ -32,8 +32,7 @@ const SEO = ({ description, lang, meta, keywords, title, image, favicon }) => {
         const metaDescription = description || (data.site && data.site.description) || '';
         const siteTitle = (data.site && data.site.title) || '';
         const siteAuthor = (data.site && data.site.author && data.site.author.name) || '';
-        const metaImage =
-          image && image.asset ? imageUrlFor(buildImageObj(image)).width(500).url() : '';
+        const metaImage = image && image.asset ? imageUrlFor(buildImageObj(image)).url() : '';
         const faviconImg = (data.site.favicon && data.site.favicon.asset.url) || '';
         return (
           <Helmet
