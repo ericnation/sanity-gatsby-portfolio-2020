@@ -171,9 +171,9 @@ const Project = (props) => {
 
         <div className={styles.grid}>
           <div className={styles.projectMeta}>
-            <h5 className={styles.smallHeader}>
+            <h3 className={styles.smallHeader}>
               <span>Project info</span>
-            </h5>
+            </h3>
             <div className={styles.projectInfo}>
               {clientName && (
                 <span>
@@ -211,9 +211,9 @@ const Project = (props) => {
             )}
             {relatedProjects && relatedProjects.length > 0 && isMdMin && (
               <div className={styles.relatedProjects}>
-                <h5 className={styles.smallHeader}>
+                <h4 className={styles.smallHeader}>
                   <span>Related Projects</span>
-                </h5>
+                </h4>
                 <ul>
                   {relatedProjects.map((project) => (
                     <li key={`related_${project._id}`}>
@@ -229,17 +229,17 @@ const Project = (props) => {
             )}
           </div>
           <div className={styles.metaContent}>
-            <h5 className={styles.smallHeader}>
+            <h2 className={styles.smallHeader}>
               <span>Background</span>
-            </h5>
+            </h2>
             {_rawBackground && (
               <div className={styles.blockContent}>
                 <BlockContent blocks={_rawBackground || []} />
               </div>
             )}
-            <h5 className={styles.smallHeader}>
+            <h2 className={styles.smallHeader}>
               <span>Process and Solution</span>
-            </h5>
+            </h2>
             {_rawProcess && (
               <div className={styles.blockContent}>
                 <BlockContent blocks={_rawProcess || []} />

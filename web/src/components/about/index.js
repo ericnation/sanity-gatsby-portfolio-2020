@@ -87,7 +87,7 @@ const About = () => {
         }}
       />
       <div className={classNames(styles.container, styles.firstSection)}>
-        <div className={styles.sectionHeader}>
+        <header className={styles.sectionHeader}>
           <h2>
             <span>{title}</span>
           </h2>
@@ -96,7 +96,7 @@ const About = () => {
               <span>{hobbies.length && hobbies.map((hobby) => `${hobby} `)}</span>
             </div>
           )}
-        </div>
+        </header>
         <div className={styles.gridRow}>
           <div className={styles.col1}>
             {image && image.asset && (

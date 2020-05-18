@@ -39,7 +39,7 @@ const Services = () => {
     <section id="services">
       <section className={styles.section}>
         <div className={styles.container}>
-          <div className={styles.sectionHeader}>
+          <header className={styles.sectionHeader}>
             {title && (
               <h2>
                 <span>{title}</span>
@@ -50,7 +50,7 @@ const Services = () => {
                 <span>{subHeader}</span>
               </div>
             )}
-          </div>
+          </header>
           <div className={classNames(styles.gridRow3, styles.bottomGap)}>
             {services &&
               services.length &&
@@ -80,9 +80,9 @@ const Services = () => {
           </div>
           <div className={styles.gridRow2}>
             <div className={styles.col6}>
-              <h5 className={styles.smallHeader}>
+              <h3 className={styles.smallHeader}>
                 <span>{skillsHeader}</span>
-              </h5>
+              </h3>
               {skills &&
                 skills.length &&
                 skills.map((skill, i) => {
@@ -107,9 +107,9 @@ const Services = () => {
                 })}
             </div>
             <div className={styles.col6}>
-              <h5 className={styles.smallHeader}>
+              <h3 className={styles.smallHeader}>
                 <span>{toolsHeader}</span>
-              </h5>
+              </h3>
               <ul className="list-unstyled">
                 {tools &&
                   tools.length &&

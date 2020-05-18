@@ -45,13 +45,15 @@ const IndexPage = (props) => {
     <LayoutContainer>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
-        <Hero />
-        <Nav />
-        <About />
-        <Services />
-        <ProjectSection />
-        <BlogSection />
-        <Contact />
+        <main>
+          <Hero />
+          <Nav />
+          <About />
+          <Services />
+          <ProjectSection />
+          <BlogSection />
+          <Contact />
+        </main>
       </Container>
     </LayoutContainer>
   );

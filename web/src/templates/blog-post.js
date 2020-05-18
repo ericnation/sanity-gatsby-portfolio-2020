@@ -110,22 +110,24 @@ const BlogPostTemplate = (props) => {
   const post = data && data.post;
   return (
     <LayoutContainer isProjectPage={true}>
-      {errors && <SEO title="GraphQL Error" />}
-      {post && (
-        <SEO
-          title={post.title || 'Untitled'}
-          description={toPlainText(post._rawExcerpt)}
-          image={post.thumbnailImage}
-        />
-      )}
+      <main>
+        {errors && <SEO title="GraphQL Error" />}
+        {post && (
+          <SEO
+            title={post.title || 'Untitled'}
+            description={toPlainText(post._rawExcerpt)}
+            image={post.thumbnailImage}
+          />
+        )}
 
-      {errors && (
-        <Container>
-          <GraphQLErrorList errors={errors} />
-        </Container>
-      )}
+        {errors && (
+          <Container>
+            <GraphQLErrorList errors={errors} />
+          </Container>
+        )}
 
-      {post && <BlogPost {...post} />}
+        {post && <BlogPost {...post} />}
+      </main>
     </LayoutContainer>
   );
 };

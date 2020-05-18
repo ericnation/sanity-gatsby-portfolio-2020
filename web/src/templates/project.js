@@ -111,15 +111,17 @@ const ProjectTemplate = (props) => {
   const project = data && data.sanityProject;
   return (
     <LayoutContainer isProjectPage={true}>
-      {errors && <SEO title="GraphQL Error" />}
-      {project && <SEO title={project.title || 'Untitled'} image={project.projectThumbnail} />}
+      <main>
+        {errors && <SEO title="GraphQL Error" />}
+        {project && <SEO title={project.title || 'Untitled'} image={project.projectThumbnail} />}
 
-      {errors && (
-        <Container>
-          <GraphQLErrorList errors={errors} />
-        </Container>
-      )}
-      {project && <Project {...project} pagination={[previous, next]} />}
+        {errors && (
+          <Container>
+            <GraphQLErrorList errors={errors} />
+          </Container>
+        )}
+        {project && <Project {...project} pagination={[previous, next]} />}
+      </main>
     </LayoutContainer>
   );
 };

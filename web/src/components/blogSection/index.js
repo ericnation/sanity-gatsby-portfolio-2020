@@ -74,7 +74,7 @@ const BlogSection = (props) => {
   return (
     <section id="blog" className={styles.section}>
       <div className={styles.container}>
-        <div className={styles.sectionHeader}>
+        <header className={styles.sectionHeader}>
           <h2>
             <span>Blog</span>
           </h2>
@@ -84,7 +84,7 @@ const BlogSection = (props) => {
               about.
             </span>
           </div>
-        </div>
+        </header>
         <div
           className={classNames(styles.blogGrid, {
             [styles.col1]: recentPosts.length === 1,

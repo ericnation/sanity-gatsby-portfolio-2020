@@ -115,7 +115,7 @@ const Resume = () => {
         description={description}
         keywords={keywords}
       />
-      <div className={styles.pageWrap}>
+      <main className={styles.pageWrap}>
         <header
           className={styles.pageHeader}
           style={{ backgroundImage: `url(${headerImagePrepped})` }}
@@ -246,7 +246,7 @@ const Resume = () => {
             </div>
           </section>
         </section>
-      </div>
+      </main>
     </LayoutContainer>
   );
 };

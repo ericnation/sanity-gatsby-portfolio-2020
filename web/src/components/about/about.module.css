@@ -78,3 +78,7 @@
 .countriesTraveled {
   line-height: 1.4;
 }
+
+.screenReaderText {
+  @include screenreader-only;
+}

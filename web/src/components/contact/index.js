@@ -99,27 +99,29 @@ const Contact = () => {
     <section id="contact">
       <section className={styles.section}>
         <div className={styles.container}>
-          <div className={styles.sectionHeader}>
+          <header className={styles.sectionHeader}>
             <h2>
               <span>{title}</span>
             </h2>
             <div className={styles.headerDesc}>
               <span>{subHeader}</span>
             </div>
-          </div>
+          </header>
 
           <div className={styles.gridRow}>
             <div className={styles.col6}>
-              <h5 className={styles.smallHeader}>
+              <h3 className={styles.smallHeader}>
                 <span>Send me a message</span>
-              </h5>
+              </h3>
 
               <form id="contact-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.formGroup}>
                   <label htmlFor="nameInput">
+                    <span className={styles.screenReaderText}>Enter Name</span>
                     <input
                       type="text"
                       name="nameInput"
+                      title="nameInput"
                       ref={register({
                         required: true,
                         pattern: /^[a-z ,.'-]+$/i,
@@ -128,7 +130,7 @@ const Contact = () => {
                       aria-describedby="error-nameInput-required error-nameInput-pattern"
                       id="nameInput"
                       placeholder="Name *"
-                      tabIndex="1"
+                      tabIndex="0"
                       aria-required="true"
                       className={classNames(styles.formInput, {
                         [styles.inputError]: errors.nameInput,
@@ -160,8 +162,10 @@ const Contact = () => {
                 </div>
                 <div className={styles.formGroup}>
                   <label htmlFor="emailInput">
+                    <span className={styles.screenReaderText}>Enter Email</span>
                     <input
                       type="text"
+                      title="emailInput"
                       name="emailInput"
                       id="emailInput"
                       ref={register({
@@ -169,7 +173,7 @@ const Contact = () => {
                         pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
                       })}
                       placeholder="Email *"
-                      tabIndex="2"
+                      tabIndex="0"
                       aria-invalid={errors.emailInput ? 'true' : 'false'}
                       aria-describedby="error-emailInput-required error-emailInput-pattern"
                       aria-required="true"
@@ -207,8 +211,10 @@ const Contact = () => {
                 </div>
                 <div className={styles.formGroup}>
                   <label htmlFor="phoneInput">
+                    <span className={styles.screenReaderText}>Enter phone number</span>
                     <input
                       type="text"
+                      title="phoneInput"
                       name="phoneInput"
                       id="phoneInput"
                       ref={register({
@@ -217,7 +223,7 @@ const Contact = () => {
                       placeholder="Phone"
                       aria-invalid={errors.phoneInput ? 'true' : 'false'}
                       aria-describedby="error-phoneInput-pattern"
-                      tabIndex="2"
+                      tabIndex="0"
                       aria-required="true"
                       className={styles.formInput}
                     />
@@ -238,15 +244,17 @@ const Contact = () => {
                 </div>
                 <div className={styles.formGroup}>
                   <label htmlFor="messageInput">
+                    <span className={styles.screenReaderText}>Write message</span>
                     <textarea
                       name="messageInput"
+                      title="messageInput"
                       id="messageInput"
                       ref={register({
                         required: true,
                       })}
                       cols="39"
                       rows="6"
-                      tabIndex="4"
+                      tabIndex="0"
                       className={classNames(styles.textarea, {
                         [styles.inputError]: errors.messageInput,
                       })}
@@ -270,7 +278,7 @@ const Contact = () => {
                 <input
                   type="submit"
                   id="submitBtn"
-                  tabIndex="5"
+                  tabIndex="0"
                   value={formState.submitting ? 'Sending ...' : 'Send Messsage'}
                   className={classNames(styles.btn, styles.contactBtn)}
                 />
@@ -278,9 +286,9 @@ const Contact = () => {
             </div>
 
             <div className={styles.col6}>
-              <h5 className={styles.smallHeader}>
+              <h3 className={styles.smallHeader}>
                 <span>Location</span>
-              </h5>
+              </h3>
 
               <div className={styles.bottomGap}>
                 <p>
@@ -298,38 +306,44 @@ const Contact = () => {
                 )}
               </div>
 
-              <h5 className={styles.smallHeader}>
+              <h3 className={styles.smallHeader}>
                 <span>Connect</span>
-              </h5>
+              </h3>
 
               <div className={styles.socialIcons}>
                 {github && (
                   <a href={github} className={styles.github} target="_blank">
+                    <span className={styles.screenReaderText}>Github Icon Link</span>
                     <FaGithub />
                   </a>
                 )}
                 {linkedin && (
                   <a href={linkedin} className={styles.linkedin} target="_blank">
+                    <span className={styles.screenReaderText}>LinkedIn Icon Link</span>
                     <FaLinkedinIn />
                   </a>
                 )}
                 {instagram && (
                   <a href={instagram} className={styles.instagram} target="_blank">
+                    <span className={styles.screenReaderText}>Instagram Icon Link</span>
                     <FaInstagram />
                   </a>
                 )}
                 {youtube && (
                   <a href={youtube} className={styles.youtube} target="_blank">
+                    <span className={styles.screenReaderText}>Youtube Icon Link</span>
                     <FaYoutube />
                   </a>
                 )}
                 {facebook && (
                   <a href={facebook} className={styles.facebook} target="_blank">
+                    <span className={styles.screenReaderText}>Facebook Icon Link</span>
                     <FaFacebookF />
                   </a>
                 )}
                 {twitter && (
                   <a href={twitter} className={styles.twitter} target="_blank">
+                    <span className={styles.screenReaderText}>Twitter Icon Link</span>
                     <FaTwitter />
                   </a>
                 )}

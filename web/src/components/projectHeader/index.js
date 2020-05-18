@@ -6,12 +6,11 @@ import { Link } from 'gatsby';
 
 const ProjectHeader = () => {
   return (
-    <div className={styles.wrap}>
-      
+    <header className={styles.wrap}>
       <Link to={'/'}>
         <Logo className={styles.logo} height={100} color="white" />
       </Link>
-    </div>
+    </header>
   );
 };
 

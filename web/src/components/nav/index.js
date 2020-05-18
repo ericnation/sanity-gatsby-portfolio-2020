@@ -60,7 +60,7 @@ const Nav = () => {
   navItems.forEach((item) => sectionIds.push(item.slug.current));
 
   return (
-    <div id="navbar" className={styles.navBar}>
+    <nav id="navbar" className={styles.navBar}>
       <div className={styles.container}>
         <div className={styles.navLogo}>
           <Link to="/">ERIC NATION</Link>
@@ -80,7 +80,7 @@ const Nav = () => {
           </>
         )}
         {!isMobile && (
-          <nav className={styles.mainNav}>
+          <nav id="mobileNav" title="mobile nav" className={styles.mainNav}>
             <Scrollspy
               items={sectionIds}
               currentClassName={styles.active}
@@ -118,7 +118,7 @@ const Nav = () => {
           </nav>
         )}
       </div>
-    </div>
+    </nav>
   );
 };
 

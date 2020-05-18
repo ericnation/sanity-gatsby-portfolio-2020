@@ -46,7 +46,7 @@ const Hero = () => {
   };
 
   return (
-    <div className={styles.fullScreen} id="home">
+    <header className={styles.fullScreen} id="home">
       {heroVideo && (
         <video autoPlay muted loop id="heroVideoId" className={styles.videoWrap}>
           <source src={heroVideo.asset.url} type={heroVideo.asset.mimeType} />
@@ -72,6 +72,9 @@ const Hero = () => {
               </Slider>
             </CarouselProvider>
           )}
+          <h1 className={styles.screenReaderText}>
+            Portfolio and Blog of Eric Nation, Software Developer
+          </h1>
           {specialties && specialties.length && (
             <div className={styles.smallText}>
               {specialties.map((specialty, index) => (index ? ' - ' : '') + specialty)}
@@ -84,7 +87,7 @@ const Hero = () => {
           </button>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

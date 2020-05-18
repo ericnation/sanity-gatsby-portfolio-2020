@@ -108,14 +108,14 @@ const ProjectSection = () => {
 
   return (
     <section id="work" className={styles.section}>
-      <div className={styles.sectionHeader}>
+      <header className={styles.sectionHeader}>
         <h2>
           <span>Work</span>
         </h2>
         <div className={styles.headerDesc}>
           <span>Projects</span>
         </div>
-      </div>
+      </header>
       <div className={styles.portfolioFilter}>
         <ul className={styles.filters}>
           <li>Filter projects:</li>
@@ -147,7 +147,7 @@ const ProjectSection = () => {
                 <div className={styles.portfolioItem}>
                   <Link to={`/project/${project.slug.current}`}>
                     <div className={styles.overlay}>
-                      <h4>{project.title}</h4>
+                      <h3>{project.title}</h3>
                       <span className={styles.categoryText}>
                         {project.categories.map(
                           (category, index) => (index ? ', ' : '') + category.title,

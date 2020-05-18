@@ -119,3 +119,7 @@
 .inputError {
   @include inputError;
 }
+
+.screenReaderText {
+  @include screenreader-only;
+}

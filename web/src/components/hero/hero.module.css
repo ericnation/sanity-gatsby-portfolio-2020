@@ -95,3 +95,7 @@
   @include btn;
   padding: rem(6) rem(40);
 }
+
+.screenReaderText {
+  @include screenreader-only;
+}
