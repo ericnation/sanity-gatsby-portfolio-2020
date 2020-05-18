@@ -18,10 +18,6 @@ const detailsQuery = graphql`
         asset {
           assetId
           url
-          source {
-            url
-          }
-          mimeType
         }
       }
     }
@@ -38,6 +34,7 @@ const SEO = ({ description, lang, meta, keywords, title, image, favicon }) => {
         const siteAuthor = (data.site && data.site.author && data.site.author.name) || '';
         const metaImage =
           image && image.asset ? imageUrlFor(buildImageObj(image)).width(500).url() : '';
+        const faviconImg = (data.site.favicon && data.site.favicon.asset.url) || '';
         return (
           <Helmet
             htmlAttributes={{ lang }}
@@ -45,7 +42,7 @@ const SEO = ({ description, lang, meta, keywords, title, image, favicon }) => {
             link={[
               {
                 rel: 'icon',
-                href: favicon,
+                href: faviconImg,
               },
               {
                 rel: 'apple-touch-icon-precomposed',
