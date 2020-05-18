@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import Fade from 'react-reveal/Fade';
 import classNames from 'classnames';
@@ -9,6 +9,7 @@ import {
   filterOutDocsPublishedInTheFuture,
 } from '../../lib/helpers';
 import BlockText from '../block-text';
+import { useBreakpoint } from '../../lib/helpers';
 import styles from './blogSection.module.css';
 
 const BlogSection = (props) => {
@@ -38,6 +39,15 @@ const BlogSection = (props) => {
                   srcWebp
                   srcSetWebp
                 }
+                fluid(maxWidth: 400, sizes: "400") {
+                  base64
+                  aspectRatio
+                  src
+                  srcSet
+                  srcWebp
+                  srcSetWebp
+                  sizes
+                }
               }
               hotspot {
                 height
@@ -63,6 +73,18 @@ const BlogSection = (props) => {
       }
     }
   `);
+
+  const [isMobile, setIsMobile] = useState(false);
+  // Breakpoints
+  const isSmMin = useBreakpoint('smMin');
+
+  useEffect(() => {
+    if (!isSmMin) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, []);
 
   const postNodes = allSanityPost.edges.length
     ? mapEdgesToNodes(allSanityPost)
@@ -97,10 +119,20 @@ const BlogSection = (props) => {
                 <div className={styles.postItem} key={post.id}>
                   <Link to={`/blog/${post.slug.current}`} className={styles.postImage}>
                     {post.thumbnailImage && (
-                      <Img
-                        fixed={post.thumbnailImage.asset.fixed}
-                        alt={post.thumbnailImage.alt || ''}
-                      />
+                      <>
+                        {isMobile && (
+                          <Img
+                            fluid={post.thumbnailImage.asset.fluid}
+                            alt={post.thumbnailImage.alt || ''}
+                          />
+                        )}
+                        {!isMobile && (
+                          <Img
+                            fixed={post.thumbnailImage.asset.fixed}
+                            alt={post.thumbnailImage.alt || ''}
+                          />
+                        )}
+                      </>
                     )}
                   </Link>
                   <Link className={styles.postTitle} to={`/blog/${post.slug.current}`}>

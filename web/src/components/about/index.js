@@ -79,9 +79,9 @@ const About = () => {
     .url();
 
   return (
-    <section id="about">
+    <section id="about" className={styles.wrap}>
       <div
-        className={classNames(styles.section, styles.aboutText)}
+        className={classNames(styles.section, styles.aboutTopImage)}
         style={{
           backgroundImage: `url(${colorImage})`,
         }}

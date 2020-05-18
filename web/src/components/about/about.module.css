@@ -3,6 +3,11 @@
   @include container;
 }
 
+.wrap {
+  display: flex;
+  flex-direction: column;
+}
+
 .gridRow {
   @include gridRow(2);
 }
@@ -16,23 +21,33 @@
   }
 }
 
-.aboutText {
+.aboutTopImage {
   background-color: #fff;
   background-position: 67%;
   background-repeat: no-repeat;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+  order: 1;
   position: relative;
   transition: filter 0.2s ease-in-out;
 
-  &:hover {
-    -webkit-filter: grayscale(0);
-    filter: grayscale(0);
+  @media ($mdMin) {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    order: 0;
+
+    &:hover {
+      -webkit-filter: grayscale(0);
+      filter: grayscale(0);
+    }
   }
 }
 
 .firstSection {
+  order: 0;
   padding-top: rem(0);
+
+  @media ($mdMin) {
+    order: 1;
+  }
 }
 
 .col1 {
