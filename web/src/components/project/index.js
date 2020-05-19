@@ -112,7 +112,6 @@ const Project = (props) => {
                 <ReactPlayer
                   url={`https://www.youtube.com/watch?v=${youtubeId}`}
                   width="100%"
-                  height="100%"
                   style={{ position: 'relative', top: '30px' }}
                 />
               )}
