@@ -28,7 +28,7 @@ const Footer = () => {
       <span className={styles.madeWith}>
         Built with{' '}
         <a href="https://sanity.io" target="_blank">
-          Sanity.io
+          Sanity CMS
         </a>{' '}
         and{' '}
         <a href="https://gatsbyjs.org" target="_blank">

@@ -70,10 +70,6 @@
   line-height: 1.4;
   margin-bottom: rem(50);
   width: 100%;
-
-  @media ($mdMin) {
-    width: 80%;
-  }
 }
 
 .postContent {
