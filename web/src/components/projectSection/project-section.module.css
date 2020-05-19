@@ -96,7 +96,7 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   color: $primary-color;
-  padding: 34% 20px;
+  padding: 27% 20px;
   opacity: 0;
   transition: opacity 0.5s;
   z-index: 10;
@@ -105,7 +105,11 @@
     opacity: 1;
   }
 
-  h4 {
+  @media ($mdMin) {
+    padding: 34% 20px;
+  }
+
+  h3 {
     color: #fff;
     margin: 0;
   }

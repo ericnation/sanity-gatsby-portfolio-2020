@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
+import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity';
 import Fade from 'react-reveal/Fade';
 import classNames from 'classnames';
 import Img from 'gatsby-image';
@@ -8,6 +9,7 @@ import {
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture,
 } from '../../lib/helpers';
+import clientConfig from '../../../client-config';
 import BlockText from '../block-text';
 import { useBreakpoint } from '../../lib/helpers';
 import styles from './blogSection.module.css';
@@ -27,39 +29,15 @@ const BlogSection = (props) => {
               alt
               asset {
                 url
+                _rev
                 assetId
                 _id
                 fixed(width: 400) {
-                  base64
-                  aspectRatio
-                  width
-                  height
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                  ...GatsbySanityImageFixed
                 }
                 fluid(maxWidth: 400, sizes: "400") {
-                  base64
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
+                  ...GatsbySanityImageFluid
                 }
-              }
-              hotspot {
-                height
-                width
-                x
-                y
-              }
-              crop {
-                top
-                right
-                left
-                bottom
               }
             }
             categories {
@@ -114,23 +92,25 @@ const BlogSection = (props) => {
           })}
         >
           {recentPosts.map((post) => {
+            const fluidProps = getFluidGatsbyImage(
+              post.thumbnailImage.asset._id,
+              { maxWidth: 700 },
+              clientConfig.sanity,
+            );
+            const fixedProps = getFixedGatsbyImage(
+              post.thumbnailImage.asset._id,
+              { maxWidth: 400 },
+              clientConfig.sanity,
+            );
             return (
               <Fade bottom>
                 <div className={styles.postItem} key={post.id}>
                   <Link to={`/blog/${post.slug.current}`} className={styles.postImage}>
                     {post.thumbnailImage && (
                       <>
-                        {isMobile && (
-                          <Img
-                            fluid={post.thumbnailImage.asset.fluid}
-                            alt={post.thumbnailImage.alt || ''}
-                          />
-                        )}
+                        {isMobile && <Img fluid={fluidProps} alt={post.thumbnailImage.alt || ''} />}
                         {!isMobile && (
-                          <Img
-                            fixed={post.thumbnailImage.asset.fixed}
-                            alt={post.thumbnailImage.alt || ''}
-                          />
+                          <Img fixed={fixedProps} alt={post.thumbnailImage.alt || ''} />
                         )}
                       </>
                     )}
