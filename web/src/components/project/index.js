@@ -255,17 +255,22 @@ const Project = (props) => {
                         style={{ marginRight: 0 === index ? '25px' : 0 }}
                       >
                         {index === 0 && page && (
-                          <FaLongArrowAltLeft
-                            style={{ marginRight: '10px' }}
-                            className={styles.pageIcon}
-                          />
+                          <>
+                            <FaLongArrowAltLeft
+                              style={{ marginRight: '10px' }}
+                              className={styles.pageIcon}
+                            />
+                            <span className={styles.btnText}>Previous</span>
+                          </>
                         )}
-                        <span className={styles.btnText}>{page?.title}</span>
                         {index === 1 && page && (
-                          <FaLongArrowAltRight
-                            style={{ marginLeft: '10px' }}
-                            className={styles.pageIcon}
-                          />
+                          <>
+                            <span className={styles.btnText}>Next</span>
+                            <FaLongArrowAltRight
+                              style={{ marginLeft: '10px' }}
+                              className={styles.pageIcon}
+                            />
+                          </>
                         )}
                       </Link>
                     );

@@ -360,7 +360,9 @@
   @include btn;
   align-items: center;
   display: flex;
+  justify-content: center;
   line-height: 1.4;
+  min-width: rem(120);
 }
 
 .pageIcon {
