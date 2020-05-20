@@ -36,10 +36,18 @@ h1 {
 
 h2 {
   font-size: $h2-size;
+
+  @media ($smMax) {
+    font-size: $h3-size;
+  }
 }
 
 h3 {
   font-size: $h3-size;
+
+  @media ($smMax) {
+    font-size: $h4-size;
+  }
 }
 
 h4 {

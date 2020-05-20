@@ -7,13 +7,19 @@
   align-items: center;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   border-bottom: 1px solid #eaeaea;
   display: flex;
-  height: rem(300);
-  margin-bottom: rem(50);
+  height: rem(200);
+  margin-bottom: rem(25);
   overflow: hidden;
   width: 100%;
+
+  @media ($smMdMin) {
+    background-size: cover;
+    height: rem(350);
+    margin-bottom: rem(50);
+  }
 
   @media ($mdMin) {
     height: rem(500);
@@ -24,7 +30,7 @@
   @include container;
   text-align: center;
 
-  @media ($mdMin) {
+  @media ($lgMin) {
     text-align: left;
   }
 }
@@ -33,6 +39,7 @@
   background: $accent-color;
   color: #fff;
   display: inline-block;
+  font-size: rem(28);
   font-weight: 500;
   margin-bottom: rem(10);
   opacity: 0.95;
@@ -40,7 +47,11 @@
   text-align: center;
   width: 100%;
 
-  @media ($mdMin) {
+  @media ($smMdMin) {
+    font-size: rem(32);
+  }
+
+  @media ($lgMin) {
     text-align: left;
     width: 65%;
   }
@@ -56,27 +67,46 @@
   color: #fff;
   display: inline-block;
   font-family: $secondary-font-family;
-  font-size: rem(18);
+  font-size: rem(16);
   font-weight: 500;
   opacity: 0.8;
   padding: rem(3 15);
+
+  @media ($smMdMin) {
+    font-size: rem(18);
+  }
+}
+
+.mobileTitle {
+  margin-bottom: rem(25);
 }
 
 .excerpt {
   color: $secondary-color;
   font-family: $secondary-font-family;
-  font-size: rem(25);
+  font-size: rem(18);
+  font-style: italic;
   font-weight: 500;
   line-height: 1.4;
-  margin-bottom: rem(50);
+  margin-bottom: rem(25);
   width: 100%;
+
+  @media ($smMdMin) {
+    font-size: rem(25);
+    font-style: normal;
+    margin-bottom: rem(50);
+  }
 }
 
 .postContent {
   p {
-    font-size: rem(18);
+    font-size: rem(16);
     line-height: 1.5;
     margin-bottom: rem(35);
+
+    @media ($smMdMin) {
+      font-size: rem(18);
+    }
   }
 
   ol {

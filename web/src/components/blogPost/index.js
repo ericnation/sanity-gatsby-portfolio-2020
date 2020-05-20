@@ -5,15 +5,23 @@ import { FaFacebook, FaTwitter, FaWhatsapp, FaLinkedin } from 'react-icons/fa';
 import { buildImageObj } from '../../lib/helpers';
 import imageUrlFor from '../../lib/image-url';
 import PortableText from '../portableText';
+import { useBreakpoint } from '../../lib/helpers';
 
 import styles from './blogPost.module.css';
 
 const BlogPost = (props) => {
   const { _rawBody, _rawExcerpt, author, categories, title, mainImage, publishedAt } = props;
   const [currentUrl, setCurrentUrl] = useState('');
+  const [isTablet, setIsTablet] = useState(false);
+  const issmMdMin = useBreakpoint('smMdMin');
   useEffect(() => {
     if (window && typeof window !== `undefined`) {
       setCurrentUrl(encodeURIComponent(window.location.href));
+    }
+    if (!issmMdMin) {
+      setIsTablet(true);
+    } else {
+      setIsTablet(false);
     }
   });
   const triggerSocialWindow = (url) => {
@@ -51,22 +59,36 @@ const BlogPost = (props) => {
     <div className={styles.wrap}>
       {mainImage && mainImage.asset && (
         <div className={styles.hero} style={{ backgroundImage: `url(${featuredImg})` }}>
-          <div className={styles.heroContent}>
-            <h1 className={styles.title}>{title}</h1>
-            <br />
-            {publishedAt && (
-              <div className={styles.publishedAt}>
-                {differenceInDays(new Date(publishedAt), new Date()) > 3
-                  ? distanceInWords(new Date(publishedAt), new Date())
-                  : format(new Date(publishedAt), 'MMMM Do, YYYY')}
-              </div>
-            )}
-          </div>
+          {!isTablet && (
+            <div className={styles.heroContent}>
+              <h1 className={styles.title}>{title}</h1>
+              <br />
+              {publishedAt && (
+                <div className={styles.publishedAt}>
+                  {differenceInDays(new Date(publishedAt), new Date()) > 3
+                    ? distanceInWords(new Date(publishedAt), new Date())
+                    : format(new Date(publishedAt), 'MMMM Do, YYYY')}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
       <div className={styles.container}>
         <div className={styles.grid}>
           <div className={styles.mainContent}>
+            {isTablet && (
+              <div className={styles.mobileTitle}>
+                <h1 className={styles.title}>{title}</h1>
+                {publishedAt && (
+                  <div className={styles.publishedAt}>
+                    {differenceInDays(new Date(publishedAt), new Date()) > 3
+                      ? distanceInWords(new Date(publishedAt), new Date())
+                      : format(new Date(publishedAt), 'MMMM Do, YYYY')}
+                  </div>
+                )}
+              </div>
+            )}
             <div className={styles.excerpt}>
               {_rawExcerpt && <PortableText blocks={_rawExcerpt} />}
             </div>
