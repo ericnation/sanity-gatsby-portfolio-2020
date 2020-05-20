@@ -77,6 +77,7 @@ const Nav = () => {
               mobileGoToSection={goToSection}
               closeMenu={toggleMobileMenu}
             />
+            {isVisibleMobileNav && <div className={styles.overlay} onClick={toggleMobileMenu} />}
           </>
         )}
         {!isMobile && (

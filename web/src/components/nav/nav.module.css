@@ -78,3 +78,13 @@
     font-size: rem(30);
   }
 }
+
+.overlay {
+  background: transparent;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vh;
+  z-index: 50;
+}
