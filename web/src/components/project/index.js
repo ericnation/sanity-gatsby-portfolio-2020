@@ -147,6 +147,7 @@ const Project = (props) => {
                       <Slide index={i} key={`slide_${i}`}>
                         {slide.image && (
                           <img
+                          
                             className={styles.slideImg}
                             src={slide.image.asset.url}
                             alt={slide.image.alt}

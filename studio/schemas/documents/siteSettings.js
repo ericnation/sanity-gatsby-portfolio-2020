@@ -61,6 +61,11 @@ export default {
       name: 'heroVideo',
       title: 'Hero Video',
       type: 'file'
+    },
+    {
+      name: 'heroImage',
+      title: 'Hero Image for Mobile',
+      type: 'figure'
     }
   ]
 }

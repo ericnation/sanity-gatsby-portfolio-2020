@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
 import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
 import Logo from '../logo';
 import styles from './hero.module.css';
+import { useBreakpoint, buildImageObj } from '../../lib/helpers';
+import imageUrlFor from '../../lib/image-url';
 
 const Hero = () => {
   const { sanitySiteSettings, sanityCarousel } = useStaticQuery(graphql`
@@ -16,6 +19,24 @@ const Hero = () => {
             mimeType
           }
         }
+        heroImage {
+          alt
+          asset {
+            url
+            fluid {
+              base64
+              aspectRatio
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+            }
+            _id
+            _rev
+            assetId
+          }
+        }
       }
       sanityCarousel(title: { eq: "Header Carousel" }) {
         specialties
@@ -26,9 +47,12 @@ const Hero = () => {
       }
     }
   `);
+  const [isMobile, setIsMobile] = useState(false);
+  const issmMin = useBreakpoint('smMin');
 
-  const { heroVideo } = sanitySiteSettings;
+  const { heroVideo, heroImage } = sanitySiteSettings;
   const { specialties, slides } = sanityCarousel;
+  const heroImageUrl = imageUrlFor(buildImageObj(heroImage)).url();
 
   let globalWindow = null;
   useEffect(() => {
@@ -39,7 +63,13 @@ const Hero = () => {
     if (typeof window !== `undefined`) {
       globalWindow = window;
     }
-  });
+
+    if (!issmMin) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, []);
 
   const scrollDown = () => {
     globalWindow.scrollTo({ top: globalWindow.innerHeight, behavior: 'smooth' });
@@ -47,14 +77,17 @@ const Hero = () => {
 
   return (
     <header className={styles.fullScreen} id="home">
-      {heroVideo && (
+      {heroVideo && !isMobile && (
         <video autoPlay muted loop id="heroVideoId" className={styles.videoWrap}>
           <source src={heroVideo.asset.url} type={heroVideo.asset.mimeType} />
         </video>
       )}
+      {isMobile && heroImage && heroImage.asset && (
+        <div className={styles.imgWrap} style={{ backgroundImage: `url(${heroImageUrl})` }} />
+      )}
       <div className={styles.homeContent}>
         <div className={styles.logoHome}>
-          <Logo color="white" width={90} />
+          <Logo color={isMobile ? 'black' : 'white'} width={90} />
         </div>
 
         <div className={styles.homeText}>

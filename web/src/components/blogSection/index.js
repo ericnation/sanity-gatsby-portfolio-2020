@@ -33,10 +33,23 @@ const BlogSection = (props) => {
                 assetId
                 _id
                 fixed(width: 400) {
-                  ...GatsbySanityImageFixed
+                  aspectRatio
+                  base64
+                  height
+                  src
+                  srcSet
+                  srcSetWebp
+                  srcWebp
+                  width
                 }
                 fluid(maxWidth: 400, sizes: "400") {
-                  ...GatsbySanityImageFluid
+                  aspectRatio
+                  base64
+                  sizes
+                  src
+                  srcSet
+                  srcSetWebp
+                  srcWebp
                 }
               }
             }
@@ -92,25 +105,23 @@ const BlogSection = (props) => {
           })}
         >
           {recentPosts.map((post) => {
-            const fluidProps = getFluidGatsbyImage(
-              post.thumbnailImage.asset._id,
-              { maxWidth: 700 },
-              clientConfig.sanity,
-            );
-            const fixedProps = getFixedGatsbyImage(
-              post.thumbnailImage.asset._id,
-              { maxWidth: 400 },
-              clientConfig.sanity,
-            );
             return (
-              <Fade bottom>
-                <div className={styles.postItem} key={post.id}>
+              <Fade bottom key={post.id}>
+                <div className={styles.postItem}>
                   <Link to={`/blog/${post.slug.current}`} className={styles.postImage}>
                     {post.thumbnailImage && (
                       <>
-                        {isMobile && <Img fluid={fluidProps} alt={post.thumbnailImage.alt || ''} />}
+                        {isMobile && (
+                          <Img
+                            fluid={post.thumbnailImage.asset.fluid}
+                            alt={post.thumbnailImage.alt || ''}
+                          />
+                        )}
                         {!isMobile && (
-                          <Img fixed={fixedProps} alt={post.thumbnailImage.alt || ''} />
+                          <Img
+                            fixed={post.thumbnailImage.asset.fixed}
+                            alt={post.thumbnailImage.alt || ''}
+                          />
                         )}
                       </>
                     )}

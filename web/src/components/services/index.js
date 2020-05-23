@@ -56,8 +56,8 @@ const Services = () => {
               services.length &&
               services.map((service) => {
                 return (
-                  <Fade bottom>
-                    <div className={styles.col4} key={service.title}>
+                  <Fade bottom key={service.title}>
+                    <div className={styles.col4}>
                       <div className={styles.service}>
                         <div className={styles.serviceIcon}>
                           {'DiCode' === service.deviconName && <DiCode />}
