@@ -32,7 +32,7 @@ const BlogSection = (props) => {
                 _rev
                 assetId
                 _id
-                fixed(width: 400) {
+                fixed(width: 400, toFormat: WEBP) {
                   aspectRatio
                   base64
                   height
@@ -42,7 +42,7 @@ const BlogSection = (props) => {
                   srcWebp
                   width
                 }
-                fluid(maxWidth: 400, sizes: "400") {
+                fluid(maxWidth: 400, sizes: "400", toFormat: WEBP) {
                   aspectRatio
                   base64
                   sizes

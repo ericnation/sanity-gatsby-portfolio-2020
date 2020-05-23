@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
+import BackgroundImage from 'gatsby-background-image';
 import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
 import Logo from '../logo';
 import styles from './hero.module.css';
-import { useBreakpoint, buildImageObj } from '../../lib/helpers';
-import imageUrlFor from '../../lib/image-url';
+import { useBreakpoint } from '../../lib/helpers';
 
 const Hero = () => {
   const { sanitySiteSettings, sanityCarousel } = useStaticQuery(graphql`
@@ -23,13 +22,11 @@ const Hero = () => {
           alt
           asset {
             url
-            fluid {
+            fluid(toFormat: WEBP) {
               base64
               aspectRatio
               src
-              srcSet
               srcWebp
-              srcSetWebp
               sizes
             }
             _id
@@ -52,7 +49,6 @@ const Hero = () => {
 
   const { heroVideo, heroImage } = sanitySiteSettings;
   const { specialties, slides } = sanityCarousel;
-  const heroImageUrl = imageUrlFor(buildImageObj(heroImage)).url();
 
   let globalWindow = null;
   useEffect(() => {
@@ -83,7 +79,11 @@ const Hero = () => {
         </video>
       )}
       {heroImage && heroImage.asset && (
-        <div className={styles.imgWrap} style={{ backgroundImage: `url(${heroImageUrl})` }} />
+        <BackgroundImage
+          className={styles.imgWrap}
+          fluid={heroImage.asset.fluid}
+          style={{ position: 'absolute' }}
+        />
       )}
       <div className={styles.homeContent}>
         <div className={styles.logoHome}>

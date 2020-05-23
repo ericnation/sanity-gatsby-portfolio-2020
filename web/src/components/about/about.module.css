@@ -25,9 +25,11 @@
   background-color: #fff;
   background-position: 67%;
   background-repeat: no-repeat;
+  background-size: cover;
   order: 1;
   position: relative;
   transition: filter 0.2s ease-in-out;
+  width: 100%;
 
   @media ($mdMin) {
     -webkit-filter: grayscale(100%);

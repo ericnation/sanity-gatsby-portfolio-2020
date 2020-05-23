@@ -3,10 +3,9 @@ import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import Slide from 'react-reveal/Slide';
 import classNames from 'classnames';
+import BackgroundImage from 'gatsby-background-image';
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
-import { buildImageObj } from '../../lib/helpers';
-import imageUrlFor from '../../lib/image-url';
 import BlockText from '../block-text';
 
 import styles from './about.module.css';
@@ -32,6 +31,13 @@ const About = () => {
             _id
             url
             assetId
+            fluid(maxWidth: 2000, sizes: "2000", toFormat: WEBP) {
+              base64
+              aspectRatio
+              src
+              srcWebp
+              sizes
+            }
           }
         }
         hobbies
@@ -73,19 +79,19 @@ const About = () => {
   const { totalCount } = allSanityCountries;
   const [viewPortEntered, setViewPortEntered] = useState(false);
 
-  const colorImage = imageUrlFor(buildImageObj(aboutSectionImageColor))
-    .height(465)
-    .width(2000)
-    .url();
+  // const colorImage = imageUrlFor(buildImageObj(aboutSectionImageColor))
+  //   .height(465)
+  //   .width(2000)
+  //   .url();
 
   return (
     <section id="about" className={styles.wrap}>
-      <div
-        className={classNames(styles.section, styles.aboutTopImage)}
-        style={{
-          backgroundImage: `url(${colorImage})`,
-        }}
-      />
+      {aboutSectionImageColor && aboutSectionImageColor.asset && (
+        <BackgroundImage
+          className={classNames(styles.section, styles.aboutTopImage)}
+          fluid={aboutSectionImageColor.asset.fluid}
+        />
+      )}
       <div className={classNames(styles.container, styles.firstSection)}>
         <header className={styles.sectionHeader}>
           <h2>
