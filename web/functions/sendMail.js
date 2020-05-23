@@ -25,20 +25,23 @@ exports.handler = function (event, context, callback) {
   console.log('msg', msg);
   sgMail
     .send(msg)
-    .then((response) => {
-      callback(null, {
-        statusCode: response.statusCode,
-        body: 'Email sent successfully!',
-      });
-    }, (error) => {
-      callback(error, {
-        body: 'Email not sent successfully',
-      });
-      console.error(error);
+    .then(
+      (response) => {
+        callback(null, {
+          statusCode: response.statusCode,
+          body: 'Email sent successfully!',
+        });
+      },
+      (error) => {
+        callback(error, {
+          body: 'Email not sent successfully',
+        });
+        console.error(error);
 
-      if (error.response) {
-        console.error(error.response.body);
-      }
-    })
+        if (error.response) {
+          console.error(error.response.body);
+        }
+      },
+    )
     .catch((err) => callback(err, null));
 };
