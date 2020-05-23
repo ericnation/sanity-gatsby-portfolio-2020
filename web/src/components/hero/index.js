@@ -69,7 +69,7 @@ const Hero = () => {
     } else {
       setIsMobile(false);
     }
-  }, []);
+  });
 
   const scrollDown = () => {
     globalWindow.scrollTo({ top: globalWindow.innerHeight, behavior: 'smooth' });
