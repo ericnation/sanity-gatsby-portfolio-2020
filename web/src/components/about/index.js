@@ -50,13 +50,11 @@ const About = () => {
               assetId
               _id
               url
-              fluid(maxWidth: 630) {
+              fluid(maxWidth: 630, toFormat: WEBP) {
                 base64
                 aspectRatio
                 src
-                srcSet
                 srcWebp
-                srcSetWebp
                 sizes
               }
             }
@@ -78,11 +76,6 @@ const About = () => {
 
   const { totalCount } = allSanityCountries;
   const [viewPortEntered, setViewPortEntered] = useState(false);
-
-  // const colorImage = imageUrlFor(buildImageObj(aboutSectionImageColor))
-  //   .height(465)
-  //   .width(2000)
-  //   .url();
 
   return (
     <section id="about" className={styles.wrap}>
