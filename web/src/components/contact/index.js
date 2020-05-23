@@ -312,37 +312,37 @@ const Contact = () => {
 
               <div className={styles.socialIcons}>
                 {github && (
-                  <a href={github} className={styles.github} target="_blank">
+                  <a href={github} className={styles.github} target="_blank" rel="noopener">
                     <span className={styles.screenReaderText}>Github Icon Link</span>
                     <FaGithub />
                   </a>
                 )}
                 {linkedin && (
-                  <a href={linkedin} className={styles.linkedin} target="_blank">
+                  <a href={linkedin} className={styles.linkedin} target="_blank" rel="noopener">
                     <span className={styles.screenReaderText}>LinkedIn Icon Link</span>
                     <FaLinkedinIn />
                   </a>
                 )}
                 {instagram && (
-                  <a href={instagram} className={styles.instagram} target="_blank">
+                  <a href={instagram} className={styles.instagram} target="_blank" rel="noopener">
                     <span className={styles.screenReaderText}>Instagram Icon Link</span>
                     <FaInstagram />
                   </a>
                 )}
                 {youtube && (
-                  <a href={youtube} className={styles.youtube} target="_blank">
+                  <a href={youtube} className={styles.youtube} target="_blank" rel="noopener">
                     <span className={styles.screenReaderText}>Youtube Icon Link</span>
                     <FaYoutube />
                   </a>
                 )}
                 {facebook && (
-                  <a href={facebook} className={styles.facebook} target="_blank">
+                  <a href={facebook} className={styles.facebook} target="_blank" rel="noopener">
                     <span className={styles.screenReaderText}>Facebook Icon Link</span>
                     <FaFacebookF />
                   </a>
                 )}
                 {twitter && (
-                  <a href={twitter} className={styles.twitter} target="_blank">
+                  <a href={twitter} className={styles.twitter} target="_blank" rel="noopener">
                     <span className={styles.screenReaderText}>Twitter Icon Link</span>
                     <FaTwitter />
                   </a>

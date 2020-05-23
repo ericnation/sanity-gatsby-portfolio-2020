@@ -27,11 +27,11 @@ const Footer = () => {
       </Link>
       <span className={styles.madeWith}>
         Built with{' '}
-        <a href="https://sanity.io" target="_blank">
+        <a href="https://sanity.io" target="_blank" rel="noopener">
           Sanity CMS
         </a>{' '}
         and{' '}
-        <a href="https://gatsbyjs.org" target="_blank">
+        <a href="https://gatsbyjs.org" target="_blank" rel="noopener">
           Gatsby
         </a>
       </span>
