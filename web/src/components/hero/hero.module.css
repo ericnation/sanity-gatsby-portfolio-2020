@@ -12,20 +12,30 @@
   background-position: left 50% bottom 30%;
   background-repeat: no-repeat;
   background-size: auto;
+  display: block;
   height: 100vh;
   left: 0;
   position: absolute;
   top: 0;
   width: 100%;
+
+  @media ($smMin) {
+    display: none;
+  }
 }
 
 .videoWrap {
+  display: none;
   background-size: cover;
   height: 100%;
   left: 0;
   position: absolute;
   top: 0;
   width: 100%;
+
+  @media ($smMin) {
+    display: block;
+  }
 
   @media (min-aspect-ratio: 16/9) {
     height: auto;

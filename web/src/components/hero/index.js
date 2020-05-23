@@ -77,12 +77,12 @@ const Hero = () => {
 
   return (
     <header className={styles.fullScreen} id="home">
-      {heroVideo && !isMobile && (
+      {heroVideo && (
         <video autoPlay muted loop id="heroVideoId" className={styles.videoWrap}>
           <source src={heroVideo.asset.url} type={heroVideo.asset.mimeType} />
         </video>
       )}
-      {isMobile && heroImage && heroImage.asset && (
+      {heroImage && heroImage.asset && (
         <div className={styles.imgWrap} style={{ backgroundImage: `url(${heroImageUrl})` }} />
       )}
       <div className={styles.homeContent}>
