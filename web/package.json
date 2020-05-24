@@ -33,6 +33,7 @@
     "gatsby-transformer-sharp": "^2.4.6",
     "get-youtube-id": "^1.0.1",
     "netlify-lambda": "^1.6.3",
+    "nodemailer": "^6.4.6",
     "postcss-browser-reporter": "^0.6.0",
     "postcss-calc": "^7.0.2",
     "postcss-color-function": "^4.1.0",
