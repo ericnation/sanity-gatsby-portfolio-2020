@@ -1,17 +1,15 @@
-/* eslint-disable func-names */
-gmailUserName = process.env.GMAIL_USERNAME;
-gmailPassword = process.env.GMAIL_PASS;
-const nodemailer = require('nodemailer');
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: gmailUserName,
-    pass: gmailPassword,
-  },
-});
-
 exports.handler = function (event, context, callback) {
-  console.log('gmailPassword ', gmailPassword);
+  /* eslint-disable func-names */
+  const gmailUserName = process.env.GMAIL_USERNAME;
+  const gmailPassword = process.env.GMAIL_PASS;
+  const nodemailer = require('nodemailer');
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: gmailUserName,
+      pass: gmailPassword,
+    },
+  });
   const body = JSON.parse(event.body);
   const msg = {
     to: 'eric.nation@gmail.com',
