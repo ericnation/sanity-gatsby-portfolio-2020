@@ -80,44 +80,48 @@
 }
 
 .homeText {
-  color: color(#ffffff shade(5%));
   margin-bottom: rem(100);
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
-
-  @media ($mdMin) {
-    margin-bottom: rem(150);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  }
 }
 
 .textHeader {
+  color: color(#ffffff shade(5%));
   display: inline-block;
   font: italic 500 rem(28) $primary-font-family;
   margin-bottom: rem(10);
+  text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.4);
+
+  @media ($mdMin) {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .smallText {
-  color: color(#ffffff shade(10%));
+  color: color(#ffffff shade(5%));
   display: block;
   font: 500 rem(15) $secondary-font-family;
   margin: rem(10) auto 0;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
   text-transform: uppercase;
   width: 100%;
 }
 
 .bigText {
+  color: color(#ffffff shade(5%));
   display: block;
   font-family: $secondary-font-family;
   font-size: rem(70);
   line-height: rem(75);
   text-transform: uppercase;
   padding: 0 0 rem(20);
-  width: 100%;
   margin: 0 auto;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  width: 100%;
 
   @media ($mdMin) {
     font-size: rem(120);
     line-height: rem(100);
+    margin-bottom: rem(150);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   }
 }
 
