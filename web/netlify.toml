@@ -1,2 +1,4 @@
 [build]
-  Command = "npm run prod"
+  command = "npm run prod"
+  functions = "functions-build"
+  publish = "public"

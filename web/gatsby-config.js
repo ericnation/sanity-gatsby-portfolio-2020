@@ -2,7 +2,6 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV || 'development'}`,
 });
-const proxy = require('http-proxy-middleware');
 
 const clientConfig = require('./client-config');
 const token = process.env.SANITY_READ_TOKEN;
@@ -10,17 +9,6 @@ const token = process.env.SANITY_READ_TOKEN;
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  developMiddleware: (app) => {
-    app.use(
-      '/.netlify/functions/',
-      proxy({
-        target: 'http://localhost:8000',
-        pathRewrite: {
-          '/.netlify/functions/': '',
-        },
-      }),
-    );
-  },
   plugins: [
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',

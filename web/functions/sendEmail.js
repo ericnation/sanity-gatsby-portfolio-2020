@@ -1,17 +1,23 @@
 /* eslint-disable func-names */
 gmailUserName = process.env.GMAIL_USERNAME;
 gmailPassword = process.env.GMAIL_PASS;
-
-const send = require('gmail-send');
-
-exports.handler = function (event, context, callback) {
-  const body = JSON.parse(event.body);
-  const msg = {
+const nodemailer = require('nodemailer');
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
     user: gmailUserName,
     pass: gmailPassword,
+  },
+});
+
+exports.handler = function (event, context, callback) {
+  console.log('gmailPassword ', gmailPassword);
+  const body = JSON.parse(event.body);
+  const msg = {
     to: 'eric.nation@gmail.com',
     from: body.emailInput,
     subject: 'Message from ericnation.io Contact Form',
+    text: body.messageInput,
     html: `<div className="email" style="
             border: 3px solid #000;
             padding: 20px;
@@ -26,21 +32,19 @@ exports.handler = function (event, context, callback) {
           </div>
         `,
   };
-  const asyncAwaitSend = async () => {
-    try {
-      const { result, full } = await send(msg);
-      console.log('response', result);
-      console.log('res.full:', full);
-      callback(null, {
-        statusCode: result,
-        body: 'Email sent successfully!',
-      });
-    } catch (error) {
-      console.error('error', error);
+
+  transporter.sendMail(msg, function (error, info) {
+    if (error) {
+      console.log(error);
       callback(error, {
         body: 'Email not sent successfully',
       });
+    } else {
+      console.log('Email sent: ' + info.response);
+      callback(null, {
+        statusCode: info.response,
+        body: 'Email sent successfully!',
+      });
     }
-  };
-  asyncAwaitSend();
+  });
 };
