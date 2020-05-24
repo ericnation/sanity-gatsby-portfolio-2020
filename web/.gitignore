@@ -69,5 +69,3 @@ yarn.lock
 
 # Secrets
 .env.development
-
-funtions-build
