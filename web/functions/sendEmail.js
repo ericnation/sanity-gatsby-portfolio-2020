@@ -1,7 +1,8 @@
+const gmailUserName = process.env.GMAIL_USERNAME;
+const gmailPassword = process.env.GMAIL_PASS;
+
 exports.handler = function (event, context, callback) {
   /* eslint-disable func-names */
-  const gmailUserName = process.env.GMAIL_USERNAME;
-  const gmailPassword = process.env.GMAIL_PASS;
   const nodemailer = require('nodemailer');
   const transporter = nodemailer.createTransport({
     service: 'gmail',
