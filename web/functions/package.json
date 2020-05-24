@@ -9,6 +9,8 @@
   "author": "Eric Nation",
   "license": "ISC",
   "dependencies": {
-    "@sendgrid/mail": "^7.1.1"
+    "@sendgrid/mail": "^7.1.1",
+    "gmail-send": "^1.8.10",
+    "nodemailer": "^6.4.6"
   }
 }

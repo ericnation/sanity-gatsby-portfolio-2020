@@ -74,7 +74,7 @@ const Contact = () => {
       submitting: true,
       submitted: false,
     });
-    fetch('/.netlify/functions/sendMail', {
+    fetch('/.netlify/functions/sendEmail', {
       method: 'POST',
       body: JSON.stringify(formData),
     })
