@@ -1,0 +1,2 @@
+[build]
+  Command = "npm run prod"
