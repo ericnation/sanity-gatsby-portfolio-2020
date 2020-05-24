@@ -51,11 +51,7 @@ const About = () => {
               _id
               url
               fluid(maxWidth: 630, toFormat: WEBP) {
-                base64
-                aspectRatio
-                src
-                srcWebp
-                sizes
+                ...GatsbySanityImageFluid_withWebp
               }
             }
           }

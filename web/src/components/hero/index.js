@@ -22,12 +22,8 @@ const Hero = () => {
           alt
           asset {
             url
-            fluid(toFormat: WEBP) {
-              base64
-              aspectRatio
-              src
-              srcWebp
-              sizes
+            fluid {
+              ...GatsbySanityImageFluid_withWebp
             }
             _id
             _rev

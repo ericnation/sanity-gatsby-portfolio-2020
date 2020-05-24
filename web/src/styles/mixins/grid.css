@@ -5,6 +5,7 @@
 
 @mixin gridRow($cols) {
   display: grid;
+  grid-gap: rem(20);
   grid-template-columns: 1fr;
 
   @media ($mdMin) {

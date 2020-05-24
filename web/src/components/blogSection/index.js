@@ -32,24 +32,11 @@ const BlogSection = (props) => {
                 _rev
                 assetId
                 _id
-                fixed(width: 400, toFormat: WEBP) {
-                  aspectRatio
-                  base64
-                  height
-                  src
-                  srcSet
-                  srcSetWebp
-                  srcWebp
-                  width
+                fixed(width: 400) {
+                  ...GatsbySanityImageFixed_withWebp
                 }
-                fluid(maxWidth: 400, sizes: "400", toFormat: WEBP) {
-                  aspectRatio
-                  base64
-                  sizes
-                  src
-                  srcSet
-                  srcSetWebp
-                  srcWebp
+                fluid(maxWidth: 700, maxHeight: 600) {
+                  ...GatsbySanityImageFluid_withWebp
                 }
               }
             }

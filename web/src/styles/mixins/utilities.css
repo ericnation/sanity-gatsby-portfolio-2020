@@ -16,12 +16,12 @@
 }
 
 @mixin centered() {
-	bottom: 0;
-	left: 0;
-	margin: 0 auto;
-	position: absolute;
-	right: 0;
-	top: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 @mixin accentColor() {
@@ -29,15 +29,19 @@
 }
 
 @mixin bottomGap {
-	margin-bottom: $elements-gap;
+  margin-bottom: calc($elements-gap / 2);
+
+  @media ($mdMin) {
+    margin-bottom: $elements-gap;
+  }
 }
 
 @mixin service-triangle($size, $color, $bg-color) {
-	height: $size;
-	width: $size;
-	border-top: $size solid $bg-color;
-	border-left: $size solid $color;
-	transition: all 0.5s;
+  height: $size;
+  width: $size;
+  border-top: $size solid $bg-color;
+  border-left: $size solid $color;
+  transition: all 0.5s;
 }
 
 @mixin overlay {
