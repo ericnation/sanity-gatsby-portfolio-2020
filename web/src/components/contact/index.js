@@ -66,6 +66,9 @@ const Contact = () => {
   const [formState, setFormState] = useState({
     submitting: false,
     submitted: false,
+    message: '',
+    error: null,
+    response: null,
   });
 
   const onSubmit = (formData) => {
@@ -73,25 +76,40 @@ const Contact = () => {
     setFormState({
       submitting: true,
       submitted: false,
+      message: 'Sending ...',
     });
     fetch('/.netlify/functions/sendEmail', {
       method: 'POST',
       body: JSON.stringify(formData),
     })
       .then((response) => {
-        console.log('frontend response', response);
         setFormState({
           submitting: false,
           submitted: true,
+          message: 'Message sent successfully! 👌',
+          response: response.body,
         });
         reset();
+        setTimeout(() => {
+          setFormState({
+            ...formState,
+            message: '',
+          });
+        }, 4000);
       })
       .catch((error) => {
-        console.log('frontend error', error);
         setFormState({
           submitting: false,
           submitted: true,
+          message: 'Whoops, something went wrong. 🙅‍♂️ Please try again.',
+          error: error,
         });
+        setTimeout(() => {
+          setFormState({
+            ...formState,
+            message: '',
+          });
+        }, 4000);
       });
   };
 
@@ -282,6 +300,16 @@ const Contact = () => {
                   value={formState.submitting ? 'Sending ...' : 'Send Messsage'}
                   className={classNames(styles.btn, styles.contactBtn)}
                 />
+                {formState.message && (
+                  <div
+                    className={classNames(styles.formAlert, {
+                      [styles.errorAlert]: formState.error,
+                      [styles.successAlert]: formState.response,
+                    })}
+                  >
+                    <span>{formState.message}</span>
+                  </div>
+                )}
               </form>
             </div>
 

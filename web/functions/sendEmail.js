@@ -43,7 +43,7 @@ exports.handler = function (event, context, callback) {
       console.log('Email sent: ' + info.response);
       callback(null, {
         statusCode: 200,
-        body: `Email sent successfully! ${info.response}`,
+        body: `Email sent successfully! ${info}`,
       });
     }
   });
