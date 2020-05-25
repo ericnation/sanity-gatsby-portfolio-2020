@@ -72,11 +72,9 @@ const Contact = () => {
   });
 
   const onSubmit = (formData) => {
-    console.log(formData);
     setFormState({
       submitting: true,
       submitted: false,
-      message: 'Sending ...',
     });
     fetch('/.netlify/functions/sendEmail', {
       method: 'POST',
@@ -95,7 +93,7 @@ const Contact = () => {
             ...formState,
             message: '',
           });
-        }, 4000);
+        }, 6000);
       })
       .catch((error) => {
         setFormState({
@@ -109,7 +107,7 @@ const Contact = () => {
             ...formState,
             message: '',
           });
-        }, 4000);
+        }, 6000);
       });
   };
 
