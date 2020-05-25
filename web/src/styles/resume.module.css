@@ -9,6 +9,7 @@
 
 .pageHeader {
   background-position: 55%;
+  background-repeat: no-repeat;
   background-size: cover;
   height: rem(500);
   position: relative;
@@ -107,6 +108,10 @@
 .resumeContent {
   border-bottom: 1px solid #b2b2b2;
   padding-bottom: 4%;
+
+  &.noBorder {
+    border-bottom: none;
+  }
 }
 
 .headerDescResume {

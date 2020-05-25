@@ -318,7 +318,7 @@ const Contact = () => {
 
               <div className={styles.bottomGap}>
                 <p>
-                  Home base is Phoenix, <span className={styles.accentColor}>{state}</span> 🌵USA
+                  Home base is <span className={styles.blackText}>Phoenix, {state}</span> 🌵USA
                 </p>
                 <p>
                   However, I'm usually living abroad nomading around some of my favorite countries
@@ -327,7 +327,7 @@ const Contact = () => {
                 {nodes[0].currentLocation && (
                   <p>
                     Current Location: &nbsp;
-                    <span className={styles.accentColor}>{nodes[0].countryName}</span>
+                    <span className={styles.blackText}>{nodes[0].countryName}</span>
                   </p>
                 )}
               </div>

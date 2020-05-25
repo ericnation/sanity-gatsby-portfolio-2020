@@ -145,3 +145,7 @@
 .successAlert {
   background-color: $success-green;
 }
+
+.blackText {
+  color: #000;
+}

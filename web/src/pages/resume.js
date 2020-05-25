@@ -3,6 +3,7 @@ import { graphql, useStaticQuery, Link } from 'gatsby';
 import classNames from 'classnames';
 import { MdLink, MdCheck } from 'react-icons/md';
 import { FaLongArrowAltLeft } from 'react-icons/fa';
+import BackgroundImage from 'gatsby-background-image';
 import { buildImageObj } from '../lib/helpers';
 import imageUrlFor from '../lib/image-url';
 import BlockText from '../components/block-text';
@@ -41,6 +42,13 @@ const Resume = () => {
             id
             _id
             assetId
+            fluid(maxWidth: 2000, sizes: "2000") {
+              base64
+              aspectRatio
+              src
+              srcWebp
+              sizes
+            }
           }
         }
         pdfResume {
@@ -102,7 +110,6 @@ const Resume = () => {
     keywords,
     author: { name, email, homebase, phone },
   } = sanitySiteSettings;
-  const headerImagePrepped = imageUrlFor(buildImageObj(headerImage)).height(582).width(2000).url();
   const subHeaderImagePrepped = imageUrlFor(buildImageObj(subHeaderImage))
     .height(492)
     .width(2000)
@@ -116,38 +123,37 @@ const Resume = () => {
         keywords={keywords}
       />
       <main className={styles.pageWrap}>
-        <header
-          className={styles.pageHeader}
-          style={{ backgroundImage: `url(${headerImagePrepped})` }}
-        >
-          <div className={styles.container}>
-            <div className={styles.pageNav}>
-              <Link className={styles.btnBackHome} to="/">
-                <FaLongArrowAltLeft /> Home
-              </Link>
-            </div>
-            <div className={styles.pageLogo}>
-              <Link to="/">
-                <Logo color="black" width={65} />
-              </Link>
-            </div>
-            <div className={classNames(styles.pageTitle, styles.sectionHeader)}>
-              <h1>
-                <span>{title}</span>
-              </h1>
-              <div className={styles.headerDesc}>
-                <span>Last updated {updateData}</span>
-                <br />
-                <div className={styles.resumeWrap}>
-                  <a href={pdfResume.asset.url} target="_blank" className={styles.resumeLink}>
-                    PDF Resume
-                  </a>
-                  <MdLink className={styles.linkIcon} />
+        {headerImage && headerImage.asset && (
+          <BackgroundImage className={styles.pageHeader} fluid={headerImage.asset.fluid}>
+            <div className={styles.container}>
+              <div className={styles.pageNav}>
+                <Link className={styles.btnBackHome} to="/">
+                  <FaLongArrowAltLeft /> Home
+                </Link>
+              </div>
+              <div className={styles.pageLogo}>
+                <Link to="/">
+                  <Logo color="black" width={65} />
+                </Link>
+              </div>
+              <div className={classNames(styles.pageTitle, styles.sectionHeader)}>
+                <h1>
+                  <span>{title}</span>
+                </h1>
+                <div className={styles.headerDesc}>
+                  <span>Last updated {updateData}</span>
+                  <br />
+                  <div className={styles.resumeWrap}>
+                    <a href={pdfResume.asset.url} target="_blank" className={styles.resumeLink}>
+                      PDF Resume
+                    </a>
+                    <MdLink className={styles.linkIcon} />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </header>
+          </BackgroundImage>
+        )}
         <section
           className={styles.pageContent}
           style={{ backgroundImage: `url(${subHeaderImagePrepped})` }}
@@ -208,7 +214,7 @@ const Resume = () => {
 
               <div className={styles.resumeRow}>
                 <h3>Technical Skills</h3>
-                <div className={styles.resumeContent}>
+                <div className={classNames(styles.resumeContent, styles.noBorder)}>
                   <div className={styles.skillsRow}>
                     <div className={styles.col4}>
                       <h4>Professional Skillset</h4>
