@@ -21,6 +21,16 @@ const detailsQuery = graphql`
         }
       }
     }
+    about: sanityAbout {
+      aboutSectionImage {
+        alt
+        asset {
+          _id
+          url
+          assetId
+        }
+      }
+    }
   }
 `;
 
@@ -29,10 +39,12 @@ const SEO = ({ description, lang, meta, keywords, title, image, favicon }) => {
     <StaticQuery
       query={detailsQuery}
       render={(data) => {
+        const defaultImage = data.about.aboutSectionImage.asset.url || '';
         const metaDescription = description || (data.site && data.site.description) || '';
         const siteTitle = (data.site && data.site.title) || '';
         const siteAuthor = (data.site && data.site.author && data.site.author.name) || '';
-        const metaImage = image && image.asset ? imageUrlFor(buildImageObj(image)).url() : '';
+        const metaImage =
+          image && image.asset ? imageUrlFor(buildImageObj(image)).url() : defaultImage;
         const faviconImg = (data.site.favicon && data.site.favicon.asset.url) || '';
         return (
           <Helmet
