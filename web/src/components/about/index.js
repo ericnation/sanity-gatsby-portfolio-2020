@@ -31,7 +31,7 @@ const About = () => {
             _id
             url
             assetId
-            fluid(maxWidth: 2000, sizes: "2000", toFormat: WEBP) {
+            fluid(maxWidth: 2000, sizes: "2000") {
               base64
               aspectRatio
               src
@@ -50,7 +50,7 @@ const About = () => {
               assetId
               _id
               url
-              fluid(maxWidth: 630, toFormat: WEBP) {
+              fluid(maxWidth: 630) {
                 ...GatsbySanityImageFluid_withWebp
               }
             }
