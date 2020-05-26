@@ -17,7 +17,10 @@ const ProjectSection = () => {
           }
         }
       }
-      allSanityProject(sort: { fields: [launchDate], order: DESC }) {
+      allSanityProject(
+        sort: { fields: [launchDate], order: DESC },
+        filter: { slug: { current: { ne: null } } }
+      ) {
         totalCount
         edges {
           node {
