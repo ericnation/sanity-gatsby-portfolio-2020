@@ -13,21 +13,20 @@ const detailsQuery = graphql`
       keywords
       author {
         name
+        image {
+          alt
+          asset {
+            _id
+            _rev
+            assetId
+            url
+          }
+        }
       }
       favicon {
         asset {
           assetId
           url
-        }
-      }
-    }
-    about: sanityAbout {
-      aboutSectionImage {
-        alt
-        asset {
-          _id
-          url
-          assetId
         }
       }
     }
@@ -39,12 +38,14 @@ const SEO = ({ description, lang, meta, keywords, title, image, favicon }) => {
     <StaticQuery
       query={detailsQuery}
       render={(data) => {
-        const defaultImage = data.about.aboutSectionImage.asset.url || '';
+        const defaultImage = data.site.author.image || {};
         const metaDescription = description || (data.site && data.site.description) || '';
         const siteTitle = (data.site && data.site.title) || '';
         const siteAuthor = (data.site && data.site.author && data.site.author.name) || '';
         const metaImage =
-          image && image.asset ? imageUrlFor(buildImageObj(image)).url() : defaultImage;
+          image && image.asset
+            ? imageUrlFor(buildImageObj(image)).url()
+            : imageUrlFor(buildImageObj(defaultImage)).width(400).url();
         const faviconImg = (data.site.favicon && data.site.favicon.asset.url) || '';
         return (
           <Helmet
