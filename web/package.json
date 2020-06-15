@@ -17,7 +17,6 @@
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/image-url": "^0.140.15",
-    "@sendgrid/mail": "^7.0.0",
     "autoprefixer": "^9.7.5",
     "classnames": "^2.2.6",
     "cssnano": "^4.1.10",
