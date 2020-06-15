@@ -51,7 +51,7 @@ const About = () => {
               _id
               url
               fluid(maxWidth: 630) {
-                ...GatsbySanityImageFluid_withWebp
+                ...GatsbySanityImageFluid
               }
             }
           }
