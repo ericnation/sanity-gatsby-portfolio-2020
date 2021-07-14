@@ -143,12 +143,12 @@ const Resume = () => {
                 <div className={styles.headerDesc}>
                   <span>Last updated {updateData}</span>
                   <br />
-                  <div className={styles.resumeWrap}>
+                  {/* <div className={styles.resumeWrap}>
                     <a href={pdfResume.asset.url} target="_blank" className={styles.resumeLink}>
                       PDF Resume
                     </a>
                     <MdLink className={styles.linkIcon} />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -163,9 +163,9 @@ const Resume = () => {
               <div className={styles.sectionHeaderResume}>
                 <h2>{name}</h2>
                 <div className={styles.headerDescResume}>
-                  <span>
+                  {/* <span>
                     {email} &middot; {phone}
-                  </span>
+                  </span> */}
                   <span>{homebase}</span>
                   <span>Personality Type: {personalityType}</span>
                 </div>
